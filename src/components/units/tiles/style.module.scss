@@ -1,0 +1,355 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+$corner-size-desktop: 15rem;
+$corner-size-mobile: 8.6rem;
+
+@mixin corners-outside {
+  &_left-bottom {
+    left: 0;
+    bottom: 0;
+
+    @include mixins.media('xs', 'md') {
+      $corner-size: $corner-size-mobile;
+
+      transform: translate(-$corner-size, $corner-size) rotate(-90deg);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      $corner-size: $corner-size-desktop;
+
+      transform: translate(-$corner-size, $corner-size) rotate(-90deg);
+    }
+  }
+
+  &_left-top {
+    left: 0;
+    top: 0;
+
+    @include mixins.media('xs', 'md') {
+      $corner-size: $corner-size-mobile;
+
+      transform: translate(-$corner-size, -$corner-size);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      $corner-size: $corner-size-desktop;
+
+      transform: translate(-$corner-size, -$corner-size);
+    }
+  }
+
+  &_right-top {
+    right: 0;
+    top: 0;
+
+    @include mixins.media('xs', 'md') {
+      $corner-size: $corner-size-mobile;
+
+      transform: translate($corner-size, -$corner-size) rotate(90deg);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      $corner-size: $corner-size-desktop;
+
+      transform: translate($corner-size, -$corner-size) rotate(90deg);
+    }
+  }
+
+  &_right-bottom {
+    right: 0;
+    bottom: 0;
+
+    @include mixins.media('xs', 'md') {
+      $corner-size: $corner-size-mobile;
+
+      transform: translate($corner-size, $corner-size) rotate(180deg);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      $corner-size: $corner-size-desktop;
+
+      transform: translate($corner-size, $corner-size) rotate(180deg);
+    }
+  }
+}
+
+@mixin corners-inside {
+  &_left-top {
+    transform: rotate(0);
+  }
+
+  &_left-bottom {
+    transform: rotate(-90deg);
+  }
+
+  &_right-top {
+    right: 0;
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  &_right-bottom {
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+}
+
+.tiles {
+  $selector: &;
+
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+
+  @include mixins.productType using($color) {
+    &#{$selector}_tiling-mode {
+      &_corners {
+        @include mixins.recolor($color);
+
+        :global(.safari) & {
+          $colors: (
+            'dark-blue': colors.$dark-blue,
+            'green': colors.$green,
+            'orange': colors.$orange,
+            'semi-red': colors.$semi-red,
+          );
+
+          filter: none;
+
+          &#{$selector}_hover {
+            #{$selector}__corner {
+              @each $color-text, $color-variable in $colors {
+                @if ($color == $color-variable) {
+                  background-image: url('images/animated-#{$color-text}.png');
+                }
+              }
+            }
+          }
+
+          #{$selector}__corner {
+            @each $color-text, $color-variable in $colors {
+              @if ($color == $color-variable) {
+                background-image: url('images/static-#{$color-text}.png');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_tile-pattern-size {
+    &_defaut {
+      /*!*/
+    }
+
+    &_small {
+      &#{$selector}_tiling-mode {
+        &_corners,
+        &_corners-with-background,
+        &_left-top-corner,
+        &_left-bottom-corner,
+        &_right-top-corner,
+        &_right-bottom-corner {
+          #{$selector}__corner {
+            background-size: 67%;
+          }
+        }
+      }
+    }
+  }
+
+  &_tiling-mode {
+    &_corners,
+    &_corners-with-background,
+    &_left-top-corner,
+    &_left-bottom-corner,
+    &_right-top-corner,
+    &_right-bottom-corner,
+    &_solid-corners {
+      #{$selector}__corner {
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        position: absolute;
+
+        @include mixins.media('xs', 'md') {
+          $corner-size: $corner-size-mobile;
+
+          height: $corner-size;
+          width: $corner-size;
+        }
+
+        @include mixins.media('md', 'infinity') {
+          $corner-size: $corner-size-desktop;
+
+          height: $corner-size;
+          width: $corner-size;
+        }
+
+        &_left-bottom {
+          bottom: 0;
+          left: 0;
+
+          @include mixins.media('xs', 'md') {
+            transform: rotate(-90deg);
+          }
+
+          @include mixins.media('md', 'infinity') {
+            transform: rotate(-90deg);
+          }
+        }
+
+        &_left-top {
+          left: 0;
+          top: 0;
+        }
+
+        &_right-bottom {
+          bottom: 0;
+          right: 0;
+
+          @include mixins.media('xs', 'md') {
+            transform: rotate(180deg);
+          }
+
+          @include mixins.media('md', 'infinity') {
+            transform: rotate(180deg);
+          }
+        }
+
+        &_right-top {
+          right: 0;
+          top: 0;
+
+          @include mixins.media('xs', 'md') {
+            transform: rotate(90deg);
+          }
+
+          @include mixins.media('md', 'infinity') {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+
+    &_corners,
+    &_corners-with-background,
+    &_left-top-corner,
+    &_left-bottom-corner,
+    &_right-top-corner,
+    &_right-bottom-corner {
+      #{$selector}__corner {
+        background-position: 0 0;
+        background-size: 100%;
+      }
+    }
+
+    &_corners,
+    &_left-top-corner,
+    &_left-bottom-corner,
+    &_right-top-corner,
+    &_right-bottom-corner {
+      &#{$selector}_hover {
+        #{$selector}__corner {
+          background-image: url('images/animated.png');
+        }
+      }
+
+      #{$selector}__corner {
+        background-image: url('images/static.png');
+      }
+    }
+
+    &_corners-with-background {
+      mix-blend-mode: soft-light;
+      opacity: 0.5;
+
+      &#{$selector}_animated {
+        #{$selector}__corner {
+          background-image: url('images/animated.png');
+        }
+      }
+
+      #{$selector}__corner {
+        background-image: url('images/static.png');
+      }
+    }
+
+    &_solid-corners {
+      #{$selector}__corner {
+        background-color: currentColor;
+      }
+    }
+
+    &_corners,
+    &_corners-with-background,
+    &_solid-corners {
+      &#{$selector}_hover {
+        #{$selector}__corner {
+          @include corners-inside();
+        }
+      }
+
+      #{$selector}__corner {
+        transition: transform 0.3s ease-in-out;
+
+        @include corners-outside();
+      }
+
+      &#{$selector}_animation-reversed {
+        &#{$selector}_hover {
+          #{$selector}__corner {
+            @include corners-outside();
+          }
+        }
+
+        #{$selector}__corner {
+          transition: transform 0.3s ease-in-out;
+
+          @include corners-inside();
+        }
+      }
+    }
+
+    &_default {
+      &#{$selector}_animated {
+        &::after {
+          background-image: url('images/animated.png') !important;
+        }
+      }
+
+      &::after {
+        background-image: url('images/static.png');
+        content: '';
+        left: 0;
+        mix-blend-mode: soft-light;
+        opacity: 0.5;
+      }
+    }
+
+    &_left-top-corner,
+    &_left-bottom-corner,
+    &_right-top-corner,
+    &_right-bottom-corner {
+      opacity: 0.5;
+    }
+
+    &_right-bottom-corner {
+      mix-blend-mode: soft-light;
+      opacity: 0.5;
+    }
+  }
+
+  &::after {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}

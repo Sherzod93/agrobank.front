@@ -1,0 +1,16 @@
+@use 'src/styles/mixins';
+
+.template {
+  /*!*/
+
+  @include mixins.baseBackgroundColor();
+
+  &__layout {
+    padding: 5rem;
+  }
+
+  .tabs {
+    margin: 0 -6rem;
+    padding: 0 5rem;
+  }
+}

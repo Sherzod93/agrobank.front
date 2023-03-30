@@ -1,0 +1,71 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.vote-block {
+  $selector: &;
+
+  $horizontal-padding-desktop: 4rem;
+  $vertical-padding-desktop: 4rem;
+  $horizontal-padding-mobile: 1.5rem;
+  $vertical-padding-mobile: 1.8rem;
+  $expand-icon-width: 2rem;
+
+  &__vote{
+    margin-bottom: 30px;
+    background-color: rgb(237 237 237 / 75%);
+    padding: 50px;
+    border-radius: 10px;
+  }
+
+  &__vote-title{
+    margin-bottom: 40px;
+    color: #2e3140;
+    font-size: 30px;
+    line-height: normal;
+  }
+
+  &__checkbox {
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    @include mixins.media('xs', 'md') {
+      margin-top: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+
+    #{$selector}__link {
+      color: colors.$white;
+    }
+    margin-right: 20px;
+  }
+  &__vote_button{
+    padding: 1.8rem 4rem !important;
+    border-radius: 5rem;
+    background-color: #00cc69;
+    color: white !important;
+    box-shadow: none !important;
+    margin-top: 30px;
+    font-size: 2rem;
+
+    @include mixins.media('xs', 'md') {
+      padding: .8rem 2rem !important;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__poll_detail{
+    display: flex;
+    gap: 10px;
+    margin: 20px 0px;
+  }
+
+  @include mixins.media('xs', 'md') {
+    &__vote{
+      padding: 25px;
+    }
+  }
+
+}

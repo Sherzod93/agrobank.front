@@ -1,0 +1,65 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.quote-block {
+  $selector: &;
+
+  position: relative;
+
+  &_base-background-color {
+    &_default {
+      #{$selector}__icon {
+        fill: colors.$gray-underlay_light-theme;
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      #{$selector}__icon {
+        fill: colors.$gray-underlay_dark-theme;
+      }
+    }
+  }
+
+  @include mixins.media('md', 'infinity') {
+    text-align: center;
+  }
+
+  &__icon {
+    position: absolute;
+    left: -4rem;
+
+    @include mixins.media('xs', 'md') {
+      top: 0;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      top: -4rem;
+    }
+  }
+
+  &__quote {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    position: relative;
+  }
+
+  &__description {
+    @include mixins.font(typography-variables.$font-body-3);
+
+    opacity: 0.5;
+
+    @include mixins.media('xs', 'md') {
+      margin-top: 1.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 2rem;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+.points-of-service-block {
+  $selector: &;
+
+  &_category-filter {
+    /*!*/
+
+    // duplicate selector for increase its specificity
+    & + #{$selector}#{$selector} {
+      @include mixins.media('xs', 'md') {
+        margin-top: 2.4rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 3.6rem;
+      }
+    }
+
+    // duplicate selector for increase its specificity
+    & + #{$selector}_map-wrapper#{$selector}_map-wrapper,
+    & + #{$selector}_mode-and-filters-wrapper#{$selector}_mode-and-filters-wrapper,
+    & + #{$selector}_list-wrapper#{$selector}_list-wrapper {
+      @include mixins.media('xs', 'md') {
+        margin-top: 1.6rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 6rem;
+      }
+    }
+  }
+
+  &_mode-and-filters-wrapper {
+    align-items: center;
+    display: grid;
+
+    @include mixins.media('xs', 'lg') {
+      justify-content: center;
+      row-gap: 2rem;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      column-gap: 2rem;
+      justify-content: space-between;
+      grid-template-columns: min-content min-content;
+    }
+
+    // duplicate selector for increase its specificity
+    & + #{$selector}_map-wrapper#{$selector}_map-wrapper,
+    & + #{$selector}_list-wrapper#{$selector}_list-wrapper {
+      margin-top: 2.4rem;
+    }
+  }
+
+  &__list-search {
+    margin-top: 5.6rem;
+    margin-bottom: 4rem;
+  }
+}

@@ -1,0 +1,98 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.file-download-item {
+  $select: &;
+
+  &__file {
+    flex: 0 0 32%;
+
+    &_type {
+      @include mixins.font(typography-variables.$font-body-2);
+
+      &_unknown {
+        #{$select}__type {
+          background-color: colors.$gray;
+        }
+      }
+
+      &_doc {
+        #{$select}__type {
+          background-color: colors.$dark-blue;
+        }
+      }
+
+      &_jpg {
+        #{$select}__type {
+          background-color: colors.$semi-red;
+        }
+      }
+
+      &_pdf {
+        #{$select}__type {
+          background-color: colors.$crimson;
+        }
+      }
+
+      &_png {
+        #{$select}__type {
+          background-color: colors.$orange;
+        }
+      }
+
+      &_xls {
+        #{$select}__type {
+          background-color: colors.$green;
+        }
+      }
+    }
+  }
+
+  &__type-wrap {
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 0.8rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__type {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    color: colors.$white;
+    font-weight: bold;
+    padding: 0.15rem 1.1rem;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    &-wrapper {
+      position: relative;
+
+      #{$select}__tooltip {
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform: translateY(3rem);
+      }
+
+      &:hover {
+        #{$select}__tooltip {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__size {
+    @include mixins.font(typography-variables.$font-body-3);
+
+    margin-top: 1rem;
+    opacity: 0.5;
+  }
+}

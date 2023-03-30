@@ -1,0 +1,74 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.product-applying-steps-block {
+  $selector: &;
+
+  /*!*/
+
+  @include mixins.baseBackgroundColor();
+
+  &_with-product-type {
+    @include mixins.media('xs', 'md') {
+      padding: 3rem 1.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 6rem 7rem 8rem;
+    }
+  }
+
+  &_with-title {
+    #{$selector}__steps {
+      @include mixins.media('xs', 'md') {
+        margin: 3rem 0 0;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin: 6rem 0 0;
+      }
+    }
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+
+    @include mixins.media('md', 'infinity') {
+      text-align: center;
+    }
+  }
+
+  &__steps {
+    display: grid;
+    list-style: none;
+    padding: 0;
+
+    @include mixins.media('xs', 'md') {
+      grid-auto-flow: row;
+      grid-gap: 2.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      grid-auto-flow: column;
+      grid-gap: 2.1rem;
+    }
+  }
+
+  &__step {
+    /*!*/
+  }
+
+  &__step-number {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+  }
+
+  &__step-title {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    margin-top: 1rem;
+  }
+}

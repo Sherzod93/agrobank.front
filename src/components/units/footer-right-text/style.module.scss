@@ -1,0 +1,54 @@
+@use 'sass:list';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+
+.footer-right-text {
+  @include mixins.font(typography-variables.$font-body-4);
+
+  @include mixins.media('xs', 'md') {
+    text-align: start;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    text-align: end;
+  }
+
+  display: flex;
+  justify-content: flex-end;
+
+  &__text {
+    width: 360px;
+    text-align: right;
+    font-size: 15px;
+    line-height: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  &__text-white {
+    width: 360px;
+    text-align: right;
+    font-size: 15px;
+    line-height: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #9799a9;
+  }
+
+  &__d-none {
+    display: none;
+  }
+
+  /* Mobile */
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    justify-content: flex-start;
+
+    &__text {
+      text-align: left;
+      margin-top: 0px;
+    }
+  }
+}

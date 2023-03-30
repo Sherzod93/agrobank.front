@@ -1,0 +1,7 @@
+@use 'src/styles/mixins';
+
+.page {
+  @include mixins.baseBackgroundColor();
+
+  min-height: 100vh;
+}

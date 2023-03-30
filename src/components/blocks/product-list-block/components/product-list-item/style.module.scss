@@ -1,0 +1,226 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.product-list-item {
+  $selector: &;
+
+  display: grid;
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: colors.$too-transparent-black;
+  }
+
+  &_base-background-color {
+    &_deepBlue {
+      &:hover {
+        background-color: colors.$deep-blue-on-deep-blue;
+      }
+    }
+  }
+
+  @include mixins.productType using($color) {
+    color: white;
+
+    &#{$selector}_promoted {
+      #{$selector}__animation {
+        background-color: $color;
+      }
+    }
+  }
+
+  @include mixins.media('xs', 'md') {
+    grid-gap: 2rem;
+    margin: 0 #{-1 * variables.$container-padding-mobile};
+    padding: 2.2rem 1.5rem;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        padding-left-right: (
+          1.5rem,
+          12rem,
+        ),
+        padding-top-bottom: (
+          2.2rem,
+          6rem,
+        ),
+      ),
+      'sm',
+      'md',
+      8,
+      false
+    )
+    using($properties) {
+    padding: map.get($properties, 'padding-top-bottom') map.get($properties, 'padding-left-right');
+  }
+
+  @include mixins.propertiesScale(
+      (
+        margin-left-right: (
+          variables.$block-margin-0-desktop,
+          variables.$block-margin-2-desktop,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    margin: 0 map.get($properties, 'margin-left-right');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    margin: 0 variables.$block-margin-2-desktop;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        first-grid-column-width: (
+          28rem,
+          45.5rem,
+        ),
+        grid-gap: (
+          3rem,
+          5rem,
+        ),
+        padding: (
+          2rem,
+          12rem,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    grid-gap: map.get($properties, 'grid-gap');
+    grid-template-columns: map.get($properties, 'first-grid-column-width') 1fr;
+    padding: 6rem map.get($properties, 'padding');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    grid-gap: 5rem;
+    grid-template-columns: 45.5rem 1fr;
+    padding: 6rem 12rem;
+  }
+
+  &_product-type {
+    &_deposit {
+      @include mixins.propertiesScale(
+          (
+            margin: (
+              2rem,
+              12rem,
+            ),
+            width: (
+              28rem,
+              45.5rem,
+            ),
+          ),
+          'md',
+          'xxxl',
+          8,
+          false
+        )
+        using($properties) {
+        &:not(#{$selector}_promoted) {
+          #{$selector}__animation {
+            width: map.get($properties, 'margin') + map.get($properties, 'width');
+          }
+        }
+
+        #{$selector}__picture-wrapper {
+          margin: -6rem 0 -6rem #{-1 * map.get($properties, 'margin')};
+        }
+      }
+
+      @include mixins.media('xxxl', 'infinity') {
+        #{$selector}__picture-wrapper {
+          margin: -6rem 0 -6rem -12rem;
+        }
+      }
+    }
+  }
+
+  &_promoted {
+    #{$selector}__title {
+      &:not(:hover) {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &:not(&_promoted) {
+    color: inherit;
+
+    #{$selector}__animation {
+      z-index: 2;
+    }
+  }
+
+  &__animation {
+    z-index: 1;
+  }
+
+  &__picture-wrapper {
+    z-index: 1;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  &__info-wrapper {
+    z-index: 2;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+
+    &::before {
+      content: '';
+      height: 100%;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  &__description {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    margin-top: 1.5rem;
+  }
+
+  &__tags-and-buttons {
+    @include mixins.media('xs', 'md') {
+      margin-top: 1.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 3rem;
+    }
+  }
+
+  &__tag {
+    /*!*/
+  }
+
+  &__button {
+    /*!*/
+  }
+}

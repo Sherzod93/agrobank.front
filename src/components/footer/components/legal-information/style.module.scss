@@ -1,0 +1,16 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.legal-information {
+  @include mixins.font(typography-variables.$font-body-4);
+
+  opacity: 0.5;
+
+  &__copyright {
+    /*!*/
+  }
+
+  &__legal-information {
+    margin-top: 1rem;
+  }
+}

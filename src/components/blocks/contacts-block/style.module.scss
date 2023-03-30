@@ -1,0 +1,88 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.contacts-block {
+  $selector: &;
+
+  color: colors.$white;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+
+  @include mixins.media('xs', 'md') {
+    padding: 4rem 2rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    padding: 6rem;
+  }
+
+  @include mixins.productType using($color) {
+    background-color: rgba($color, 0.5);
+
+    #{$selector}__tiles {
+      background-color: $color;
+    }
+  }
+
+  &__tiles {
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-4);
+
+    font-weight: bold;
+  }
+
+  &__email-and-title-wrapper,
+  &__phone-and-title-wrapper {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__email-and-title-wrapper {
+    margin-top: 1rem;
+  }
+
+  &__phone-and-title-wrapper {
+    @include mixins.media('xs', 'md') {
+      margin-top: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 6rem;
+    }
+  }
+
+  &__phone-wrapper,
+  &__email-wrapper {
+    /*!*/
+  }
+
+  &__link {
+    box-shadow: inset 0 variables.$underline-width colors.$very-transparent-white;
+    text-decoration: none;
+  }
+
+  &__phone,
+  &__email {
+    color: colors.$white;
+    font-weight: bold;
+    line-height: 100%;
+  }
+
+  &__phone-title,
+  &__email-title {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    margin-top: 0.2rem;
+  }
+}

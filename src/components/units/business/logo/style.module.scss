@@ -1,0 +1,44 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+.logo {
+  $selector: &;
+
+  @include mixins.media('xs', 'md') {
+    width: 9.8rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    width: 21.9rem;
+  }
+
+  &_base-background-color {
+    &_green,
+    &_deepBlue {
+      #{$selector}__logo,
+      #{$selector}__title {
+        fill: colors.$text-color_dark-theme;
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_default,
+    &_orange,
+    &_semiRed {
+      #{$selector}__logo {
+        fill: colors.$green;
+      }
+    }
+  }
+
+  &__link {
+    color: inherit;
+    line-height: 1.2rem;
+    text-decoration: inherit;
+  }
+
+  &__title {
+    fill: colors.$text-color_light-theme;
+  }
+}

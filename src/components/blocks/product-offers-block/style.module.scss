@@ -1,0 +1,12 @@
+@use 'src/styles/mixins';
+
+.product-offers-block {
+  display: grid;
+  gap: 3rem;
+
+  @include mixins.media('md', 'infinity') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  padding-left: 0;
+}

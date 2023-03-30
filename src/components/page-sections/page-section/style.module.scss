@@ -1,0 +1,298 @@
+@use 'sass:map';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.page-section {
+  $selector: &;
+
+  @include mixins.media('xs', 'md') {
+    margin-top: 3rem;
+
+    &:first-child {
+      margin-top: 0;
+
+      & > h2 {
+        margin-top: 3rem;
+      }
+    }
+  }
+
+  @include mixins.media('md', 'infinity') {
+    margin-top: 7.2rem;
+
+    @include mixins.media('lg', 'infinity') {
+      @include mixins.propertiesScale(
+          (
+            margin-top: (
+              4rem,
+              7.2rem,
+            ),
+          ),
+          'xs',
+          'lg',
+          8,
+          false,
+          'height'
+        )
+        using($properties) {
+        margin-top: map.get($properties, 'margin-top');
+      }
+    }
+
+    &:first-child {
+      margin-top: 3rem;
+
+      & > h2 {
+        margin-top: 7.2rem;
+
+        @include mixins.media('lg', 'infinity') {
+          @include mixins.propertiesScale(
+              (
+                margin-top: (
+                  4rem,
+                  7.2rem,
+                ),
+              ),
+              'xs',
+              'lg',
+              8,
+              false,
+              'height'
+            )
+            using($properties) {
+            margin-top: map.get($properties, 'margin-top');
+          }
+        }
+      }
+    }
+  }
+
+  &_only-blocks-mode {
+    /*!*/
+  }
+
+  &__title {
+    font-weight: bold;
+    text-align: center;
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  &__content {
+    /*!*/
+  }
+
+  &__block {
+    &_type {
+      // this selector list must be updated according to pageSectionBlockTypeToComponentMap
+      &_advice-item,
+      &_advice-list,
+      &_bank-cell-rental,
+      &_calculator,
+      &_call-center,
+      &_carousel,
+      &_chronology,
+      &_contacts,
+      &_currency-rates,
+      &_faq,
+      &_file-download,
+      &_foldable-person-list,
+      &_header,
+      &_image,
+      &_info-cards,
+      &_information,
+      &_link,
+      &_link-list,
+      &_list,
+      &_main-product-banner,
+      &_mobile-bank,
+      &_navigate,
+      &_news,
+      &_news-item,
+      &_news-list,
+      &_next-news-item,
+      &_other-vacancies,
+      &_person-list,
+      &_points-of-service,
+      &_product-advantages,
+      &_product-applying-steps,
+      &_product-banner,
+      &_product-list,
+      &_product-properties,
+      &_product-offers,
+      &_quote,
+      &_share,
+      &_staff-experience,
+      &_statistics,
+      &_text-banner,
+      &_tabs,
+      &_tags,
+      &_text,
+      &_ticker,
+      &_tiles-list,
+      &_vacancy-item,
+      &_vacancy-list {
+        /*!*/
+      }
+
+      &_product-banner {
+        @include mixins.media('xs', 'md') {
+          margin: 0 #{variables.$block-margin-2-mobile};
+        }
+
+        @include mixins.propertiesScale(
+            (
+              margin-left-right: (
+                variables.$block-margin-0-desktop,
+                variables.$block-margin-2-desktop,
+              ),
+            ),
+            'md',
+            'xxxl',
+            8,
+            false
+          )
+          using($properties) {
+          margin: 1.5rem map.get($properties, 'margin-left-right') 0;
+        }
+
+        @include mixins.media('xxxl', 'infinity') {
+          margin: 0 variables.$block-margin-2-desktop;
+        }
+      }
+
+      &_points-of-service,
+      &_product-list,
+      &_tags {
+        &#{$selector}__tabs {
+          padding: 0 variables.$container-padding-mobile;
+
+          @include mixins.media('xs', 'md') {
+            margin: 0 #{-1 * variables.$container-padding-mobile};
+          }
+
+          @include mixins.propertiesScale(
+              (
+                margin-left-right: (
+                  variables.$container-padding-mobile,
+                  variables.$container-padding-desktop,
+                ),
+              ),
+              'md',
+              'xxxl',
+              8,
+              false
+            )
+            using($properties) {
+            margin: 0 (-1 * map.get($properties, 'margin-left-right'));
+          }
+
+          @include mixins.media('xxxl', 'infinity') {
+            margin: 0 #{-1 * variables.$container-padding-desktop};
+          }
+        }
+      }
+
+      &_product-offers {
+        @include mixins.media('xs', 'md') {
+          margin: 0 variables.$block-margin-1-mobile;
+        }
+
+        @include mixins.propertiesScale(
+            (
+              margin-left-right: (
+                variables.$block-margin-1-mobile,
+                variables.$block-margin-1-desktop,
+              ),
+            ),
+            'md',
+            'xxxl',
+            8,
+            false
+          )
+          using($properties) {
+          margin: 0 map.get($properties, 'margin-left-right');
+        }
+
+        @include mixins.media('xxxl', 'infinity') {
+          margin: 0 variables.$block-margin-1-desktop;
+        }
+      }
+
+      &_carousel {
+        @include mixins.media('xs', 'md') {
+          margin: 0 #{variables.$block-margin-3-mobile};
+        }
+
+        @include mixins.propertiesScale(
+            (
+              margin-left-right: (
+                variables.$container-padding-mobile,
+                variables.$container-padding-desktop,
+              ),
+            ),
+            'md',
+            'xxxl',
+            8,
+            false
+          )
+          using($properties) {
+          margin: 0 (-1 * map.get($properties, 'margin-left-right'));
+        }
+
+        @include mixins.media('xxxl', 'infinity') {
+          margin: 0 #{variables.$block-margin-3-desktop};
+        }
+      }
+    }
+
+    &:not(:first-child) {
+      @include mixins.media('xs', 'md') {
+        margin-top: 3rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 7.2rem;
+      }
+    }
+  }
+
+  &__tabs {
+    /*!*/
+  }
+
+  &__map {
+    @include mixins.media('md', 'infinity') {
+      left: 50%;
+      position: relative;
+      transform: translateX(-50%);
+    }
+
+    @include mixins.propertiesScale(
+        (
+          indent: (
+            variables.$block-margin-0-desktop,
+            variables.$block-margin-2-desktop,
+          ),
+        ),
+        'md',
+        'xxxl',
+        8,
+        false
+      )
+      using($properties) {
+      width: calc(100% + (-1 * #{map.get($properties, 'indent')}));
+    }
+
+    @include mixins.media('xxxl', 'infinity') {
+      width: calc(100% + 15rem);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use 'src/styles/mixins';
+
+.template {
+  padding: 5rem;
+  overflow-x: auto;
+
+  @include mixins.baseBackgroundColor();
+
+  .tabs {
+    margin-left: -5rem;
+    margin-right: -5rem;
+  }
+}

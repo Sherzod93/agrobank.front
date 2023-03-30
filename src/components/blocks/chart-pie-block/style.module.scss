@@ -1,0 +1,37 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.chart-pie-block {
+  $selector: &;
+
+  $horizontal-padding-desktop: 4rem;
+  $vertical-padding-desktop: 4rem;
+  $horizontal-padding-mobile: 1.5rem;
+  $vertical-padding-mobile: 1.8rem;
+  $expand-icon-width: 2rem;
+
+  &__chart {
+    width: 100%;
+  }
+  @include mixins.media('md', 'infinity') {
+    &__chart_box {
+      width:100%;
+      height: 500px;
+    }
+
+  }
+  @include mixins.media('xs', 'md') {
+    &__chart_box {
+      width: 100%;
+      height: 300px;
+    }
+
+  }
+
+  /* width */
+  &__chart::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+  }
+}

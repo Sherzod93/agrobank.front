@@ -1,0 +1,36 @@
+.link-info-card {
+  $selector: &;
+
+  &_is-mobile {
+    display: grid;
+    flex-direction: column;
+    row-gap: 3.6rem;
+
+    #{$selector}__button {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  &:not(#{$selector}_is-mobile) {
+    #{$selector}__link {
+      &::before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &__link {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  &__button {
+    /*!*/
+  }
+}

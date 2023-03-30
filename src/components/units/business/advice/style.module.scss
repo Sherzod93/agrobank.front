@@ -1,0 +1,93 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.advice {
+  $selector: &;
+
+  line-height: 0;
+  position: relative;
+  z-index: 0;
+
+  @include mixins.productType using($color) {
+    #{$selector}__tiles {
+      color: $color;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    @include mixins.media('md', 'infinity') {
+      padding-top: calc(550 / 351 * 100%);
+    }
+  }
+
+  &__tiles {
+    left: 0;
+    top: 0;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+
+    @include mixins.media('md', 'infinity') {
+      left: 0;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+    }
+  }
+
+  &__tags {
+    @include mixins.media('xs', 'md') {
+      margin-top: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 2rem;
+    }
+  }
+
+  &__link-wrapper {
+    &_medium {
+      margin-top: 1rem;
+
+      #{$selector}__link {
+        @include mixins.font(typography-variables.$font-body-2);
+      }
+    }
+
+    &_large {
+      font-weight: bold;
+
+      @include mixins.media('xs', 'md') {
+        margin-top: 1.5rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 2.4rem;
+      }
+
+      #{$selector}__link {
+        @include mixins.font(typography-variables.$font-body-1);
+      }
+    }
+  }
+
+  &__link {
+    &::before {
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &:not(:hover) {
+      box-shadow: none;
+    }
+  }
+}

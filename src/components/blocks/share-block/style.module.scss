@@ -1,0 +1,18 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.share-block {
+  $selector: &;
+
+  display: grid;
+  justify-items: center;
+  row-gap: 2.4rem;
+
+  &__title {
+    @include mixins.font(typography-variables.$font-body-2);
+  }
+
+  &__share-links {
+    /*!*/
+  }
+}

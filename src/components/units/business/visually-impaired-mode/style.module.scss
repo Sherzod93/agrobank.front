@@ -1,0 +1,87 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.visually-impaired-mode {
+  $selector: &;
+
+  @include mixins.buttonCleanup();
+
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  opacity: 0.5;
+  width: max-content;
+
+  &_active {
+    color: colors.$green;
+    opacity: 1;
+  }
+
+  &_base-background-color {
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_default,
+    &_green,
+    &_orange,
+    &_semiRed {
+      &:hover {
+        opacity: 1;
+      }
+
+      &#{$selector}_active {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      #{$selector}__icon {
+        fill: colors.$text-color_dark-theme;
+      }
+    }
+  }
+
+  &_with-title {
+    @include mixins.media('xs', 'md') {
+      @include mixins.font(typography-variables.$font-body-1);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      @include mixins.font(typography-variables.$font-body-4);
+    }
+
+    opacity: 1;
+
+    #{$selector}__icon {
+      height: 1.6rem;
+      width: 3rem;
+    }
+  }
+
+  &__icon {
+    fill: currentColor;
+
+    @include mixins.media('xs', 'md') {
+      height: 1.6rem;
+      width: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: 2.2rem;
+      width: 3.8rem;
+    }
+  }
+
+  &__title {
+    width: max-content;
+  }
+}

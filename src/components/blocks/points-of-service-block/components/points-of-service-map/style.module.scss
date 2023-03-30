@@ -1,0 +1,126 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+.points-of-service-map {
+  position: relative;
+
+  &__controls,
+  &__point-information-wrapper,
+  &__search {
+    position: absolute;
+    z-index: 1;
+  }
+
+  &__controls {
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include mixins.media('xs', 'md') {
+      right: 2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      right: 0;
+    }
+  }
+
+  &__point-information-wrapper {
+    left: 0;
+
+    @include mixins.media('xs', 'md') {
+      bottom: 0;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      bottom: 3rem;
+    }
+  }
+
+  &__search {
+    @include mixins.media('xs', 'md') {
+      left: 50%;
+      top: 1.6rem;
+      transform: translateX(-50%);
+      width: calc(100% - #{1.6rem * 2});
+    }
+
+    @include mixins.media('md', 'infinity') {
+      left: 0;
+      top: 3rem;
+      width: min-content;
+    }
+  }
+
+  &__map-wrapper {
+    padding-top: 50%;
+    position: relative;
+
+    @include mixins.media('xs', 'md') {
+      min-height: 40rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      min-height: 60rem;
+    }
+  }
+
+  &__map {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__point-information-wrapper {
+    @include mixins.media('xs', 'md') {
+      width: 100%;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      min-width: 40rem;
+      width: min-content;
+    }
+  }
+}
+
+:global .placemark-content-layout {
+  $selector: &;
+
+  line-height: 0;
+  position: relative;
+
+  &_selected {
+    $size: 160px;
+    transform: translate(math.div($size, 2) * -1, $size * -1);
+
+    #{$selector}__icon {
+      height: $size;
+      width: $size;
+    }
+  }
+
+  $size: 70px;
+  transform: translate(math.div($size, 2) * -1, $size * -1);
+
+  &_selected,
+  &_hovered {
+    #{$selector}__icon-background {
+      fill: colors.$green-lighten;
+    }
+  }
+
+  &__icon {
+    height: $size;
+    width: $size;
+  }
+
+  &__icon-background {
+    fill: colors.$green;
+  }
+
+  &__icon-letter {
+    fill: colors.$white;
+  }
+}

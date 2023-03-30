@@ -1,0 +1,12 @@
+@use 'src/styles/mixins';
+
+.template {
+  overflow-x: auto;
+  padding: 5rem;
+
+  @include mixins.baseBackgroundColor();
+
+  &__layout {
+    max-width: 800px;
+  }
+}

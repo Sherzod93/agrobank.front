@@ -1,0 +1,100 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.call-center-block {
+  $selector: &;
+
+  color: colors.$white;
+  position: relative;
+
+  @include mixins.media('xs', 'md') {
+    padding: 4rem 2.6rem;
+    text-align: center;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    padding: 8rem 10rem;
+  }
+
+  @include mixins.productType using($color) {
+    background-color: rgba($color, 0.5);
+
+    #{$selector}__tiles {
+      background-color: $color;
+    }
+  }
+
+  &__tiles {
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  &__phone-wrapper {
+    align-items: center;
+    color: currentColor;
+    display: flex;
+    margin-bottom: 2rem;
+    text-decoration: none;
+
+    @include mixins.media('xs', 'md') {
+      justify-content: center;
+    }
+
+    &_long {
+      #{$selector}__icon {
+        @include mixins.media('md', 'xl') {
+          max-width: 6rem;
+          min-width: 3rem;
+        }
+      }
+
+      #{$selector}__phone {
+        @include mixins.media('md', 'xl') {
+          @include mixins.font(typography-variables.$font-h-2);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    @include mixins.media('xs', 'md') {
+      display: none;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      min-width: 8rem;
+    }
+  }
+
+  &__phone {
+    font-weight: 900;
+    line-height: 100%;
+
+
+    &:not(:hover) {
+      box-shadow: none;
+    }
+
+    @include mixins.media('xs', 'md') {
+      @include mixins.font(typography-variables.$font-h-2);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-left: 2rem;
+      font-size: 12rem;
+    }
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    @include mixins.font(typography-variables.$font-h-4);
+  }
+}

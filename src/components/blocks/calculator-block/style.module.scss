@@ -1,0 +1,88 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+@use 'styles/calculator-variables';
+
+.calculator-block {
+  $selector: &;
+
+  &_base-background-color {
+    &_default {
+      background-color: colors.$gray-underlay_light-theme;
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      background-color: colors.$gray-underlay_dark-theme;
+    }
+  }
+
+  display: grid;
+
+  @include mixins.media('xs', 'md') {
+    gap: 2.4rem;
+    padding: calculator-variables.$block-paddings_mobile;
+  }
+
+  @include mixins.media('md', 'lg') {
+    gap: 6rem;
+    padding: calculator-variables.$block-paddings_desktop_md;
+  }
+
+  @include mixins.media('lg', 'infinity') {
+    gap: 6rem;
+    padding: calculator-variables.$block-paddings_desktop_lg;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        margin-left-right: (
+          variables.$block-margin-0-desktop,
+          variables.$block-margin-2-desktop,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    margin: 0 map.get($properties, 'margin-left-right');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    margin: 0 variables.$block-margin-2-desktop;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+
+    @include mixins.media('xs', 'md') {
+    }
+
+    @include mixins.media('md', 'infinity') {
+      text-align: center;
+    }
+  }
+
+  &__buttons-wrapper {
+    display: grid;
+    gap: 1.6rem;
+
+    @include mixins.media('xs', 'lg') {
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      grid-template-columns: repeat(2, minmax(0, max-content));
+      justify-content: center;
+    }
+  }
+}

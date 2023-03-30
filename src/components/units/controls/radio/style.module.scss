@@ -1,0 +1,216 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.radio {
+  $selector: &;
+  $size-desktop: 3.2rem;
+  $size-mobile: 2.3rem;
+  $text-padding-left: 1.4rem;
+  $line-width-desktop: 0.5rem;
+  $line-width-mobile: 0.3rem;
+
+  $inner-edge-desktop: $size-desktop - $line-width-desktop;
+  $inner-edge-mobile: $size-mobile - $line-width-mobile;
+
+  @include mixins.font(typography-variables.$font-body-2);
+
+  display: inline-block;
+  line-height: 120%;
+  position: relative;
+  z-index: 1;
+
+  @include mixins.media('xs', 'md') {
+    min-height: $size-mobile;
+    padding-left: $size-mobile + $text-padding-left;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    min-height: $size-desktop;
+    padding-left: $size-desktop + $text-padding-left;
+  }
+
+  &_solid {
+    align-items: center;
+    background-color: #fff;
+    color: colors.$text-color_light-theme;
+    border-radius: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include mixins.media('xs', 'md') {
+      padding: 1.2rem 1.2rem 1.2rem 4rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 1.2rem 3.2rem 1.2rem 5rem;
+    }
+
+    #{$selector}__box {
+      transform: translate(1rem);
+    }
+
+    &#{$selector}_checked {
+      background-color: colors.$green;
+      color: #fff;
+
+      #{$selector}__box {
+        &::after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  &:not(#{$selector}_disabled) {
+    cursor: pointer;
+  }
+
+  &_base-background-color {
+    &_blue,
+    &_darkBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      &:not(#{$selector}_disabled) {
+        &:hover {
+          #{$selector}__box::after {
+            background-color: colors.$checkbox-hovered-background-color_with-base-background-color;
+            border-radius: 50%;
+          }
+        }
+
+        &:active {
+          #{$selector}__box::after {
+            background-color: colors.$checkbox-active-background-color_with-base-background-color;
+          }
+        }
+      }
+
+      #{$selector}__input {
+        &:disabled {
+          & ~ #{$selector}__box {
+            color: colors.$checkbox-disabled-color_with-base-background-color;
+          }
+        }
+
+        &:not(:disabled):focus-visible {
+          & ~ #{$selector}__box {
+            color: colors.$checkbox-focus-color_with-base-background-color !important;
+          }
+        }
+      }
+    }
+
+    &_green {
+      &#{$selector}_checked {
+        background-color: colors.$deep-blue;
+      }
+    }
+  }
+
+  &:not(#{$selector}_disabled):not(#{$selector}_checked) {
+    &:hover {
+      #{$selector}__box::after {
+        background-color: colors.$checkbox-hovered-background-color_light-theme;
+      }
+    }
+
+    &:active {
+      #{$selector}__box::after {
+        background-color: colors.$checkbox-active-background-color_light-theme;
+      }
+    }
+  }
+
+  &__input {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+
+    &:disabled {
+      & ~ #{$selector}__box {
+        color: colors.$checkbox-disabled-color_light-theme;
+      }
+    }
+
+    &:checked {
+      & ~ #{$selector}__box {
+        #{$selector}__inner-point {
+          background-color: currentColor;
+          display: block;
+        }
+      }
+
+      &:not(:disabled) {
+        & ~ #{$selector}__box {
+          color: colors.$checkbox-checked-color_light-theme;
+        }
+      }
+    }
+
+    &:not(:disabled):focus-visible {
+      & ~ #{$selector}__box {
+        color: colors.$checkbox-focus-color_light-theme !important;
+      }
+    }
+  }
+
+  &__box {
+    color: colors.$input-gray;
+    left: 0;
+    position: absolute;
+
+    @include mixins.media('xs', 'md') {
+      height: $size-mobile;
+      width: $size-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: $size-desktop;
+      width: $size-desktop;
+    }
+
+    &::after {
+      border-radius: 50%;
+      content: '';
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &::before {
+      border-radius: 50%;
+      border-style: solid;
+      content: '';
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+
+      @include mixins.media('xs', 'md') {
+        border-width: $line-width-mobile;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        border-width: $line-width-desktop;
+      }
+    }
+
+    #{$selector}__inner-point {
+      background-color: transparent;
+      border-radius: 50%;
+      display: none;
+      height: 1.2rem;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@use "src/styles/colors";
+@use "src/styles/mixins";
+@use "src/styles/typography-variables";
+
+.language-selector {
+  $selector: &;
+
+  display: grid;
+  position: relative;
+  row-gap: 2rem;
+
+  &_is-folded {
+    #{$selector}__list_foldable {
+      display: none;
+    }
+  }
+
+  &_base-background-color {
+    &_default {
+      #{$selector}__list_foldable {
+        &::before {
+          background-color: white;
+          box-shadow: 0 30px 30px transparentize(black, 0.85);
+        }
+      }
+    }
+
+    $colors: (
+      'blue': colors.$blue,
+      'darkBlue': colors.$dark-blue,
+      'deepBlue': colors.$deep-blue,
+      'green': colors.$green,
+      'orange': colors.$orange,
+      'semiRed': colors.$semi-red,
+    );
+
+    @each $color, $color-variable in $colors {
+      &_#{$color} {
+        #{$selector}__list_foldable {
+          &::before {
+            background-color: $color-variable;
+            box-shadow: 0 30px 30px transparentize(black, 0.85);
+          }
+        }
+      }
+    }
+  }
+
+  &__list {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    list-style: none;
+    padding: 0;
+
+    @include mixins.media('xs', 'md') {
+      display: flex;
+      margin: -1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      display: grid;
+      row-gap: 2rem;
+    }
+
+    &_foldable {
+      left: 0;
+      margin-top: 2rem;
+      position: absolute;
+      top: -2rem;
+      z-index: 1000;
+
+      &::before {
+        bottom: -2rem;
+        left: -2rem;
+        content: '';
+        height: calc(100% + 2rem * 2);
+        position: absolute;
+        width: calc(100% + 2rem * 2);
+        z-index: -1;
+      }
+    }
+  }
+
+  &__current-value,
+  &__item {
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.5;
+    text-transform: uppercase;
+
+    @include mixins.media('xs', 'md') {
+      margin: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      font-size: 0.8em;
+    }
+
+    &_current,
+    &:hover {
+      opacity: 1;
+
+      @include mixins.media('xs', 'md') {
+        color: colors.$green;
+      }
+    }
+  }
+}

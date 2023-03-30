@@ -1,0 +1,70 @@
+$white: #fff;
+$blue: #4893f7;
+$crimson: #d61a52;
+$dark-blue: #3c4bdc;
+$deep-blue: #232636;
+$deep-blue-on-deep-blue: #2e3140;
+$green: #00cc69;
+$green-lighten: lighten(#00cc69, 5%);
+$green-darken: darken(#00cc69, 5%);
+$orange: #fe9a38;
+$semi-red: #f6764d;
+$gray: #797979;
+$telegram: #37aee2;
+
+$light-gray: #f4f4f4;
+$input-gray: #dcdcdc;
+
+$error-main: #ff5858;
+$error-extra: #ffe176;
+
+$too-transparent-black: rgba(0, 0, 0, 0.05);
+$very-transparent-black: rgba(0, 0, 0, 0.1);
+$too-transparent-white: rgba(255, 255, 255, 0.1);
+$very-transparent-white: rgba(255, 255, 255, 0.3);
+$half-transparent-white: rgba(255, 255, 255, 0.5);
+
+$text-color_light-theme: black;
+$text-color_dark-theme: white;
+
+$link-color_light-theme: $too-transparent-white;
+$link-color_light-theme_hover: $green-lighten;
+$link-color_dark-theme: $very-transparent-black;
+$link-color_dark-theme_hover: $green;
+
+$accordion-lines-color_light-theme: $very-transparent-black;
+$accordion-lines-color_dark-theme: $very-transparent-white;
+$accordion-hovered-icon-background-color_light-theme: transparentize(black, 0.97);
+$accordion-hovered-icon-background-color_dark-theme: transparentize(white, 0.97);
+$accordion-active-icon-background-color_light-theme: transparentize(black, 0.92);
+$accordion-active-icon-background-color_dark-theme: transparentize(white, 0.92);
+
+$checkbox-main-color_light-theme: black;
+$checkbox-checked-color_light-theme: $green;
+$checkbox-hovered-background-color_light-theme: transparentize($checkbox-main-color_light-theme, 0.9);
+$checkbox-focus-color_light-theme: transparentize($checkbox-main-color_light-theme, 0.5);
+$checkbox-disabled-color_light-theme: transparentize($checkbox-main-color_light-theme, 0.8);
+$checkbox-disabled-background-color_light-theme: $checkbox-disabled-color_light-theme;
+$checkbox-active-background-color_light-theme: transparentize($checkbox-main-color_light-theme, 0.8);
+$checkbox-active-color_light-theme: transparentize($checkbox-main-color_light-theme, 0.8);
+
+$checkbox-main-color_with-base-background-color: white;
+$checkbox-checked-color_with-base-background-color: white;
+$checkbox-hovered-background-color_with-base-background-color: transparentize(
+  $checkbox-main-color_with-base-background-color,
+  0.9
+);
+$checkbox-focus-color_with-base-background-color: transparentize($checkbox-main-color_with-base-background-color, 0.5);
+$checkbox-disabled-color_with-base-background-color: transparentize(
+  $checkbox-main-color_with-base-background-color,
+  0.8
+);
+$checkbox-disabled-background-color_with-base-background-color: $checkbox-disabled-color_light-theme;
+$checkbox-active-background-color_with-base-background-color: transparentize(
+  $checkbox-main-color_with-base-background-color,
+  0.8
+);
+$checkbox-active-color_with-base-background-color: transparentize($checkbox-main-color_with-base-background-color, 0.8);
+
+$gray-underlay_light-theme: transparentize(black, 0.95);
+$gray-underlay_dark-theme: transparentize(white, 0.95);

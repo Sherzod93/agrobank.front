@@ -1,0 +1,7 @@
+@use '../../styles/mixins';
+
+.deposit-calculator-form {
+  $selector: &;
+
+  @include mixins.calculator-form($selector);
+}

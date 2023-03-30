@@ -1,0 +1,101 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.product-properties-block {
+  $selector: &;
+
+  &_base-background-color {
+    &_default {
+      background-color: colors.$gray-underlay_light-theme;
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      background-color: colors.$gray-underlay_dark-theme;
+    }
+  }
+
+  @include mixins.media('xs', 'md') {
+    padding: 2.5rem 1.7rem;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        padding-left-right: (
+          5rem,
+          7rem,
+        ),
+        padding-top-bottom: (
+          6rem,
+          8rem,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    padding: map.get($properties, 'padding-top-bottom') map.get($properties, 'padding-left-right');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    padding: 8rem 7rem;
+  }
+
+  &_without-title {
+    #{$selector}__properties {
+      margin-top: 0;
+    }
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+
+    @include mixins.media('md', 'infinity') {
+      text-align: center;
+    }
+  }
+
+  &__properties {
+    display: grid;
+    list-style: none;
+    padding: 0;
+
+    @include mixins.media('xs', 'md') {
+      grid-row-gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      grid-column-gap: 5rem;
+      grid-row-gap: 6rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-top: 6rem;
+    }
+  }
+
+  &__property {
+    /*!*/
+  }
+
+  &__property-title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+  }
+
+  &__property-description {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    margin-top: 1rem;
+  }
+}

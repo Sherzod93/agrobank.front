@@ -1,0 +1,34 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+.mode-switcher {
+  $selector: &;
+
+  display: flex;
+
+  @include mixins.media('xs', 'lg') {
+    justify-content: center;
+  }
+
+  &__item {
+    /*!*/
+
+    &:hover {
+      opacity: 1 !important;
+    }
+
+    &_active {
+      /*!*/
+      cursor: default !important;
+    }
+
+    &_inactive {
+      border-color: transparent !important;
+      color: currentColor !important;
+
+      &:hover {
+        color: colors.$green !important;
+      }
+    }
+  }
+}

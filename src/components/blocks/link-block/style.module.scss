@@ -1,0 +1,40 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.link-block {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__link {
+    /*!*/
+  }
+
+  &__tag {
+    color: colors.$green;
+  }
+
+  &__icon {
+    fill: colors.$green;
+    position: absolute;
+
+    @include mixins.media('xs', 'md') {
+      height: 3rem;
+      left: calc(100% + 1rem);
+      top: 0.3rem;
+      width: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: 6rem;
+      left: calc(100% + 2rem);
+      top: -0.3rem;
+      width: 6rem;
+    }
+  }
+}

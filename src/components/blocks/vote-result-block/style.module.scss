@@ -1,0 +1,69 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.vote-block {
+  $selector: &;
+
+  $horizontal-padding-desktop: 4rem;
+  $vertical-padding-desktop: 4rem;
+  $horizontal-padding-mobile: 1.5rem;
+  $vertical-padding-mobile: 1.8rem;
+  $expand-icon-width: 2rem;
+
+  &__vote{
+    margin-bottom: 30px;
+    background-color: rgb(237 237 237 / 75%);
+    padding: 50px;
+    border-radius: 10px;
+  }
+
+  &__vote-title{
+    margin-bottom: 40px;
+    color: #2e3140;
+    font-size: 30px;
+    line-height: normal;
+  }
+
+  &__checkbox {
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #{$selector}__link {
+      color: colors.$white;
+    }
+    margin-right: 20px;
+  }
+
+  &__vote_button{
+    margin-top: 30px;
+  }
+  &__poll_detail{
+    display: flex;
+    gap: 10px;
+    margin: 20px 0px;
+  }
+
+  &__vote_info {
+    margin-top: 50px;
+  }
+
+  &__vote_bar_div, &__vote_present{
+    display: flex;
+    gap: 5px;
+  }
+  &__vote_bar{
+    width: 90%;
+    margin-right: 20px;
+  }
+
+  @include mixins.media('xs', 'md') {
+    &__vote{
+      padding: 25px;
+    }
+  }
+
+}

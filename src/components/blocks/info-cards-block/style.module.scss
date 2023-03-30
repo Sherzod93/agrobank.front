@@ -1,0 +1,25 @@
+@use 'src/styles/mixins';
+
+.info-cards-block {
+  $selector: &;
+
+  display: grid;
+  list-style: none;
+  padding: 0;
+
+  @include mixins.media('xs', 'md') {
+    &_collapsable {
+      /*!*/
+    }
+
+    &:not(#{$selector}_collapsable) {
+      row-gap: 3rem;
+    }
+  }
+
+  @include mixins.media('md', 'infinity') {
+    column-gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 3rem;
+  }
+}

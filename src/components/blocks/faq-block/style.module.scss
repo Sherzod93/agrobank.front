@@ -1,0 +1,34 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.faq-block {
+  /*!*/
+
+  &__item {
+    /*!*/
+  }
+
+  &__block {
+    &:not(:first-child) {
+      @include mixins.media('xs', 'md') {
+        margin-top: 2rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 3.4rem;
+      }
+    }
+
+    &_type {
+      // this selector list must be updated according to faqBlockBlockTypeToComponentMap
+      &_image,
+      &_link,
+      &_list,
+      &_quote,
+      &_text-banner,
+      &_text {
+        /*!*/
+      }
+    }
+  }
+}

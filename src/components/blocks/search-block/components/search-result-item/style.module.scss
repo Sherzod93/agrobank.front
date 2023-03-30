@@ -1,0 +1,58 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.search-result-item {
+  $underline-width: -0.4em;
+
+  display: flex;
+
+  @include mixins.media(xs, md) {
+    flex-direction: column;
+  }
+
+  @include mixins.media(md, infinity) {
+    align-items: center;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+
+    b {
+      box-shadow: inset 0 $underline-width colors.$green;
+      position: relative;
+    }
+  }
+
+  &__description {
+    margin-top: 2.2rem;
+  }
+
+  &__image {
+    flex: 0 0 auto;
+    margin-right: 5rem;
+
+    @include mixins.media(xs, md) {
+      width: 100%;
+    }
+
+    @include mixins.media(md, infinity) {
+      width: 35%;
+    }
+  }
+
+  &__body-wrapper {
+    /*!*/
+  }
+
+  &__tags {
+    &-wrapper {
+      margin-top: 2.4rem;
+    }
+  }
+}

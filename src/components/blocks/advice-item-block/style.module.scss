@@ -1,0 +1,17 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.advice-item-block {
+  display: grid;
+  justify-content: space-between;
+
+  @include mixins.media('xs', 'md') {
+    grid-template-columns: 1fr;
+    row-gap: 4.2rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    column-gap: 4.4rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

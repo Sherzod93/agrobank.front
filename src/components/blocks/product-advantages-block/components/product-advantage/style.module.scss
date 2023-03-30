@@ -1,0 +1,71 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.product-advantage {
+  $selector: &;
+
+  align-content: baseline;
+  display: grid;
+  justify-items: center;
+  position: relative;
+
+  &_description-size {
+    background-color: red;
+
+    &_big {
+      #{$selector}__description {
+        @include mixins.font(typography-variables.$font-body-1);
+      }
+    }
+
+    &_default {
+      #{$selector}__description {
+        @include mixins.font(typography-variables.$font-body-2);
+      }
+    }
+  }
+
+  &__icon {
+    height: auto;
+    fill: colors.$green;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      max-width: 9.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      width: 24rem;
+    }
+  }
+
+  &__title,
+  &__description {
+    text-align: center;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+
+    @include mixins.media('xs', 'md') {
+      margin-top: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 2rem;
+    }
+  }
+
+  &__description {
+    @include mixins.media('xs', 'md') {
+      margin-top: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1.5rem;
+    }
+  }
+}

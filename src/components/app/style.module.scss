@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.app {
+  @include mixins.agrofont;
+  @include mixins.font(typography-variables.$font-body-2);
+
+  display: flex;
+  flex-direction: column;
+
+  &__header,
+  &__footer {
+    @include mixins.media('xs', 'md') {
+      margin: variables.$block-margin-0-mobile variables.$block-margin-2-mobile 0;
+    }
+
+    @include mixins.propertiesScale(
+        (
+          margin-left-right: (
+            variables.$block-margin-0-desktop,
+            variables.$block-margin-2-desktop,
+          ),
+        ),
+        'md',
+        'xxxl',
+        8,
+        false
+      )
+      using($properties) {
+      margin: 1.5rem map.get($properties, 'margin-left-right') 0;
+    }
+
+    @include mixins.media('xxxl', 'infinity') {
+      margin: 1.5rem variables.$block-margin-2-desktop 0;
+    }
+  }
+
+  &__footer {
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 2rem;
+      margin-top: 5.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 3rem;
+      margin-top: 14.4rem;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.header-controls {
+  display: grid;
+  column-gap: 3rem;
+
+  &__commands {
+    align-items: center;
+    display: grid;
+    column-gap: 2.4rem;
+    grid-auto-flow: column;
+  }
+}

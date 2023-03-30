@@ -1,0 +1,265 @@
+{
+  "block-advice-item": {
+    "page-section-title": "Вакансии в этом направлении"
+  },
+  "block-advice-list": {
+    "empty-result-description_with-filters": "[MT]Попробуйте изменить параметры фильтрации",
+    "empty-result-description_without-filters": "[MT]Мы пока не опубликовали ни одного света, но скоро они появятся",
+    "empty-result-title_with-filters": "[MT]Советов не найдено",
+    "empty-result-title_without-filters": "[MT]Пока светов нет",
+    "load-more": "[MT]Загрузить еще"
+  },
+  "block-bank-cell-rental": {
+    "entity-type_individual": "Individual",
+    "entity-type_legal": "Legal",
+    "rental-price-title": "Rental price"
+  },
+  "block-calculator": {
+    "amount": "Amount",
+    "apply-product": "[MT]Оставить заявку",
+    "calculation-description_deposit": "[MT]{{title}} — График начислений по вкладу",
+    "calculation-description_loan": "[MT]{{title}} — График платежей по кредиту",
+    "calculation-disclaimer_deposit": "[MT]Расчет является предварительным. Точные условия по вкладу будут предоставлены после обработки вашей заявки.",
+    "calculation-disclaimer_loan": "[MT]Расчет является предварительным. Точные условия по кредиту будут предоставлены после обработки вашей заявки.",
+    "calculation-filename_deposit": "[MT]calculation_deposit.pdf",
+    "calculation-filename_loan": "[MT]calculation_loan.pdf",
+    "download-calculation-result": "[MT]Скачать подробный расчет",
+    "initialPayment": "Initial payment",
+    "interestRate": "Interest rate",
+    "monthCount": "[MT]Loan term",
+    "month_g_few": "[MT]months",
+    "month_g_many": "[MT]months",
+    "month_g_one": "[MT]month",
+    "month_n_few": "[MT]months",
+    "month_n_many": "[MT]months",
+    "month_n_one": "[MT]month",
+    "monthlyAmount": "[MT]Остаток",
+    "monthlyBody": "[MT]Основной долг",
+    "monthlyIncome": "Monthly income",
+    "monthlyInterest": "[MT]Проценты",
+    "monthlyPayment": "Monthly payment",
+    "number-sign": "#",
+    "overpayment": "Overpayment",
+    "to": "to",
+    "totalIncome": "Total income",
+    "UZS_g_few": "[MT]soʻm",
+    "UZS_g_many": "[MT]soʻm",
+    "UZS_g_one": "[MT]soʻm",
+    "UZS_n_few": "[MT]soʻm",
+    "UZS_n_many": "[MT]soʻm",
+    "UZS_n_one": "[MT]soʻm",
+    "year_g_few": "[MT]years",
+    "year_g_many": "[MT]years",
+    "year_g_one": "[MT]year",
+    "year_n_few": "years",
+    "year_n_many": "years",
+    "year_n_one": "year"
+  },
+  "block-currency-rates": {
+    "central-bank": "CB",
+    "sell": "Sell",
+    "buy": "Buy"
+  },
+  "block-news-list": {
+    "empty-result-description_with-filters": "[MT]Try changing your filter options",
+    "empty-result-description_without-filters": "[MT]We have not published any news yet, but they will appear soon",
+    "empty-result-title_with-filters": "[MT]No news found",
+    "empty-result-title_without-filters": "[MT]No news yet",
+    "load-more": "[MT]Load more"
+  },
+  "block-next-news-item": {
+    "next": "Next"
+  },
+  "block-other-vacancies": {
+    "page-section-title": "[MT]Vacancies in this category"
+  },
+  "block-points-of-service": {
+    "empty-result-description": "[MT]Пока на карту не добавлено ни одного объекта",
+    "empty-result-title": "[MT]Объектов не найдено",
+    "map-control-title_geolocation": "[MT]Мое местоположение",
+    "map-control-title_zoom-in": "[MT]Увеличить",
+    "map-control-title_zoom-out": "[MT]Уменьшить",
+    "mode_list": "[MT]Список",
+    "mode_map": "[MT]Карта",
+    "point-type_atm": "[MT]Банкоматы",
+    "point-type_office": "[MT]Офисы",
+    "search-field-placeholder": "[MT]Адрес, филиал"
+  },
+  "block-product-applying": {
+    "first-name": "[MT]Имя",
+    "last-name": "[MT]Фамилия",
+    "middle-name": "[MT]Отчество",
+    "phone": "[MT]Телефон",
+    "email": "[MT]Электронная почта",
+    "delivery": "[MT]Способ получения",
+    "homeRegion": "[MT]Регион",
+    "homeCity": "[MT]Город",
+    "homeAddress": "[MT]Домашний адрес",
+    "postcode": "[MT]Почтовый индекс",
+    "regionBankBranch": "[MT]Регион обслуживания",
+    "bankBranch": "[MT]Филиал банка",
+    "passport": "[MT]Паспорт",
+    "birthdate": "[MT]Дата рождения",
+    "inn": "[MT]ИНН",
+    "files": "[MT]Файлы",
+    "contains-an-invalid-char": "[MT]Содержит недопустимый символ",
+    "delivery-option-true": "[MT]Доставить по указанному адресу",
+    "delivery-option-false": "[MT]Заберу из филиала",
+    "is-required": "[MT]is required",
+    "is-letters-only": "[MT]Допускаются только буквы",
+    "is-digits-only": "[MT]Допускаются только цифры",
+    "is-digits-only-and-plus": "[MT]Допускаются только цифры и +",
+    "limit-of-files-uploaded": "[MT]Вы загрузили максимум файлов",
+    "success-form-title": "[MT]Заявка на карту успешно отправлена",
+    "success-form-subtitle": "[MT]В ближайшее время с вами свяжется сотрудник банка и расскажет об условиях подробнее",
+    "unsuccessfully-form": "[MT]Заявка на карту не отправлена",
+    "title-first-step": "[MT]Контактная информация",
+    "title-second-step": "[MT]Способ получения, домашний адрес и филиал",
+    "title-third-step": "[MT]Паспортные данные",
+    "uncorrected-email": "[MT]Некорректный email"
+  },
+  "block-product-list": {
+    "empty-result-description_with-filters": "[MT]Попробуйте изменить параметры фильтрации",
+    "empty-result-title_with-filters": "[MT]Переводов не найдено"
+  },
+  "block-share": {
+    "link-copy": "[MT]Ссылка скопирована",
+    "link-title_facebook": "Share on Facebook",
+    "link-title_instagram": "Share on Instagram",
+    "link-title_share": "Copy link",
+    "link-title_telegram": "Share on Telegram",
+    "link-title_twitter": "Share on Twitter",
+    "link-title_vk": "Share on VK",
+    "title_advice": "[MT]Поделиться советом",
+    "title_article": "Share article",
+    "title_default": "Share",
+    "title_news": "Share news"
+  },
+  "block-subscription": {
+    "input_email": "Email",
+    "button_subscribe": "Subscribe"
+  },
+  "block-tiles-list": {
+    "all": "All",
+    "in": "in",
+    "item_vacancies_one": "[MT]вакансия",
+    "item_vacancies_few": "[MT]вакансии",
+    "item_vacancies_many": "[MT]вакансий",
+    "section_vacancies_p_one": "[MT]направлении",
+    "section_vacancies_p_few": "[MT]направлениях",
+    "section_vacancies_p_many": "[MT]направлениях"
+  },
+  "block-vacancy-list": {
+    "empty-result-description_with-filters": "[MT]Try changing your filter options",
+    "empty-result-description_without-filters": "[MT]We have not published any vacancies yet, but they will appear soon",
+    "empty-result-title_with-filters": "[MT]No vacancies found",
+    "empty-result-title_without-filters": "[MT]There are no vacancies yet",
+    "load-more": "[MT]Load more"
+  },
+  "buttons": {
+    "next": "Next",
+    "submit": "Отправить заявку"
+  },
+  "contacts": {
+    "additional-number": "[MT]Внутренний номер",
+    "address": "[MT]Адрес",
+    "mfo": "[MT]МФО",
+    "phone-hint": "1216",
+    "phone-number": "1216",
+    "phone-description": "[MT]Бесплатно по&nbsp;Узбекистану",
+    "postcode": "[MT]Почтовый индекс",
+    "working-time": "[MT]Режим работы"
+  },
+  "dates": {
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "error-page": {
+    "title_0": "[MT]Неизвестная ошибка",
+    "seo-title_0": "[MT]Неизвестная ошибка",
+    "title_404": "[MT]Страница не найдена",
+    "seo-title_404": "[MT]Ошибка 404: страница не найдена",
+    "title_500": "[MT]Ошибка сервера",
+    "seo-title_500": "[MT]Ошибка 500: ошибка сервера",
+    "text_404_1": "[MT]Текст ошибки 404 вариант 1",
+    "text_404_2": "[MT]Текст ошибки 404 вариант 2 <a href=\"/\">Главная</a>",
+    "text_404_3": "[MT]Текст ошибки 404 вариант 3 <a href=\"/ru/person/cards\">Карты</a>"
+  },
+  "file-size-units": {
+    "byte-short-title": "B",
+    "megabyte-short-title": "MB",
+    "kilobyte-short-title": "KB",
+    "gigabyte-short-title": "GB",
+    "terabyte-short-title": "TB"
+  },
+  "filters": {
+    "advice-list-block_sectionId_all": "[MT]Все категории",
+    "category_all": "[MT]Все",
+    "category_cards_all": "[MT]Все",
+    "category_deposits_all": "[MT]Все",
+    "category_loans_all": "[MT]Все",
+    "news-list-block_sectionId_all": "[MT]Все категории",
+    "news-list-block_year_all": "[MT]За всё время",
+    "product-list-block_country-000_a": "[MT]все страны",
+    "product-list-block_country-000_g": "[MT]всех стран",
+    "product-list-block_country-001_a": "[MT]СНГ",
+    "product-list-block_country-001_g": "[MT]СНГ",
+    "product-list-block_country-RUS_a": "[MT]Россию",
+    "product-list-block_country-RUS_g": "[MT]России",
+    "product-list-block_country-USA_a": "[MT]США",
+    "product-list-block_country-USA_g": "[MT]США",
+    "product-list-block_country-UZB_a": "[MT]Узбекистан",
+    "product-list-block_country-UZB_g": "[MT]Узбекистана",
+    "product-list-block_from-country": "[MT]Из",
+    "product-list-block_to-country": "[MT]в",
+    "vacancy-list-block_regionId_all": "[MT]Все регионы",
+    "vacancy-list-vacancy-list-block_sectionId_all": "[MT]Все категории"
+  },
+  "footer": {
+    "als": "Студии Артемия Лебедева",
+    "als-link": "https://www.artlebedev.ru/",
+    "anons-link": "https://www.artlebedev.ru/agrobank/",
+    "information-about-the-site": "Информация о&nbsp;сайте",
+    "designed-in": "Задизайнено в&nbsp;",
+    "bank-copyright": "2005-2022 © Все права защищены. Все услуги лицензированы",
+    "legal-information": "Акционерный коммерческий банк &laquo;Агробанк&raquo; зарегистрирован 29&nbsp;августа 2014 года<br/>Центральным банком Республики Узбекистан под номером&nbsp;78"
+  },
+  "form": {
+    "invalid-email": "[MT]Некорректный email",
+    "required-field": "[MT]Обязательное поле",
+    "status-success-title": "[MT]Еще один клик",
+    "status-success-subtitle": "[MT]Мы выслали вам письмо для подтверждения подписки."
+  },
+  "global": {
+    "regular-version": "[MT]Regular version",
+    "visually-impaired-mode": "[MT]Mode for visually impaired"
+  },
+  "menu": {
+    "more": "More"
+  },
+  "months-uz": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": ""
+  },
+  "product-button": {
+    "bank-cell": "[MT]Арендовать ячейку",
+    "card": "[MT]Оформить карту",
+    "deposit": "[MT]Открыть вклад",
+    "loan": "[MT]Взять кредит",
+    "remittance": "[MT]Подробнее"
+  },
+  "search": {
+    "search": "[MT]Найти",
+    "placeholder": "[MT]Поиск по сайту"
+  }
+}

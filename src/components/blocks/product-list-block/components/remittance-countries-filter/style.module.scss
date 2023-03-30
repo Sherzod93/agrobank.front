@@ -1,0 +1,48 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.remittance-countries-filter {
+  $selector: &;
+
+  display: flex;
+  justify-content: center;
+
+  &__directions-wrapper {
+    display: grid;
+
+    @include mixins.media('xs', 'md') {
+      grid-template-columns: 1fr;
+      row-gap: 1.4rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      column-gap: 3.2rem;
+      grid-template-columns: min-content min-content;
+    }
+  }
+
+  &__direction {
+    align-items: center;
+    display: grid;
+    grid-template-columns: min-content min-content;
+    justify-content: center;
+
+    &#{$selector}__without-direction-titles {
+      grid-template-columns: none;
+    }
+
+    @include mixins.media('xs', 'md') {
+      column-gap: 1.4rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      column-gap: 3.2rem;
+    }
+  }
+
+  &__direction-title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,65 @@
+@use 'sass:list';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.header-block {
+  /*!*/
+
+  &_alignment {
+    &_start {
+      text-align: start;
+    }
+
+    &_center {
+      text-align: center;
+    }
+
+    &_end {
+      text-align: end;
+    }
+  }
+
+  &_size {
+    &_small {
+      @include mixins.font(typography-variables.$font-h-3);
+    }
+
+    &_medium {
+      @include mixins.font(typography-variables.$font-h-2);
+    }
+
+    &_large {
+      @include mixins.font((list.nth(typography-variables.$font-h-1, 1), list.nth(typography-variables.$font-h-2, 2)));
+    }
+  }
+
+  &_with-arrow {
+    position: relative;
+
+    @include mixins.media('xs', 'md') {
+      margin: 0 3.2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin: 0 7rem;
+    }
+
+    &::after {
+      background: url('images/arrow.svg') no-repeat;
+      background-size: contain;
+      content: '';
+      height: 100%;
+      position: absolute;
+
+      @include mixins.media('xs', 'md') {
+        transform: translateX(1rem);
+        width: 2.2rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        transform: translateX(2rem);
+        width: 5rem;
+      }
+    }
+  }
+}

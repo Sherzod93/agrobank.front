@@ -1,0 +1,298 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use './colors';
+@use './variables';
+
+@mixin agrofont {
+  font-family: 'ALSAgrofont', sans-serif;
+}
+
+@mixin baseBackgroundColor {
+  &_base-background-color {
+    &_default {
+      color: inherit;
+    }
+
+    &_blue {
+      background-color: colors.$blue;
+      color: white;
+    }
+
+    &_darkBlue {
+      background-color: colors.$dark-blue;
+      color: white;
+    }
+
+    &_deepBlue {
+      background-color: colors.$deep-blue;
+      color: white;
+    }
+
+    &_deepBlueOnDeepBlue {
+      background-color: colors.$deep-blue-on-deep-blue;
+      color: white;
+    }
+
+    &_green {
+      background-color: colors.$green;
+      color: white;
+    }
+
+    &_orange {
+      background-color: colors.$orange;
+      color: white;
+    }
+
+    &_semiRed {
+      background-color: colors.$semi-red;
+      color: white;
+    }
+  }
+}
+
+@mixin buttonCleanup {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+  display: block;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+  text-align: initial;
+  width: 100%;
+}
+
+@mixin font($font-typography) {
+  $desktop: list.nth($font-typography, 1);
+  $mobile: list.nth($font-typography, 2);
+
+  @include media('xs', 'md') {
+    font-size: list.nth($mobile, 1);
+    line-height: list.nth($mobile, 2);
+  }
+
+  @include media('md', 'infinity') {
+    font-size: list.nth($desktop, 1);
+    line-height: list.nth($desktop, 2);
+  }
+
+  @include media('lg', 'infinity') {
+    @include propertiesScale(
+        (
+          font-size: (
+            list.nth($mobile, 1),
+            list.nth($desktop, 1),
+          ),
+        ),
+        'xs',
+        'lg',
+        8,
+        false,
+        'height'
+      )
+      using($properties) {
+      font-size: map.get($properties, 'font-size');
+    }
+  }
+}
+
+@mixin hideScrollbars {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin media($from: none, $to: none, $unit: 'width') {
+  $settingsFrom: map.get(variables.$breakpoints, $from);
+  $settingsTo: map.get(variables.$breakpoints, $to);
+
+  @if not $settingsTo {
+    $settingsTo: map.get(variables.$breakpoints, list.nth($settingsFrom, 2));
+  }
+
+  @if $settingsFrom and $settingsTo {
+    $fromPx: list.nth($settingsFrom, 1);
+    $toPx: list.nth($settingsTo, 1);
+
+    @media ($fromPx <= $unit < $toPx) {
+      @content;
+    }
+  }
+}
+
+@mixin productType($selector: none) {
+  @if ($selector != none) {
+    #{$selector}_product-type {
+      &_business {
+        $color: colors.$gray;
+
+        @content ($color);
+      }
+
+      &_card {
+        $color: colors.$dark-blue;
+
+        @content ($color);
+      }
+
+      &_default {
+        $color: colors.$green;
+
+        @content ($color);
+      }
+
+      &_deposit {
+        $color: colors.$orange;
+
+        @content ($color);
+      }
+
+      &_loan {
+        $color: colors.$semi-red;
+
+        @content ($color);
+      }
+
+      &_remittance {
+        $color: colors.$blue;
+
+        @content ($color);
+      }
+    }
+  } @else {
+    &_product-type {
+      &_business {
+        $color: colors.$gray;
+
+        @content ($color);
+      }
+
+      &_card {
+        $color: colors.$dark-blue;
+
+        @content ($color);
+      }
+
+      &_default {
+        $color: colors.$green;
+
+        @content ($color);
+      }
+
+      &_deposit {
+        $color: colors.$orange;
+
+        @content ($color);
+      }
+
+      &_loan {
+        $color: colors.$semi-red;
+
+        @content ($color);
+      }
+
+      &_remittance {
+        $color: colors.$blue;
+
+        @content ($color);
+      }
+    }
+  }
+}
+
+@mixin propertiesScale(
+  $property-to-min-max-values-pair-map,
+  $base-breakpoint,
+  $max-breakpoint,
+  $steps,
+  $with-last: false,
+  $unit: 'width'
+) {
+  $base-breakpoint-pixels: list.nth(map.get(variables.$breakpoints, $base-breakpoint), 1);
+  $max-breakpoint-pixels: list.nth(map.get(variables.$breakpoints, $max-breakpoint), 1);
+  $min-breakpoint-pixels-for-step: $base-breakpoint-pixels;
+  $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list: ();
+
+  @for $step from 1 through $steps {
+    $max-break-point-pixels-for-step: $base-breakpoint-pixels +
+      math.div($step * ($max-breakpoint-pixels - $base-breakpoint-pixels), $steps);
+
+    $map: ();
+
+    @each $property, $min-max-values-pair in $property-to-min-max-values-pair-map {
+      $min-value: list.nth($min-max-values-pair, 1);
+      $max-value: list.nth($min-max-values-pair, 2);
+
+      $map: map.set($map, $property, ($min-value + math.div($step * ($max-value - $min-value), $steps)));
+    }
+
+    $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list: list.append(
+      $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list,
+      ($min-breakpoint-pixels-for-step, $max-break-point-pixels-for-step, true, $map)
+    );
+
+    @if $with-last and $step == $steps {
+      @each $property, $min-max-values-pair in $property-to-min-max-values-pair-map {
+        $max-value: list.nth($min-max-values-pair, 2);
+        $map: map.set($map, $property, $max-value);
+      }
+
+      $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list: list.append(
+        $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list,
+        ($min-breakpoint-pixels-for-step, $max-break-point-pixels-for-step, false, $map)
+      );
+    }
+
+    $min-breakpoint-pixels-for-step: $max-break-point-pixels-for-step;
+  }
+
+  @each $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple
+    in $min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple-list
+  {
+    $min-breakpoint-pixels-for-step: list.nth($min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple, 1);
+    $max-break-point-pixels-for-step: list.nth($min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple, 2);
+    $is-it-last: list.nth($min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple, 3);
+    $map: list.nth($min-breakpoint-pixels-max-breakpoint-pixels-qq-map-tuple, 4);
+
+    @if $is-it-last {
+      @media (#{$min-breakpoint-pixels-for-step} <= $unit < #{$max-break-point-pixels-for-step}) {
+        @content ($map);
+      }
+    } @else {
+      @media ($unit >= #{$max-break-point-pixels-for-step}) {
+        @content ($map);
+      }
+    }
+  }
+}
+
+// https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43959856#43959856
+@mixin recolor($color: #000, $opacity: 1) {
+  $r: math.div(red($color), 255);
+  $g: math.div(green($color), 255);
+  $b: math.div(blue($color), 255);
+  $a: $opacity;
+
+  // grayscale fallback if SVG from data url is not supported
+  $lightness: lightness($color);
+  filter: saturate(0%) brightness(0%) invert($lightness) opacity($opacity);
+
+  // color filter
+  $svg-filter-id: 'recolor';
+  filter: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg">\
+      <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+        <feColorMatrix type="matrix" values="\
+          0 0 0 0 #{$r}\
+          0 0 0 0 #{$g}\
+          0 0 0 0 #{$b}\
+          0 0 0 #{$a} 0\
+        "/>\
+      </filter>\
+    </svg>\
+    ##{$svg-filter-id}');
+}

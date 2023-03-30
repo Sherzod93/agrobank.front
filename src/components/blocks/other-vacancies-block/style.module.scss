@@ -1,0 +1,43 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.other-vacancies-block {
+  column-gap: 3rem;
+  display: grid;
+  list-style: none;
+  padding-left: 0;
+  row-gap: 3rem;
+
+  @include mixins.media('md', 'infinity') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__item {
+    @include mixins.media('xs', 'md') {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__details {
+    @include mixins.font(typography-variables.$font-body-4);
+
+    opacity: 0.5;
+
+    @include mixins.media('xs', 'md') {
+      margin-top: 0.7rem;
+    }
+  }
+
+  &__city {
+    /*!*/
+  }
+
+  &__date {
+    /*!*/
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-body-2);
+  }
+}

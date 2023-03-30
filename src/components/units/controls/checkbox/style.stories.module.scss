@@ -1,0 +1,14 @@
+@use 'src/styles/mixins';
+
+.template {
+  padding: 5rem;
+  overflow-x: auto;
+
+  @include mixins.baseBackgroundColor();
+
+  &__layout {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

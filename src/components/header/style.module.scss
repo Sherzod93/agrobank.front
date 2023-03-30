@@ -1,0 +1,99 @@
+@use 'sass:map';
+@use 'src/styles/mixins';
+@use 'src/styles/variables';
+
+.header {
+  $selector: &;
+
+  @include mixins.media('xs', 'md') {
+    align-items: center;
+    display: flex;
+    height: 6rem;
+    justify-content: space-between;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    #{$selector}__error-page-wrapper {
+      column-gap: 3.5rem;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__logo {
+    @include mixins.propertiesScale(
+        (
+          height: (
+            27px,
+            40px,
+          ),
+          width: (
+            140px,
+            204px,
+          ),
+        ),
+        'md',
+        'xxl',
+        8,
+        false
+      )
+      using($properties) {
+      height: map.get($properties, 'height');
+      width: map.get($properties, 'width');
+    }
+
+    @include mixins.media('xxl', 'infinity') {
+      height: 40px;
+      width: 204px;
+    }
+
+    @include mixins.media('xs', 'sm', 'height') {
+      height: 27px;
+      width: 140px;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      @include mixins.propertiesScale(
+          (
+            height: (
+              27px,
+              40px,
+            ),
+            width: (
+              140px,
+              204px,
+            ),
+          ),
+          'sm',
+          'lg',
+          8,
+          false,
+          'height'
+        )
+        using($properties) {
+        height: map.get($properties, 'height');
+        width: map.get($properties, 'width');
+      }
+    }
+  }
+
+  &__main-menu-wrapper {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+  }
+
+  &__sub-menu-wrapper {
+    align-items: flex-start;
+    column-gap: 3.5rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    margin-top: 4rem;
+  }
+
+  &__sub-menu {
+    /*!*/
+  }
+}

@@ -1,0 +1,14 @@
+@use 'src/styles/mixins';
+
+.template {
+  /*!*/
+
+  @include mixins.baseBackgroundColor();
+
+  list-style: none;
+  padding: 0;
+
+  &__layout {
+    padding: 5rem;
+  }
+}

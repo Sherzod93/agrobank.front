@@ -1,0 +1,23 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.text-banner-block {
+  @include mixins.font(typography-variables.$font-h-2);
+  @include mixins.productType using($color) {
+    color: $color;
+  }
+
+  font-weight: bold;
+  text-align: center;
+
+  @include mixins.media('xs', 'md') {
+    border: 0.3rem solid;
+    padding: 2rem 6rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    border: 0.7rem solid;
+    padding: 4rem 12rem;
+  }
+}

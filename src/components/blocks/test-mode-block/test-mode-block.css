@@ -1,0 +1,97 @@
+/* Desktop start */
+.test-mode-block {
+    background-color: #efefef;
+    padding: 5px 10px 5px 20px;
+    border-radius: 5rem;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 500px;
+    font-size: 18px;
+    z-index: 999999;
+    box-shadow: 5px 6px 10px #00000029;
+}
+
+.test-mode-block-text {
+    display: flex;
+    align-items: center;
+    color: black !important;
+}
+
+.test-mode-block-button {
+    background: #00cc69;
+    color: white;
+    font-size: 1.475rem;
+    border-radius: 5rem;
+    padding: 10px 20px;
+    border: none;
+}
+
+/* Desktop end */
+
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    .test-mode-block {
+        width: 93%;
+        right: 15px;
+        bottom: 20px;
+    }
+}
+
+/* Mobile end */
+
+
+/* Animate code start */
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1
+}
+
+.animate__animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: var(--animate-duration);
+    animation-duration: var(--animate-duration);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@-webkit-keyframes fadeInRightBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(2000px, 0, 0);
+        transform: translate3d(2000px, 0, 0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+@keyframes fadeInRightBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(2000px, 0, 0);
+        transform: translate3d(2000px, 0, 0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+.animate__fadeInRightBig {
+    -webkit-animation-name: fadeInRightBig;
+    animation-name: fadeInRightBig
+}
+
+/* Animate code finish */

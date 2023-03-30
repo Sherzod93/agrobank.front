@@ -1,0 +1,43 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.person-contacts {
+  list-style: none;
+
+  @include mixins.media('xs', 'md') {
+    padding-left: 1rem;
+  }
+
+  &__item {
+    margin-bottom: 3.3rem;
+    padding-left: 4rem;
+    position: relative;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 0;
+
+    @include mixins.media('xs', 'md') {
+      top: -0.3rem;
+      width: 2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      top: 0;
+      width: 2.2rem;
+    }
+  }
+
+  &__value {
+    @include mixins.font(typography-variables.$font-h-4);
+
+    color: currentColor;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    /*!*/
+  }
+}

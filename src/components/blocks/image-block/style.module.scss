@@ -1,0 +1,43 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.image-block {
+  margin: 0 auto;
+  text-align: center;
+
+  &_large {
+    /*!*/
+  }
+
+  &_medium {
+    max-width: 86.6rem;
+  }
+
+  &_small {
+    /*!*/
+  }
+
+  &__image {
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      height: 50vh;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__description {
+    @include mixins.font(typography-variables.$font-body-3);
+
+    opacity: 0.5;
+
+    @include mixins.media('xs', 'md') {
+      margin-top: 0.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1.5rem;
+    }
+  }
+}

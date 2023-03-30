@@ -1,0 +1,39 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.footer-menu {
+  $margin: 2rem;
+
+  @include mixins.media('xs', 'md') {
+    @include mixins.font(typography-variables.$font-body-1);
+  }
+
+  @include mixins.media('md', 'infinity') {
+    @include mixins.font(typography-variables.$font-body-4);
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: #{math.div($margin, 2) * -1} 0 0 #{$margin * -1};
+    padding: 0;
+  }
+
+  &__item {
+    margin: math.div($margin, 2) 0 0 $margin;
+  }
+
+  &__link {
+    color: currentColor;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: colors.$green;
+    }
+  }
+}

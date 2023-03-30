@@ -1,0 +1,7 @@
+@use 'fonts/ALSAgrofont/agrofont';
+
+@include agrofont.agrofont('black', 900);
+@include agrofont.agrofont('boldExpanded', 750); // same as bold but serif
+@include agrofont.agrofont(bold, 700);
+@include agrofont.agrofont(medium, 500);
+@include agrofont.agrofont(regular, 400);

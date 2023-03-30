@@ -1,0 +1,10 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'styles/variables';
+
+.staff-experience-block {
+  display: grid;
+  grid-gap: variables.$grid-gap;
+  padding-left: 0;
+}

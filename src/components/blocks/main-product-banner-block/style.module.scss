@@ -1,0 +1,129 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.main-product-banner-block {
+  $selector: &;
+
+  display: grid;
+
+  @include mixins.productType using($color) {
+    #{$selector}__tiles {
+      @include mixins.recolor($color);
+
+      :global(.safari) & {
+        $colors: (
+          'dark-blue': colors.$dark-blue,
+          'green': colors.$green,
+          'orange': colors.$orange,
+          'semi-red': colors.$semi-red,
+        );
+
+        filter: none;
+
+        & > div {
+          @each $color-text, $color-variable in $colors {
+            @if ($color == $color-variable) {
+              background-image: url('../../units/tiles/images/animated-#{$color-text}.png') !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include mixins.media('xs', 'md') {
+    grid-gap: 2rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    column-gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        margin-left-right: (
+          variables.$block-margin-0-desktop,
+          variables.$block-margin-2-desktop,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    margin: 0 map.get($properties, 'margin-left-right');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    margin: 0 variables.$block-margin-2-desktop;
+  }
+
+  &_advice {
+    #{$selector}__title {
+      @include mixins.font(typography-variables.$font-h-2);
+    }
+
+    #{$selector}__description {
+      @include mixins.font(typography-variables.$font-body-2);
+    }
+  }
+
+  &__image-wrapper {
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  &__tiles {
+    z-index: 1;
+  }
+
+  &__image {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__card-wrapper {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
+
+  &__info {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-1);
+
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  &__description {
+    @include mixins.font(typography-variables.$font-body-1);
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 6rem;
+    }
+  }
+}

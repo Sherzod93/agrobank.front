@@ -1,0 +1,113 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.social-networks {
+  $selector: &;
+
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  margin: 0 -0.5rem;
+
+  &_base-background-color {
+    &_green {
+      #{$selector}__button,
+      #{$selector}__link {
+        &:hover {
+          color: colors.$text-color_dark-theme;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_default,
+    &_orange,
+    &_semiRed {
+      #{$selector}__button,
+      #{$selector}__link {
+        &:hover {
+          color: colors.$green;
+        }
+      }
+    }
+  }
+
+  &__item {
+    line-height: 0;
+    margin: 0 0.5rem;
+  }
+
+  &__button,
+  &__link {
+    color: currentColor;
+    display: block;
+  }
+
+  &__button {
+    @include mixins.buttonCleanup();
+  }
+
+  &__icon {
+    @include mixins.media('xs', 'md') {
+      fill: currentColor;
+      height: auto;
+      width: 4.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      fill: currentColor;
+      height: auto;
+      width: 5.5rem;
+    }
+
+    transition: fill 0.2s ease;
+  }
+
+  &__button-wrapper {
+    position: relative;
+  }
+
+  &__hint {
+    @include mixins.font(typography-variables.$font-body-4);
+
+    background: #fff;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+    border-radius: 5.8rem;
+    color: colors.$green;
+    left: 50%;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    padding: 1.6rem 2.4rem;
+    position: absolute;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    white-space: nowrap;
+
+    @include mixins.media('xs', 'md') {
+      padding: 0.6rem 1.4rem;
+      transform: translate(-50%, -2rem);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 1.6rem 2.4rem;
+      transform: translate(-50%, -4rem);
+    }
+
+    &_show {
+      opacity: 1;
+      visibility: visible;
+
+      @include mixins.media('xs', 'md') {
+        transform: translate(-50%, -3.5rem);
+      }
+
+      @include mixins.media('md', 'infinity') {
+        transform: translate(-50%, -6rem);
+      }
+    }
+  }
+}

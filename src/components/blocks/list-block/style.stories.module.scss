@@ -1,0 +1,7 @@
+@use 'src/styles/mixins';
+
+.template {
+  padding: 5rem;
+
+  @include mixins.baseBackgroundColor();
+}

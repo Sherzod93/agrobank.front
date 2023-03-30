@@ -1,0 +1,96 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.table-block {
+  $selector: &;
+
+  /*!*/
+
+  &_base-background-color {
+    &_default {
+      #{$selector}__label,
+      th {
+        background-color: white;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    $colors: (
+      'blue': colors.$blue,
+      'darkBlue': colors.$dark-blue,
+      'deepBlue': colors.$deep-blue,
+      'green': colors.$green,
+      'orange': colors.$orange,
+      'semiRed': colors.$semi-red,
+    );
+
+    @each $color, $color-variable in $colors {
+      &_#{$color} {
+        #{$selector}__label,
+        th {
+          background-color: $color-variable;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+
+  &__label {
+    @include mixins.font(typography-variables.$font-body-3);
+    font-weight: 400;
+  }
+
+  &__item {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__subitem {
+    padding-bottom: 1.5rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+
+  table {
+    position: relative;
+
+    th,
+    tr {
+      th,
+      td {
+        padding: 1rem 1rem 2rem 1rem;
+        vertical-align: top;
+
+        &:first-child {
+          padding: 1rem 1rem 2rem 0;
+        }
+
+        &:last-child {
+          padding: 1rem 0 2rem 1rem;
+        }
+      }
+    }
+
+    th {
+      @include mixins.font(typography-variables.$font-body-3);
+      font-weight: 400;
+      position: sticky;
+      text-align: left;
+      top: 0;
+    }
+  }
+}

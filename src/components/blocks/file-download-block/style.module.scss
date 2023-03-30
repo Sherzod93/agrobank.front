@@ -1,0 +1,27 @@
+@use 'src/styles/mixins';
+
+.file-download-block {
+  $select: &;
+
+  display: flex;
+  column-gap: 1rem;
+  row-gap: 3rem;
+  list-style: none;
+  padding: 0;
+
+  @include mixins.media('xs', 'lg') {
+    flex-direction: column;
+  }
+
+  @include mixins.media('lg', 'infinity') {
+    flex-flow: wrap;
+
+    &__on-center {
+      justify-content: center;
+
+      #{$select}__file {
+        flex: initial;
+      }
+    }
+  }
+}

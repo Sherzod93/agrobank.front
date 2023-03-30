@@ -1,0 +1,14 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.next-news-item-block {
+  &__title {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    text-align: center;
+  }
+
+  &__next-news-item {
+    margin-top: 1.5rem;
+  }
+}

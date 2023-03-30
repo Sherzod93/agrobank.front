@@ -1,0 +1,45 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.search-result-list {
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+
+    @include mixins.media(xs, md) {
+      margin-top: 2.4rem;
+    }
+
+    @include mixins.media(md, infinity) {
+      margin-top: 3.2rem;
+    }
+  }
+
+  &__item {
+    &:not(:first-child) {
+      @include mixins.media(xs, md) {
+        margin-top: 3.2rem;
+      }
+
+      @include mixins.media(md, infinity) {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  &__load-more {
+    &_wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 6rem;
+    }
+  }
+}

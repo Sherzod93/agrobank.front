@@ -1,0 +1,12 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.tags-and-buttons {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__break {
+    flex-basis: 100%;
+  }
+}

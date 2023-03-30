@@ -1,0 +1,93 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.tiles-list-block {
+  display: grid;
+  list-style: none;
+  padding: 0;
+
+  @include mixins.media('xs', 'sm') {
+    grid-gap: 1.2rem;
+  }
+
+  @include mixins.media('sm', 'xl') {
+    grid-gap: 1.8rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mixins.media('xl', 'infinity') {
+    grid-gap: 2.4rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__item {
+    align-items: self-start;
+    background-color: colors.$light-gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.3s;
+
+    &:focus-visible {
+      outline: 1px solid colors.$blue;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:last-child {
+      background-color: colors.$green;
+    }
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+    outline: none;
+    text-decoration: none;
+    width: 100%;
+
+    @include mixins.media('xs', 'sm') {
+      padding: 1.6rem 2rem;
+    }
+
+    @include mixins.media('sm', 'lg') {
+      padding: 2.4rem 2.8rem;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      padding: 3.8rem 4rem;
+    }
+
+    &:focus-visible {
+      outline: 1px solid colors.$blue;
+    }
+  }
+
+  &__align-wrap {
+    align-items: center;
+    display: flex;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__title,
+  &__total-title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    color: colors.$text-color_light-theme;
+    font-weight: bold;
+  }
+
+  &__total-title {
+    color: colors.$white;
+  }
+
+  &__vacancy-count {
+    @include mixins.font(typography-variables.$font-h-3);
+  }
+}

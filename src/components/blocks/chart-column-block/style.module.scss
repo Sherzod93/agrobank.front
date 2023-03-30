@@ -1,0 +1,32 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.chart-column-block {
+  $selector: &;
+
+  $horizontal-padding-desktop: 4rem;
+  $vertical-padding-desktop: 4rem;
+  $horizontal-padding-mobile: 1.5rem;
+  $vertical-padding-mobile: 1.8rem;
+  $expand-icon-width: 2rem;
+
+  &__chart {
+    width: 100%;
+    height: 750px;
+    overflow-x: scroll;
+    -ms-overflow-x: scroll;
+    margin-bottom: -50px;
+  }
+
+  &__chart_box {
+    width: 1000px;
+    zoom: 110%;
+  }
+
+  /* width */
+  &__chart::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+  }
+}

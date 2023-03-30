@@ -1,0 +1,18 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.text-block {
+  @include mixins.font(typography-variables.$font-body-2);
+
+  & + & {
+    @include mixins.media('xs', 'md') {
+      margin-top: variables.$paragraph-margin-top-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: variables.$paragraph-margin-top-desktop;
+    }
+  }
+}

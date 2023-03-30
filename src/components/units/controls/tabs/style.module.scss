@@ -1,0 +1,164 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.tabs {
+  $selector: &;
+
+  $border-radius: 5rem;
+
+  @include mixins.hideScrollbars();
+
+  overflow-x: scroll;
+  position: relative;
+
+  &_base-background-color {
+    &_default {
+      #{$selector}__options {
+        border: 0.5rem solid colors.$very-transparent-black;
+        color: inherit;
+      }
+
+      #{$selector}__option-wrapper {
+        &:not(#{$selector}__option-wrapper_selected) {
+          #{$selector}__option {
+            &:hover {
+              background-color: transparentize(black, 0.95);
+            }
+
+            &:focus-visible {
+              outline: none;
+              box-shadow: 0 0 0 0.3rem inset transparentize(black, 0.92);
+            }
+
+            &:active {
+              background-color: transparentize(black, 0.92);
+            }
+          }
+        }
+
+        &_selected {
+          #{$selector}__option {
+            color: white;
+            transition: color 0.3s cubic-bezier(0, 0, 0, 1);
+          }
+        }
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      #{$selector}__options {
+        border: 0.5rem solid colors.$very-transparent-white;
+        color: inherit;
+      }
+
+      #{$selector}__option-wrapper_selected {
+        transition: color 0.3s cubic-bezier(0, 0, 0, 1);
+      }
+
+      #{$selector}__option-wrapper {
+        &:not(#{$selector}__option-wrapper_selected) {
+          #{$selector}__option {
+            &:hover {
+              background-color: transparentize(white, 0.95);
+            }
+
+            &:focus-visible {
+              outline: none;
+              box-shadow: 0 0 0 0.3rem inset transparentize(white, 0.92);
+            }
+
+            &:active {
+              background-color: transparentize(white, 0.92);
+            }
+          }
+        }
+      }
+
+      #{$selector}__option-bg {
+        background-color: white;
+      }
+    }
+
+    &_blue {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$blue;
+      }
+    }
+
+    &_darkBlue {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$dark-blue;
+      }
+    }
+
+    &_deepBlue {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$deep-blue;
+      }
+    }
+
+    &_green {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$green;
+      }
+    }
+
+    &_orange {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$orange;
+      }
+    }
+
+    &_semiRed {
+      #{$selector}__option-wrapper_selected {
+        color: colors.$semi-red;
+      }
+    }
+  }
+
+  &__options {
+    border-radius: $border-radius;
+    display: flex;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0.5rem;
+    width: max-content;
+  }
+
+  &__option {
+    @include mixins.font(typography-variables.$font-switch);
+
+    background-color: transparent;
+    border: none;
+    border-radius: $border-radius;
+    color: inherit;
+    font-weight: bold;
+    margin: 0;
+    padding: 1.5rem 2.5rem;
+    position: relative;
+    text-transform: uppercase;
+    white-space: nowrap;
+    user-select: none;
+    z-index: 1;
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+
+    &-bg {
+      background-color: colors.$green;
+      border-radius: $border-radius;
+      height: calc(100% - 1rem * 2);
+      left: 0;
+      margin: 1rem;
+      position: absolute;
+      top: 0;
+    }
+  }
+}

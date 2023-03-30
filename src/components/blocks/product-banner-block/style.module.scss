@@ -1,0 +1,182 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.product-banner-block {
+  $selector: &;
+
+  @include mixins.font(typography-variables.$font-h-1);
+  @include mixins.productType using($color) {
+    #{$selector} {
+      &__left-color {
+        background-color: $color;
+      }
+    }
+  }
+
+  align-content: space-between;
+  color: white;
+  display: grid;
+  font-weight: bold;
+  position: relative;
+  z-index: 0;
+
+  @include mixins.propertiesScale(
+      (
+        min-height: (
+          400px,
+          575px,
+        ),
+      ),
+      'md',
+      'xxl',
+      8,
+      false
+    )
+    using($properties) {
+    min-height: map.get($properties, 'min-height');
+  }
+
+  @include mixins.media('xxl', 'infinity') {
+    min-height: 575px;
+  }
+
+  @include mixins.media('lg', 'infinity') {
+    @include mixins.media('xs', 'sm', 'height') {
+      min-height: 300px;
+    }
+
+    @include mixins.propertiesScale(
+        (
+          min-height: (
+            300px,
+            575px,
+          ),
+        ),
+        'sm',
+        'lg',
+        8,
+        false,
+        'height'
+      )
+      using($properties) {
+      min-height: map.get($properties, 'min-height');
+    }
+  }
+
+  &__left-color,
+  &__right-color {
+    overflow: hidden;
+    position: absolute;
+  }
+
+  &__right-color {
+    background-color: colors.$green;
+  }
+
+  &__animation,
+  &__background-image {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &__animation {
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  &__background-image {
+    background-size: cover;
+    background-position: top;
+
+    @include mixins.propertiesScale(
+        (
+          margin-left: (
+            0,
+            18%,
+          ),
+          width: (
+            100%,
+            82%,
+          ),
+        ),
+        'lg',
+        'xxxl',
+        10,
+        false
+      )
+      using($properties) {
+      margin-left: map.get($properties, 'margin-left');
+      width: map.get($properties, 'width');
+    }
+
+    @include mixins.media('xxxl', 'infinity') {
+      margin-left: 20%;
+      width: 80%;
+    }
+  }
+
+  &__title {
+    font-weight: 750; // serif
+
+    @include mixins.media('xs', 'md') {
+      padding: 1.5rem 1.5rem 0;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 5rem 5rem 0;
+
+      @include mixins.propertiesScale(
+          (
+            padding: (
+              3rem,
+              5rem,
+            ),
+          ),
+          'sm',
+          'lg',
+          8,
+          false,
+          'height'
+        )
+        using($properties) {
+        padding: 5rem map.get($properties, 'padding') 0;
+      }
+    }
+  }
+
+  &__tags-and-buttons {
+    @include mixins.media('xs', 'md') {
+      padding: 13rem 1.5rem 1.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 5rem;
+
+      @include mixins.propertiesScale(
+          (
+            padding: (
+              3rem,
+              5rem,
+            ),
+          ),
+          'sm',
+          'lg',
+          8,
+          false,
+          'height'
+        )
+        using($properties) {
+        padding: 5rem map.get($properties, 'padding');
+      }
+    }
+  }
+}

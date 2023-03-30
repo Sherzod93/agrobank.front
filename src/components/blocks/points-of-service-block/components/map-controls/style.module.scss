@@ -1,0 +1,67 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+
+.map-controls {
+  $selector: &;
+
+  display: grid;
+  grid-auto-rows: auto;
+  list-style: none;
+  padding: 0;
+  row-gap: 1.5rem;
+
+  &__control {
+    $size: 6.7rem;
+
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    height: $size;
+    transition: box-shadow 0.3s ease;
+    width: $size;
+
+    &_geolocation {
+      margin-bottom: 1.5rem;
+    }
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__button {
+    @include mixins.buttonCleanup();
+
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+
+    &:focus-visible {
+      box-shadow: 0 0 0 0.3rem inset rgb(0 0 0 / 50%);
+    }
+
+    &:hover {
+      #{$selector}__icon {
+        fill: colors.$green-lighten;
+      }
+    }
+
+    &:active {
+      #{$selector}__icon {
+        fill: colors.$green-darken;
+      }
+    }
+  }
+
+  &__icon {
+    $size: 3.7rem;
+
+    fill: colors.$green;
+    height: $size;
+    width: $size;
+  }
+}

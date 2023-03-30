@@ -1,0 +1,98 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.range {
+  $selector: &;
+
+  $track-height-desktop: 0.5rem;
+  $bar-height-desktop: 4.2rem;
+  $bar-width-desktop: 8rem;
+
+  $track-height-mobile: 0.2rem;
+  $bar-height-mobile: 1.6rem;
+  $bar-width-mobile: 2.6rem;
+
+  position: relative;
+
+  &::before {
+    background-color: currentColor;
+    content: '';
+    opacity: 0.12;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      height: $track-height-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: $track-height-desktop;
+    }
+  }
+
+  &__track {
+    pointer-events: none;
+    position: relative;
+
+    @include mixins.media('xs', 'md') {
+      height: $bar-height-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: $bar-height-desktop;
+    }
+  }
+
+  &__bar {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    align-items: center;
+    background-color: colors.$green;
+    color: white;
+    cursor: grab; // TODO: не работает из-за pointer-events на parent обёртке. Переделать.
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    @include mixins.media('xs', 'md') {
+      border-radius: math.div($bar-height-mobile, 2);
+      height: $bar-height-mobile;
+      width: $bar-width-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-radius: math.div($bar-height-desktop, 2);
+      height: $bar-height-desktop;
+      width: $bar-width-desktop;
+    }
+  }
+
+  &__value {
+    @include mixins.media('xs', 'md') {
+      display: none;
+    }
+  }
+
+  &__native-input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:focus-visible {
+      & ~ #{$selector}__track {
+        #{$selector}__bar {
+          box-shadow: 0 0 0 0.3rem inset rgb(0 0 0 / 50%);
+        }
+      }
+    }
+  }
+}

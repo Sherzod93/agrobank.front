@@ -1,0 +1,284 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.checkbox {
+  $selector: &;
+  $size-desktop: 3.2rem;
+  $size-mobile: 2.3rem;
+  $text-padding-left: 2.4rem;
+  $line-width-desktop: 0.5rem;
+  $line-width-mobile: 0.3rem;
+
+  $inner-edge-desktop: $size-desktop - $line-width-desktop;
+  $inner-edge-mobile: $size-mobile - $line-width-mobile;
+
+  $clip-path-desktop: polygon(
+    $line-width-desktop $line-width-desktop,
+    $inner-edge-desktop $line-width-desktop,
+    $inner-edge-desktop $inner-edge-desktop,
+    $line-width-desktop $inner-edge-desktop
+  );
+  $clip-path-mobile: polygon(
+    $line-width-mobile $line-width-mobile,
+    $inner-edge-mobile $line-width-mobile,
+    $inner-edge-mobile $inner-edge-mobile,
+    $line-width-mobile $inner-edge-mobile
+  );
+
+  @include mixins.font(typography-variables.$font-body-2);
+
+  display: inline-block;
+  position: relative;
+
+  @include mixins.media('xs', 'md') {
+    min-height: $size-mobile;
+    padding-left: $size-mobile + $text-padding-left;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    min-height: $size-desktop;
+    padding-left: $size-desktop + $text-padding-left;
+  }
+
+  &:not(#{$selector}_disabled) {
+    cursor: pointer;
+  }
+
+  &_base-background-color {
+    &_blue,
+    &_darkBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      &:not(#{$selector}_disabled) {
+        &:hover {
+          #{$selector}__box::after {
+            background-color: colors.$checkbox-hovered-background-color_with-base-background-color;
+          }
+        }
+
+        &:active {
+          #{$selector}__box::after {
+            background-color: colors.$checkbox-active-background-color_with-base-background-color;
+          }
+        }
+      }
+
+      #{$selector}__input {
+        &:disabled {
+          & ~ #{$selector}__box {
+            $stroke: colors.$checkbox-disabled-color_with-base-background-color;
+
+            color: $stroke;
+
+            #{$selector}__icons {
+              stroke: $stroke;
+            }
+          }
+
+          &:not(:checked):not(:indeterminate) {
+            & ~ #{$selector}__box::after {
+              background-color: colors.$checkbox-disabled-background-color_with-base-background-color;
+            }
+          }
+        }
+
+        &:checked:not(:indeterminate) {
+          & ~ #{$selector}__box {
+            #{$selector}__check {
+              display: block;
+            }
+          }
+
+          &:not(:disabled) {
+            & ~ #{$selector}__box {
+              $stroke: colors.$checkbox-checked-color_with-base-background-color;
+
+              color: $stroke;
+
+              #{$selector}__icons {
+                stroke: $stroke;
+              }
+            }
+          }
+        }
+
+        &:indeterminate:not(:checked) {
+          & ~ #{$selector}__box {
+            #{$selector}__dash {
+              display: block;
+            }
+          }
+        }
+
+        &:not(:disabled):focus-visible {
+          & ~ #{$selector}__box {
+            color: colors.$checkbox-focus-color_with-base-background-color !important;
+          }
+        }
+      }
+
+      #{$selector}__icons {
+        stroke: colors.$checkbox-main-color_with-base-background-color;
+      }
+    }
+  }
+
+  &:not(#{$selector}_disabled) {
+    &:hover {
+      #{$selector}__box::after {
+        background-color: colors.$checkbox-hovered-background-color_light-theme;
+      }
+    }
+
+    &:active {
+      #{$selector}__box::after {
+        background-color: colors.$checkbox-active-background-color_light-theme;
+      }
+    }
+  }
+
+  &__input {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+
+    &:disabled {
+      & ~ #{$selector}__box {
+        $stroke: colors.$checkbox-disabled-color_light-theme;
+
+        color: $stroke;
+
+        #{$selector}__icons {
+          stroke: $stroke;
+        }
+      }
+
+      &:not(:checked):not(:indeterminate) {
+        & ~ #{$selector}__box::after {
+          background-color: colors.$checkbox-disabled-background-color_light-theme;
+        }
+      }
+    }
+
+    &:checked:not(:indeterminate) {
+      & ~ #{$selector}__box {
+        #{$selector}__check {
+          display: block;
+        }
+      }
+
+      &:not(:disabled) {
+        & ~ #{$selector}__box {
+          $stroke: colors.$checkbox-checked-color_light-theme;
+
+          color: $stroke;
+
+          #{$selector}__icons {
+            stroke: $stroke;
+          }
+        }
+      }
+    }
+
+    &:indeterminate:not(:checked) {
+      & ~ #{$selector}__box {
+        #{$selector}__dash {
+          display: block;
+        }
+      }
+    }
+
+    &:not(:disabled):focus-visible {
+      & ~ #{$selector}__box {
+        color: colors.$checkbox-focus-color_light-theme !important;
+      }
+    }
+  }
+
+  &__box {
+    position: absolute;
+    left: 0;
+    z-index: 0;
+
+    @include mixins.media('xs', 'md') {
+      height: $size-mobile;
+      width: $size-mobile;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      height: $size-desktop;
+      width: $size-desktop;
+    }
+
+    &::after {
+      content: '';
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+
+      @include mixins.media('xs', 'md') {
+        clip-path: $clip-path-mobile;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        clip-path: $clip-path-desktop;
+      }
+    }
+
+    &::before {
+      border-style: solid;
+      content: '';
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+
+      @include mixins.media('xs', 'md') {
+        border-width: $line-width-mobile;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        border-width: $line-width-desktop;
+      }
+    }
+  }
+
+  &__icons {
+    height: auto;
+    stroke: colors.$checkbox-main-color_light-theme;
+    position: absolute;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      clip-path: $clip-path-mobile;
+      stroke-width: $line-width-mobile * math.div($size-desktop, $size-mobile);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      clip-path: $clip-path-desktop;
+      stroke-width: $line-width-desktop;
+    }
+
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        clip-path: none;
+      }
+    }
+  }
+
+  &__check {
+    display: none;
+  }
+
+  &__dash {
+    display: none;
+  }
+
+  // TODO: (mellonis) overload styles if baseBackgroundColor is defined
+}

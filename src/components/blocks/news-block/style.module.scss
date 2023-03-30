@@ -1,0 +1,25 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.news-block {
+  column-gap: 3rem;
+  display: grid;
+  list-style: none;
+  padding-left: 0;
+  row-gap: 3rem;
+
+  @include mixins.media('md', 'infinity') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__date {
+    @include mixins.font(typography-variables.$font-body-4);
+
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  &__item {
+    @include mixins.font(typography-variables.$font-body-2);
+  }
+}

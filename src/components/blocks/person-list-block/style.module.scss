@@ -1,0 +1,38 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.person-list {
+  list-style: none;
+  padding: 0;
+
+  &__person {
+    display: grid;
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 4rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      gap: 7rem;
+      grid-template-columns: 1fr 2fr;
+      margin-bottom: 7rem;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+
+    @include mixins.font(typography-variables.$font-h-3);
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  &__position {
+    color: colors.$gray;
+
+    @include mixins.font(typography-variables.$font-body-2);
+  }
+}

@@ -1,0 +1,35 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.vacancy-item-block {
+  &__title {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    font-weight: 500;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+
+    @include mixins.media('xs', 'md') {
+      margin-top: 1.2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1.6rem;
+    }
+  }
+
+  &__item {
+    &:not(:first-child) {
+      @include mixins.media('xs', 'md') {
+        margin-top: 2rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 3.2rem;
+      }
+    }
+  }
+}

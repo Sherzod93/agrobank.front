@@ -1,0 +1,190 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use './mixins';
+@use './typography-variables';
+@use './variables';
+@use './functions';
+
+html {
+  $base-font-size: math.div(typography-variables.$one_rem-font-size, typography-variables.$default-font-size) * 100%;
+  $max-font-size: math.div($base-font-size, 3) * 4;
+
+  font-size: $base-font-size;
+
+  @include mixins.media('xs', 'md') {
+    &[data-vim] {
+      font-size: $base-font-size * 1.2;
+    }
+  }
+
+  @include mixins.propertiesScale(
+      (
+        font-size: (
+          45%,
+          $base-font-size,
+        ),
+      ),
+      'md',
+      'xxl',
+      8,
+      false
+    )
+    using($properties) {
+    $font-size: map.get($properties, 'font-size');
+
+    font-size: $font-size;
+
+    &[data-vim] {
+      font-size: $font-size * 1.2;
+    }
+  }
+
+  @include mixins.media('xxl', 'infinity') {
+    font-size: $base-font-size;
+
+    &[data-vim] {
+      font-size: $base-font-size * 1.2;
+    }
+  }
+
+  @include mixins.propertiesScale(
+      (
+        font-size: (
+          45%,
+          $base-font-size,
+        ),
+      ),
+      'xs',
+      'lg',
+      8,
+      false,
+      'height'
+    )
+    using($properties) {
+    font-size: map.get($properties, 'font-size');
+  }
+}
+
+body {
+  @include mixins.font(typography-variables.$font-body-2);
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-weight: bold;
+  margin: 0;
+}
+
+h1,
+.h1 {
+  @include mixins.font(typography-variables.$font-h-1);
+}
+
+h2,
+.h2 {
+  @include mixins.font(typography-variables.$font-h-2);
+}
+
+h3,
+.h3 {
+  @include mixins.font(typography-variables.$font-h-3);
+}
+
+h4,
+.h4 {
+  @include mixins.font(typography-variables.$font-h-4);
+}
+
+.text_body_1 {
+  @include mixins.font(typography-variables.$font-body-1);
+}
+
+.text_body_2 {
+  @include mixins.font(typography-variables.$font-body-2);
+}
+
+.text_body_3 {
+  @include mixins.font(typography-variables.$font-body-3);
+}
+
+.text_body_4 {
+  @include mixins.font(typography-variables.$font-body-4);
+}
+
+.container {
+  max-width: list.nth(map.get(variables.$breakpoints, 'xxl'), 1);
+  margin: 0 auto;
+
+  @include mixins.media('xs', 'sm', 'height') {
+    max-width: list.nth(map.get(variables.$breakpoints, 'md'), 1);
+  }
+
+  @include mixins.propertiesScale(
+      (
+        max-width: (
+          list.nth(map.get(variables.$breakpoints, 'md'), 1),
+          list.nth(map.get(variables.$breakpoints, 'xxl'), 1),
+        ),
+      ),
+      'sm',
+      'lg',
+      8,
+      false,
+      'height'
+    )
+    using($properties) {
+    max-width: map.get($properties, 'max-width');
+  }
+
+  @include mixins.media('xs', 'md') {
+    padding: 0 variables.$container-padding-mobile;
+  }
+
+  @include mixins.propertiesScale(
+      (
+        padding-left-right: (
+          variables.$container-padding-mobile,
+          variables.$container-padding-desktop,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    padding: 0 map.get($properties, 'padding-left-right');
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    padding: 0 variables.$container-padding-desktop;
+  }
+}
+
+button {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.not-implemented {
+  color: red;
+  outline: 1px solid red;
+
+  &::after {
+    content: '!!! NOT IMPLEMENTED !!!';
+  }
+}
+
+@import 'recolor-filters';

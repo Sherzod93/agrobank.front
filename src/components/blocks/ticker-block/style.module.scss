@@ -1,0 +1,140 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.ticker-block {
+  $selector: &;
+
+  @include mixins.media('xs', 'md') {
+    margin-left: (-1 * variables.$container-padding-mobile);
+    margin-right: (-1 * variables.$container-padding-mobile);
+  }
+
+  @include mixins.propertiesScale(
+      (
+        margin-left-right: (
+          variables.$container-padding-mobile,
+          variables.$container-padding-desktop,
+        ),
+      ),
+      'md',
+      'xxxl',
+      8,
+      false
+    )
+    using($properties) {
+    margin-left: (-1 * map.get($properties, 'margin-left-right'));
+    margin-right: (-1 * map.get($properties, 'margin-left-right'));
+  }
+
+  @include mixins.media('xxxl', 'infinity') {
+    margin-left: calc(-1 * ((100vw - 1520px - var(--scrollbar-width)) / 2));
+    margin-right: calc(-1 * ((100vw - 1520px - var(--scrollbar-width)) / 2));
+  }
+
+  position: relative;
+
+  &:not(#{$selector}_is-layering) {
+    #{$selector}__tag {
+      position: relative;
+
+      @include mixins.media('xs', 'md') {
+        margin-right: 2.9rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-right: 5rem;
+      }
+
+      &::after {
+        color: colors.$green;
+        content: '→';
+        font-weight: 500;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+
+        @include mixins.media('xs', 'md') {
+          font-size: 4rem;
+          right: 0.1rem;
+          transform: translate(100%, -50%);
+        }
+
+        @include mixins.media('md', 'xxl') {
+          right: 0;
+        }
+
+        @include mixins.media('md', 'infinity') {
+          font-size: 7rem;
+          transform: translate(100%, -50%);
+        }
+
+        @include mixins.media('xxl', 'xxxl') {
+          right: 0.1rem;
+        }
+
+        @include mixins.media('xxxl', 'infinity') {
+          right: 0.2rem;
+        }
+      }
+    }
+  }
+
+  &_is-layering {
+    height: 0;
+
+    #{$selector}__list-wrapper {
+      margin-top: -20%;
+      mix-blend-mode: color-dodge;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+
+    #{$selector}__tag {
+      color: white;
+    }
+  }
+
+  &_pseudo {
+    #{$selector}__list-wrapper {
+      mix-blend-mode: color;
+      z-index: 0;
+    }
+
+    #{$selector}__tag {
+      color: black;
+    }
+  }
+
+  &__list-wrapper {
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    position: relative;
+
+    &:last-child {
+      display: flex;
+      width: 120vw;
+      flex-shrink: 0;
+    }
+
+    &_hidden {
+      position: fixed;
+      right: 120vw;
+    }
+  }
+
+  &__tag {
+    /*!*/
+  }
+}

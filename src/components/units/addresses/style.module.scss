@@ -1,0 +1,23 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.addresses {
+  display: grid;
+  list-style: none;
+  padding: 0;
+
+  @include mixins.media('xs', 'md') {
+    grid-gap: 2rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    grid-gap: 5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__item {
+    /*!*/
+  }
+}

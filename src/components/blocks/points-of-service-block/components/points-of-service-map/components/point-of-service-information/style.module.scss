@@ -1,0 +1,49 @@
+@use 'src/styles/mixins';
+
+.point-of-service-information {
+  @include mixins.baseBackgroundColor();
+
+  height: 100%;
+  max-height: calc(100% - 3rem * 2);
+  padding: 3rem;
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__close-button {
+    @include mixins.buttonCleanup();
+
+    color: currentColor;
+    line-height: 1;
+    opacity: 0.5;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    width: auto;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &__close-button-icon {
+    /*!*/
+  }
+
+  &__point-information {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &__point-information-title {
+    margin-right: 4rem;
+  }
+}

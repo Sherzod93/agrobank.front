@@ -1,0 +1,118 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.currency-rates-block {
+  $selector: &;
+
+  @include mixins.font(typography-variables.$font-body-2);
+
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+  &__titles {
+    /*!*/
+  }
+
+  &__kinds {
+    /*!*/
+  }
+
+  &__values {
+    /*!*/
+  }
+
+  &__kind {
+    opacity: 0.5;
+  }
+  &__item-header{
+    text-align: left;
+    padding-bottom: 1rem;
+  }
+  &__header{
+    color: #00CC69;
+  }
+
+  &__value-wrapper {
+    text-align: left;
+  }
+
+  &__updated-date{
+
+    &_white{
+      color: rgba(226, 217, 217, 0.8);
+    }
+    &_black{
+      color: #00000073;
+
+    }
+    &_white,
+    &_black {
+      font-size: 14px;
+      display: flex;
+    }
+
+  }
+  &__svg{
+    &_white{
+      color: rgba(226, 217, 217, 0.8);
+    }
+    &_black{
+      color: #00000073;
+
+    }
+    &_white,
+    &_black {
+      margin-right: 7px;
+      padding-top: 3px;
+    }
+  }
+
+  @include mixins.media('xs', 'md') {
+
+    &__item-body {
+      &::after {
+        content: '';
+        display: table-row;
+        height: 1em;
+      }
+    }
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__kind {
+      td {
+        padding-top: 0.8rem;
+      }
+    }
+  }
+
+  @include mixins.media('md', 'infinity') {
+
+    &__item-body {
+      &::after {
+        content: '';
+        display: table-row;
+        height: 1.5rem;
+      }
+    }
+
+    &__value {
+      :global(html[data-vim]) & {
+        padding: 0 8rem 0 0;
+      }
+    }
+  }
+
+  @include mixins.media('md', 'lg') {
+
+    &__value {
+      :global(html[data-vim]) & {
+        padding: 0 5rem 0 0;
+      }
+    }
+  }
+}

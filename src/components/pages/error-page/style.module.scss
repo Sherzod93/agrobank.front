@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.error-page {
+  $selector: &;
+
+  @include mixins.baseBackgroundColor();
+
+  flex-grow: 1;
+  overflow: hidden;
+  width: 100%;
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-1);
+  }
+
+  &__text {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    margin-top: 1rem;
+  }
+
+  &__error-code {
+    color: transparent;
+    font-weight: bold;
+    height: 38rem;
+    line-height: 1;
+    margin-top: 6rem;
+    transform: skewX(-9deg);
+
+    @include mixins.media('xs', 'sm') {
+      font-size: 6rem;
+      height: 20rem;
+    }
+
+    @include mixins.propertiesScale(
+        (
+          font-size: (
+            10rem,
+            20rem,
+          ),
+          height: (
+            20rem,
+            50rem,
+          ),
+          font-size-safari: (
+            10rem,
+            13rem,
+          ),
+          height-safari: (
+            20rem,
+            24rem,
+          ),
+        ),
+        'sm',
+        'xl',
+        15,
+        true
+      )
+      using($properties) {
+      font-size: map.get($properties, 'font-size');
+      height: map.get($properties, 'height');
+
+      :global(.safari) & {
+        font-size: map.get($properties, 'font-size-safari');
+        height: map.get($properties, 'height-safari');
+      }
+    }
+
+    @include mixins.media('xl', 'infinity') {
+      font-size: 20rem;
+      height: 50rem;
+
+      :global(.safari) & {
+        font-size: 13rem;
+        height: 24rem;
+      }
+    }
+  }
+
+  &__tiles {
+    height: 100%;
+    left: 50%;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: -1;
+
+    &::after {
+      font-size: 2em;
+      line-height: 1;
+      opacity: 1;
+      position: relative;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+
+      @include mixins.media('xs', 'sm') {
+        background-size: 4rem !important;
+      }
+
+      @include mixins.media('sm', 'md') {
+        background-size: 5rem !important;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        background-size: 7rem !important;
+      }
+    }
+
+    :global(.safari) & {
+      filter: none;
+
+      &::after {
+        background-image: url('../../units/tiles/images/animated-gray.png') !important;
+      }
+    }
+  }
+}

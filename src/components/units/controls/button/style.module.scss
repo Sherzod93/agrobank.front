@@ -1,0 +1,391 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'src/styles/variables';
+
+.button {
+  $selector: &;
+
+  @include mixins.agrofont();
+
+  background: none;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+
+  &:not([disabled]) {
+    cursor: pointer;
+
+    &:hover {
+      &#{$selector}_buttonType {
+        &_primary {
+          &#{$selector}_base-background-color {
+            &_deepBlueOnDeepBlue,
+            &_default {
+              background-color: transparentize(colors.$green, 0.2);
+            }
+
+            &_blue,
+            &_darkBlue,
+            &_deepBlue,
+            &_green,
+            &_orange,
+            &_semiRed {
+              background-color: transparentize(white, 0.2);
+            }
+          }
+        }
+
+        &_secondary {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &#{$selector}_buttonType {
+        &_primary {
+          &#{$selector}_base-background-color {
+            &_deepBlue,
+            &_default {
+              box-shadow: 0 0 0 0.3rem inset transparentize(black, 0.5);
+            }
+
+            &_blue,
+            &_darkBlue,
+            &_deepBlueOnDeepBlue,
+            &_green,
+            &_orange,
+            &_semiRed {
+              box-shadow: 0 0 0 0.3rem inset transparentize(black, 0.3);
+            }
+          }
+        }
+
+        &_secondary {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &:active {
+      &#{$selector}_buttonType {
+        &_primary {
+          &#{$selector}_base-background-color {
+            &_default {
+              background-color: color.scale(colors.$green, $lightness: -18.75%);
+            }
+
+            &_blue,
+            &_darkBlue,
+            &_deepBlue,
+            &_deepBlueOnDeepBlue,
+            &_green,
+            &_orange,
+            &_semiRed {
+              background-color: transparentize(white, 0.35);
+            }
+          }
+        }
+
+        &_secondary {
+          opacity: 0.65;
+        }
+      }
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.4;
+  }
+
+  &_base-background-color {
+    &_deepBlue,
+    &_deepBlueOnDeepBlue,
+    &_default {
+      &#{$selector}_buttonType {
+        &_primary {
+          background-color: colors.$green;
+          color: white;
+        }
+
+        &_secondary {
+          background-color: transparent;
+          color: colors.$green;
+        }
+      }
+    }
+
+    $colors: (
+      'blue': colors.$blue,
+      'darkBlue': colors.$dark-blue,
+      'deepBlue': colors.$deep-blue,
+      'green': colors.$green,
+      'orange': colors.$orange,
+      'semiRed': colors.$semi-red,
+    );
+
+    @each $color, $color-variable in $colors {
+      &_#{$color} {
+        &#{$selector}_buttonType {
+          &_primary {
+            background-color: white;
+            color: $color-variable;
+          }
+        }
+      }
+    }
+  }
+
+  &_buttonType {
+    &_primary {
+      &#{$selector}_buttonSize {
+        &_default {
+          @include mixins.media('xs', 'md') {
+            padding: variables.$tag-vertical-padding-mobile-default variables.$tag-horizontal-padding-mobile-default;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            padding: variables.$tag-vertical-padding-desktop-default variables.$btn-horizontal-padding-desktop-default;
+          }
+
+          @include mixins.media('lg', 'infinity') {
+            @include mixins.media('xs', 'sm', 'height') {
+              padding: #{variables.$tag-vertical-padding-mobile-default - variables.$tag-border-width-mobile-default} variables.$tag-horizontal-padding-mobile-default;
+            }
+
+            @include mixins.propertiesScale(
+                (
+                  padding-bottom-top: (
+                    variables.$tag-vertical-padding-mobile-default - variables.$tag-border-width-mobile-default,
+                    variables.$tag-vertical-padding-desktop-default - variables.$tag-border-width-desktop-default,
+                  ),
+                  padding-left-right: (
+                    variables.$tag-horizontal-padding-mobile-default,
+                    variables.$tag-horizontal-padding-desktop-default,
+                  ),
+                ),
+                'sm',
+                'lg',
+                8,
+                false,
+                'height'
+              )
+              using($properties) {
+              padding: map.get($properties, 'padding-bottom-top') map.get($properties, 'padding-left-right');
+            }
+          }
+        }
+
+        &_small {
+          @include mixins.media('xs', 'md') {
+            padding: variables.$tag-vertical-padding-mobile-small variables.$tag-horizontal-padding-mobile-small;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            padding: #{variables.$tag-vertical-padding-mobile-small + (2 * variables.$tag-border-width-mobile-default)} variables.$tag-horizontal-padding-desktop-small;
+          }
+        }
+
+        &_x-small {
+          @include mixins.media('xs', 'md') {
+            padding: variables.$tag-vertical-padding-mobile-x-small variables.$tag-horizontal-padding-mobile-x-small;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            padding: variables.$tag-vertical-padding-desktop-x-small variables.$tag-horizontal-padding-desktop-x-small;
+          }
+        }
+      }
+    }
+
+    &_secondary {
+      border-style: solid;
+
+      &#{$selector}_buttonSize {
+        &_default {
+          @include mixins.media('xs', 'md') {
+            border-width: variables.$tag-border-width-mobile-default-pixels;
+            padding: #{variables.$tag-vertical-padding-mobile-default - variables.$tag-border-width-mobile-default} variables.$tag-horizontal-padding-mobile-default;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            border-width: variables.$tag-border-width-desktop-default-pixels;
+            padding: #{variables.$tag-vertical-padding-desktop-default - variables.$tag-border-width-desktop-default} variables.$btn-horizontal-padding-desktop-default;
+          }
+        }
+
+        &_small {
+          @include mixins.media('xs', 'md') {
+            border-width: variables.$tag-border-width-mobile-small-pixels;
+            padding: #{variables.$tag-vertical-padding-mobile-small - variables.$tag-border-width-mobile-default} variables.$tag-horizontal-padding-mobile-small;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            border-width: variables.$tag-border-width-desktop-small-pixels;
+            padding: #{variables.$tag-vertical-padding-desktop-small - variables.$tag-border-width-desktop-default} variables.$tag-horizontal-padding-desktop-small;
+          }
+        }
+
+        &_x-small {
+          border-width: variables.$tag-border-width-mobile-default;
+
+          @include mixins.media('xs', 'md') {
+            padding: #{variables.$tag-vertical-padding-mobile-x-small - variables.$tag-border-width-mobile-default} variables.$tag-horizontal-padding-mobile-x-small;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            padding: #{variables.$tag-vertical-padding-desktop-x-small - variables.$tag-border-width-mobile-default} variables.$tag-horizontal-padding-desktop-x-small;
+          }
+        }
+      }
+    }
+  }
+
+  &_buttonSize {
+    &_default {
+      @include mixins.font(typography-variables.$font-button-default);
+
+      @include mixins.media('xs', 'md') {
+        border-radius: variables.$tag-border-radius-mobile-default;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        border-radius: variables.$tag-border-radius-desktop-default;
+      }
+    }
+
+    &_small {
+      @include mixins.font(typography-variables.$font-button-small);
+
+      @include mixins.media('xs', 'md') {
+        border-radius: variables.$tag-border-radius-mobile-small;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        border-radius: variables.$tag-border-radius-desktop-small;
+      }
+    }
+
+    &_x-small {
+      @include mixins.font(typography-variables.$font-button-x-small);
+
+      @include mixins.media('xs', 'md') {
+        border-radius: variables.$tag-border-radius-mobile-x-small;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        border-radius: variables.$tag-border-radius-desktop-x-small;
+      }
+    }
+  }
+
+  &_withArrow {
+    /*!*/
+    // TODO: (mellonis) padding right
+  }
+
+  &_stuck {
+    &#{$selector}_base-background-color {
+      &_deepBlueOnDeepBlue,
+      &_deepBlue {
+        &#{$selector}_buttonType {
+          &_primary {
+            background-color: colors.$green;
+            color: white;
+          }
+        }
+      }
+
+      &_blue,
+      &_darkBlue,
+      &_green,
+      &_orange,
+      &_semiRed {
+        &#{$selector}_buttonType {
+          &_primary {
+            color: black;
+          }
+        }
+      }
+    }
+
+    &:not([disabled]) {
+      &:hover {
+        &#{$selector}_buttonType {
+          &_primary {
+            &#{$selector}_base-background-color {
+              &_deepBlue {
+                background-color: transparentize(colors.$green, 0.2);
+              }
+            }
+          }
+        }
+      }
+
+      &:active {
+        &#{$selector}_buttonType {
+          &_primary {
+            &#{$selector}_base-background-color {
+              &_deepBlue {
+                background-color: color.scale(colors.$green, $lightness: -18.75%);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &#{$selector}_buttonSize {
+      &_default {
+        @include mixins.media('xs', 'md') {
+          margin-top: #{-1 * variables.$tag-border-width-mobile-default-pixels};
+        }
+
+        @include mixins.media('md', 'infinity') {
+          margin-top: #{-1 * variables.$tag-border-width-desktop-default-pixels};
+        }
+
+        @include mixins.media('lg', 'infinity') {
+          @include mixins.media('xs', 'sm', 'height') {
+            margin-top: #{-1 * variables.$tag-border-width-mobile-default-pixels};
+          }
+
+          @include mixins.propertiesScale(
+              (
+                margin-top: (
+                  -1 * variables.$tag-border-width-mobile-default-pixels,
+                  -1 * variables.$tag-border-width-desktop-default-pixels,
+                ),
+              ),
+              'sm',
+              'lg',
+              8,
+              false,
+              'height'
+            )
+            using($properties) {
+            margin-top: map.get($properties, 'margin-top');
+          }
+        }
+      }
+
+      &_small {
+        @include mixins.media('xs', 'md') {
+          margin-top: #{-1 * variables.$tag-border-width-mobile-small-pixels};
+        }
+
+        @include mixins.media('md', 'infinity') {
+          margin-top: #{-1 * variables.$tag-border-width-desktop-small-pixels};
+        }
+      }
+    }
+  }
+}

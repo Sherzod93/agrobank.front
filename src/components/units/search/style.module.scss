@@ -1,0 +1,92 @@
+@use 'src/styles/colors';
+
+.search {
+  $selector: &;
+
+  &_is-focused {
+    #{$selector}__container {
+      border-color: colors.$green;
+    }
+
+    #{$selector}__magnifying-glass {
+      color: colors.$green;
+    }
+
+    #{$selector}__tags-and-buttons {
+      margin-top: 2.2rem;
+      max-height: 50rem;
+      overflow: visible;
+    }
+
+    #{$selector}__tag {
+      animation: animationTags 0.05s forwards ease-out;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateX(3rem);
+
+      @for $i from 1 through 25 {
+        &:nth-child(#{$i}) {
+          animation-delay: 0.05s * ($i + 3);
+        }
+      }
+    }
+  }
+
+  &__container {
+    align-items: center;
+    border-bottom: 0.2rem solid colors.$very-transparent-black;
+    display: flex;
+    height: 3.8rem;
+  }
+
+  &__clear-cross {
+    color: #808080;
+    cursor: pointer;
+    display: block;
+    height: 1rem;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+    width: 1rem;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__input {
+    border: none;
+    margin: 0 1rem;
+    outline: none;
+    width: 100%;
+  }
+
+  &__magnifying-glass {
+    color: #808080;
+    display: block;
+    height: 1.7rem;
+    width: 1.7rem;
+  }
+
+  &__tags-and-buttons {
+    margin-top: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease 0.1s, margin-top 0.3s ease 0.1s;
+  }
+
+  &__tag {
+    opacity: 0;
+  }
+
+  @keyframes animationTags {
+    from {
+      opacity: 0;
+      transform: translateX(3rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

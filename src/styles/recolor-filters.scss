@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'colors';
+@use 'mixins';
+
+$colors: 'white', 'blue', 'dark-blue', 'deep-blue', 'green', 'orange', 'semi-red', 'gray';
+$variables: meta.module-variables('colors');
+
+@each $color in $colors {
+  .recolor-#{$color} {
+    @include mixins.recolor(map.get($variables, $color));
+  }
+}

@@ -1,0 +1,13 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.visitors-count {
+  $selector: &;
+
+  display: flex;
+
+  &__content{
+    font-size: 14px;
+  }
+}

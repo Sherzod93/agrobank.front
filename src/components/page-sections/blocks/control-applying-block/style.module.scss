@@ -1,0 +1,706 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.control-applying-block {
+  $selector: &;
+
+  color: colors.$white;
+  text-align: center;
+
+  @include mixins.media('xs', 'md') {
+    padding: 3rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    padding: 6rem;
+  }
+
+  &_success {
+    animation: appear 8ms ease-in;
+    opacity: 1;
+
+    @keyframes appear {
+      from {
+        opacity: 0.1;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 16rem;
+    }
+  }
+
+  &_base-background-color {
+    &_darkBlue,
+    &_default {
+      #{$selector}_has-error {
+        #{$selector}__error {
+          color: colors.$error-main;
+        }
+
+        #{$selector}__input,
+        #{$selector}__select {
+          border-color: colors.$error-main;
+        }
+      }
+    }
+
+    &_blue,
+    &_deepBlue,
+    &_deepBlueOnDeepBlue,
+    &_green,
+    &_semiRed,
+    &_orange {
+      #{$selector}_has-error {
+        #{$selector}__error {
+          color: colors.$error-extra;
+        }
+
+        #{$selector}__input,
+        #{$selector}__select {
+          border-color: colors.$error-extra;
+        }
+      }
+    }
+  }
+
+  @include mixins.productType using($color) {
+    background-color: $color;
+  }
+
+  &__progress-bar {
+    display: grid;
+    grid-auto-columns: 3rem;
+    grid-auto-flow: column;
+    grid-column-gap: 3rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  &__icon {
+    /*!*/
+  }
+
+  &__form {
+    /*!*/
+  }
+
+  &__fields {
+    @include mixins.media('xs', 'md') {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      column-gap: 3rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  &__label {
+    position: relative;
+
+    &#{$selector}_selected-option {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+
+    &#{$selector}_has-value {
+      #{$selector}__placeholder {
+        font-size: 1.5rem;
+
+        @include mixins.media('xs', 'md') {
+          top: -2.2rem;
+        }
+
+        @include mixins.media('md', 'infinity') {
+          top: -3rem;
+        }
+      }
+    }
+
+    &#{$selector}__files {
+      #{$selector}__placeholder {
+        @include mixins.font(typography-variables.$font-h-3);
+
+        top: 0;
+      }
+    }
+
+    &#{$selector}__selected-value {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__placeholder {
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    transition: 0.2s;
+  }
+
+  &__section-title {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 1rem;
+      margin-top: 2.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 6;
+      margin-bottom: -2rem;
+      margin-top: 6rem;
+    }
+
+    font-weight: bold;
+    text-align: left;
+  }
+
+  &__input {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid rgba(255, 255, 255, 0.5);
+    color: colors.$white;
+    transition: 0.2s;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      border-width: 0.2rem;
+      padding-bottom: 0.8rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-width: 0.5rem;
+      padding-bottom: 1.6rem;
+    }
+
+    &[type='date'] {
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+    }
+
+    &[type='file'] {
+      border: 0;
+      font-size: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &::file-selector-button {
+        background-color: transparent;
+        border: 0;
+      }
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &:focus {
+      border-color: rgba(255, 255, 255, 1);
+      // TODO: something with it
+      outline: none;
+    }
+  }
+
+  &__error {
+    @include mixins.font(typography-variables.$font-body-4);
+
+    position: absolute;
+
+    @include mixins.media('xs', 'md') {
+      bottom: -1.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      bottom: -2.4rem;
+    }
+  }
+
+  &__select {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid rgba(255, 255, 255, 1);
+    color: colors.$white;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      border-width: 0.2rem;
+      padding-bottom: 0.8rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-width: 0.5rem;
+      padding-bottom: 1.65rem;
+    }
+
+    &:focus {
+      opacity: 0.8 !important;
+      // TODO: something with it
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    > option {
+      color: black;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+    text-align: center;
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 2.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 5.6rem;
+    }
+  }
+
+  &__button {
+    @include mixins.media('xs', 'md') {
+      margin-top: 3rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 6rem;
+    }
+  }
+
+  &__checkbox {
+    @include mixins.media('xs', 'md') {
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 6rem;
+    }
+
+    #{$selector}__link {
+      color: colors.$white;
+    }
+  }
+
+  // step 1
+  &__message {
+    display: none;
+    margin-top: 6rem;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 6;
+    }
+  }
+  &__first-name {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__middle-name {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__last-name {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__phone {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  &__email {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  // step 2
+
+  &__delivery {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 6;
+    }
+  }
+
+  &__home-region {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  &__home-city {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  &__home-address {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 4;
+      margin-top: 6rem;
+    }
+  }
+
+  &__postcode {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+      margin-top: 6rem;
+    }
+  }
+
+  &__region-bank-branch {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  &__bank-branch {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 3;
+      margin-top: 6rem;
+    }
+  }
+
+  // step 3
+
+  &__passport {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__birthdate {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__inn {
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 2;
+    }
+  }
+
+  &__files {
+    cursor: pointer;
+    display: none;
+
+    @include mixins.media('md', 'infinity') {
+      grid-column: span 6;
+      margin-top: 6rem;
+    }
+
+    &#{$selector}__file-active-state {
+      #{$selector}__upload-icon {
+        margin-bottom: -6.2rem;
+        margin-top: 3rem;
+        zoom: 1.5;
+      }
+
+      #{$selector}__placeholder {
+        opacity: 0 !important;
+      }
+    }
+
+    &#{$selector}__file-accept-state {
+      /*!*/
+    }
+
+    &#{$selector}__file-reject-state {
+      /*!*/
+    }
+
+    #{$selector}__upload-wrapper {
+      @include mixins.media('xs', 'md') {
+        padding: 2rem;
+      }
+    }
+
+    #{$selector}__placeholder {
+      @include mixins.font(typography-variables.$font-h-3);
+
+      opacity: 1;
+      position: initial;
+      width: 100%;
+
+      @include mixins.media('xs', 'md') {
+        padding: 1rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        padding: 3rem;
+      }
+    }
+
+    #{$selector}__files-list {
+    }
+
+    #{$selector}__remove-button {
+      background-color: transparent;
+      border: none;
+      color: transparent;
+      height: 3.2rem;
+      margin-left: 1rem;
+      opacity: 0.3;
+      position: relative;
+      width: 3.2rem;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:before,
+      &:after {
+        background-color: #fff;
+        content: ' ';
+        height: 3.3rem;
+        left: 1.5rem;
+        position: absolute;
+        top: 0;
+        width: 0.37rem;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    #{$selector}__placeholder-wrapper {
+      align-items: center;
+      display: flex;
+
+      @include mixins.media('xs', 'md') {
+        flex-direction: column-reverse;
+
+        #{$selector}__blocked-icon {
+          margin-top: 1rem;
+        }
+      }
+
+      @include mixins.media('md', 'infinity') {
+        flex-direction: column;
+      }
+    }
+
+    #{$selector}__files-list {
+      display: grid;
+      justify-items: self-start;
+      list-style: none;
+      padding: 0;
+      row-gap: 1rem;
+
+      @include mixins.media('xs', 'md') {
+        padding: 1rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        column-gap: 6rem;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    #{$selector}__files-item {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #{$selector}__upload-wrapper {
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: colors.$white;
+      display: flex;
+      flex-direction: column;
+
+      @include mixins.media('xs', 'md') {
+        padding: 2rem 1rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        padding: 6rem;
+      }
+    }
+
+    #{$selector}__blocked-icon {
+      @include mixins.media('md', 'infinity') {
+        zoom: 2;
+      }
+    }
+
+    #{$selector}__upload-icon {
+      @include mixins.media('xs', 'md') {
+        transform: scale(0.7);
+      }
+    }
+  }
+
+  &__field-step-1 {
+    > label {
+      &:not(:first-child) {
+        @include mixins.media('xs', 'md') {
+          margin-top: 4rem;
+        }
+      }
+    }
+
+    #{$selector}__message,
+    #{$selector}__first-name,
+    #{$selector}__middle-name,
+    #{$selector}__last-name,
+    #{$selector}__phone,
+    #{$selector}__email {
+      display: block;
+    }
+  }
+
+  &__field-step-2 {
+    > label {
+      &:not(:first-child) {
+        @include mixins.media('xs', 'md') {
+          margin-top: 4rem;
+        }
+      }
+    }
+
+    #{$selector}__delivery,
+    #{$selector}__home-region,
+    #{$selector}__home-city,
+    #{$selector}__home-address,
+    #{$selector}__postcode,
+    #{$selector}__region-bank-branch,
+    #{$selector}__bank-branch {
+      display: block;
+
+      @include mixins.media('xs', 'md') {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  &__field-step-3 {
+    > label {
+      &:not(:first-child) {
+        @include mixins.media('xs', 'md') {
+          margin-top: 4rem;
+        }
+      }
+    }
+
+    #{$selector}__passport,
+    #{$selector}__birthdate,
+    #{$selector}__inn,
+    #{$selector}__files {
+      display: block;
+
+      @include mixins.media('xs', 'md') {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  &__failed-form,
+  &__success-form {
+    &-title {
+      @include mixins.font(typography-variables.$font-h-3);
+
+      @include mixins.media('xs', 'md') {
+        margin-top: 2.5rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 5rem;
+      }
+    }
+
+    &-subtitle {
+      @include mixins.media('xs', 'md') {
+        margin-top: 1rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  &__success-icon {
+    @include mixins.media('xs', 'md') {
+      width: 10rem;
+    }
+  }
+}

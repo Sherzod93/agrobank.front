@@ -1,0 +1,86 @@
+$breakpoints: (
+  xs: (
+    0px,
+    sm,
+  ),
+  sm: (
+    576px,
+    md,
+  ),
+  md: (
+    768px,
+    lg,
+  ),
+  lg: (
+    992px,
+    xl,
+  ),
+  xl: (
+    1200px,
+    xxl,
+  ),
+  xxl: (
+    1440px,
+    xxxl,
+  ),
+  xxxl: (
+    1920px,
+    infinity,
+  ),
+  infinity: (
+    99999999px,
+    none,
+  ),
+);
+
+$container-padding-desktop: 15rem;
+$block-margin-0-desktop: 0;
+$block-margin-1-desktop: -8rem;
+$block-margin-2-desktop: -12rem;
+$block-margin-3-desktop: -15rem;
+
+$container-padding-mobile: 1.5rem;
+$block-margin-0-mobile: 0;
+$block-margin-1-mobile: 0;
+$block-margin-2-mobile: 0;
+$block-margin-3-mobile: -1rem;
+
+$paragraph-margin-top-desktop: 2rem;
+
+$paragraph-margin-top-mobile: 2rem;
+
+$btn-horizontal-padding-desktop-default: 5rem;
+
+$tag-vertical-padding-desktop-default: 2.5rem;
+$tag-vertical-padding-desktop-small: 1.5rem;
+$tag-vertical-padding-desktop-x-small: 1rem;
+$tag-vertical-padding-mobile-default: 1rem;
+$tag-vertical-padding-mobile-small: 0.9rem;
+$tag-vertical-padding-mobile-x-small: 0.6rem;
+
+$tag-horizontal-padding-desktop-default: 4.2rem;
+$tag-horizontal-padding-desktop-small: 2rem;
+$tag-horizontal-padding-desktop-x-small: 2rem;
+$tag-horizontal-padding-mobile-default: 2rem;
+$tag-horizontal-padding-mobile-small: 1.8rem;
+$tag-horizontal-padding-mobile-x-small: 1.2rem;
+
+$tag-border-radius-desktop-default: 6rem;
+$tag-border-radius-desktop-small: 5rem;
+$tag-border-radius-desktop-x-small: 5rem;
+$tag-border-radius-mobile-default: 5rem;
+$tag-border-radius-mobile-small: 2rem;
+$tag-border-radius-mobile-x-small: 3rem;
+
+$tag-border-width-desktop-default: 0.5rem;
+$tag-border-width-desktop-small: 0.3rem;
+$tag-border-width-mobile-default: 0.2rem;
+$tag-border-width-mobile-small: 0.2rem;
+
+$tag-border-width-desktop-default-pixels: 5px;
+$tag-border-width-desktop-small-pixels: 3px;
+$tag-border-width-mobile-default-pixels: 2px;
+$tag-border-width-mobile-small-pixels: 2px;
+
+$underline-width: -0.4em;
+$underline-full-width: -1.1em;

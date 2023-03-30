@@ -1,0 +1,81 @@
+@use 'src/styles/mixins';
+
+.product-advantages-block {
+  $selector: &;
+
+  display: grid;
+  list-style: none;
+  padding: 0;
+
+  @include mixins.media('xs', 'md') {
+    column-gap: 2rem;
+    row-gap: 4rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    column-gap: 3rem;
+    row-gap: 5rem;
+  }
+
+  &_ordinary {
+    @include mixins.media('xs', 'md') {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+
+      #{$selector}__item {
+        grid-column: span 6;
+
+        &_one-element-in-a-row {
+          grid-column: 4 / span 6;
+        }
+      }
+    }
+
+    @include mixins.media('md', 'infinity') {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+
+      #{$selector}__item {
+        grid-column: span 2;
+
+        &_one-element-in-a-row {
+          grid-column: 3 / span 2;
+        }
+
+        &_two-elements-in-a-row {
+          &#{$selector}__item {
+            &_first-element-in-a-pair {
+              grid-column: 2 / span 2;
+            }
+
+            &_second-element-in-a-pair {
+              grid-column: 4 / span 2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_special {
+    @include mixins.media('md', 'infinity') {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+
+      #{$selector}__item {
+        &_one-element-in-a-row {
+          grid-column: 4 / span 6;
+        }
+
+        &_two-elements-in-a-row {
+          &#{$selector}__item {
+            &_first-element-in-a-pair {
+              grid-column: 1 / span 6;
+            }
+
+            &_second-element-in-a-pair {
+              grid-column: 7 / span 6;
+            }
+          }
+        }
+      }
+    }
+  }
+}

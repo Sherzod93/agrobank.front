@@ -1,0 +1,52 @@
+@use 'sass:list';
+@use 'sass:math';
+
+$default-font-size: 16px;
+$one_rem-font-size: 10px;
+
+$font-desktop-h-1: 8rem, 110%;
+$font-desktop-h-2: 6rem, 130%;
+$font-desktop-h-3: 4rem, 110%;
+$font-desktop-h-4: 3rem, 110%;
+$font-desktop-body-1: 3rem, 130%;
+$font-desktop-body-2: 2.5rem, 130%;
+$font-desktop-body-3: 1.9rem, 130%;
+$font-desktop-body-4: 1.5rem, 130%;
+
+$font-mobile-h-1: 3rem, 105.5%;
+$font-mobile-h-2: 2.4rem, 130%;
+$font-mobile-h-3: 2rem, 105.5%;
+$font-mobile-h-4: $font-mobile-h-3;
+$font-mobile-body-1: 1.6rem, 130%;
+$font-mobile-body-2: 1.6rem, 130%;
+$font-mobile-body-3: 1.1rem, 130%;
+$font-mobile-body-4: 1.1rem, 130%;
+
+$font-h-1: ($font-desktop-h-1, $font-mobile-h-1);
+$font-h-2: ($font-desktop-h-2, $font-mobile-h-2);
+$font-h-3: ($font-desktop-h-3, $font-mobile-h-3);
+$font-h-4: ($font-desktop-h-4, $font-mobile-h-4);
+$font-body-1: ($font-desktop-body-1, $font-mobile-body-1);
+$font-body-2: ($font-desktop-body-2, $font-mobile-body-2);
+$font-body-3: ($font-desktop-body-3, $font-mobile-body-3);
+$font-body-4: ($font-desktop-body-4, $font-mobile-body-4);
+
+$font-desktop-switch: 1.7rem, 130%;
+$font-mobile-switch: 1.1rem, 127.2727%;
+
+$font-switch: ($font-desktop-switch, $font-mobile-switch);
+
+$font-desktop-button-default: 3rem, math.div(3.8, 3) * 100%;
+$font-mobile-button-default: 1.4rem, math.div(1.8, 1.4) * 100%;
+
+$font-button-default: $font-desktop-button-default, $font-mobile-button-default;
+
+$font-desktop-button-small: 1.7rem, math.div(2.2, 1.7) * 100%;
+$font-mobile-button-small: 1.1rem, math.div(1.4, 1.1) * 100%;
+
+$font-button-small: $font-desktop-button-small, $font-mobile-button-small;
+
+$font-desktop-button-x-small: 1.5rem, math.div(2.2, 1.5) * 100%;
+$font-mobile-button-x-small: 1rem, math.div(1.4, 1) * 100%;
+
+$font-button-x-small: $font-desktop-button-x-small, $font-mobile-button-x-small;

@@ -1,0 +1,151 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/functions';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use '../../styles/variables';
+
+@mixin rhombus($hypotenuse, $orientation) {
+  &::before {
+    $side: math.sqrt(math.div(math.pow(functions.strip-units($hypotenuse), 2), 2)) * 1rem;
+    $transform-value: math.div($hypotenuse + $side, 2);
+
+    content: '';
+    background-color: colors.$green;
+    height: $side;
+    position: absolute;
+    width: $side;
+
+    @include mixins.media('xs', 'md') {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, $transform-value) rotate(45deg);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      $orientation-coefficient: if($orientation == 'left', -1, 1);
+
+      top: 50%;
+      transform: translate($transform-value * $orientation-coefficient, -50%) rotate(45deg);
+    }
+  }
+}
+
+.staff-experience-item {
+  $selector: &;
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  &__item {
+    display: grid;
+    grid-gap: variables.$grid-gap;
+    list-style: none;
+
+    @include mixins.media('xs', 'md') {
+      grid-template-rows: auto auto;
+      grid-template-areas: 'photo' 'comment';
+    }
+
+    @include mixins.media('md', 'xl') {
+      grid-template-columns: 1fr 1fr;
+
+      &:nth-child(odd) {
+        grid-template-areas: 'comment photo';
+      }
+
+      &:nth-child(even) {
+        grid-template-areas: 'photo comment';
+      }
+    }
+
+    @include mixins.media('xl', 'infinity') {
+      grid-template-columns: 1fr 1fr 1fr;
+
+      &:nth-child(odd) {
+        grid-template-areas: 'comment photo _';
+      }
+
+      &:nth-child(even) {
+        grid-template-areas: '_ photo comment';
+      }
+    }
+
+    #{$selector}__photo-wrapper {
+      position: relative;
+    }
+
+    &:nth-child(odd) {
+      #{$selector}__photo-wrapper {
+        @include rhombus(variables.$grid-gap, left);
+
+        &::before {
+          @include mixins.media('md', 'infinity') {
+            left: 0;
+          }
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      #{$selector}__photo-wrapper {
+        @include rhombus(variables.$grid-gap, right);
+
+        &::before {
+          @include mixins.media('md', 'infinity') {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__comment-wrapper {
+    background-color: colors.$light-gray;
+    display: flex;
+    flex-direction: column;
+    grid-area: comment;
+    justify-content: flex-end;
+    position: relative;
+
+    @include mixins.media('xs', 'md') {
+      padding: 8.6rem 2rem 2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 15rem 4rem 4rem;
+    }
+  }
+
+  &__tiles {
+    left: 0;
+    top: 0;
+  }
+
+  &__comment {
+    @include mixins.font(typography-variables.$font-h-4);
+
+    font-weight: bold;
+  }
+
+  &__person {
+    @include mixins.font(typography-variables.$font-body-3);
+
+    margin-top: 3rem;
+  }
+
+  &__photo-wrapper {
+    grid-area: photo;
+  }
+
+  &__photo {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}

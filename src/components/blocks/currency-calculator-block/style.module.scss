@@ -1,0 +1,236 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.currency-calculator-block {
+  $selector: &;
+
+  $horizontal-padding-desktop: 4rem;
+  $vertical-padding-desktop: 4rem;
+  $horizontal-padding-mobile: 1.5rem;
+  $vertical-padding-mobile: 1.8rem;
+  $expand-icon-width: 2rem;
+
+  @include mixins.baseBackgroundColor();
+
+  @include mixins.productType using($color) {
+    background-color: $color;
+  }
+
+  color: white;
+  display: flex;
+  justify-content: center;
+  &__container{
+    position: relative;
+  }
+
+  &_base-background-color_darkBlue {
+    padding: 3rem 1rem 5em 1rem;
+    #{$selector}__tiles {
+      @include mixins.recolor(#6884f7);
+
+      :global(.safari) & {
+        filter: none;
+
+        & > div {
+          background-image: url('images/static-cornflower-blue.png');
+        }
+
+        &_hover {
+          & > div {
+            background-image: url('images/animated-cornflower-blue.png');
+          }
+        }
+      }
+    }
+  }
+
+  &__tiles {
+    top: 0;
+    left: 0;
+  }
+
+
+
+  &__content {
+    display: grid;
+    grid-template-columns: 46% 1fr 46%;
+    @include mixins.media('xs', 'md') {
+      margin: 1.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin: 2rem;
+    }
+  }
+  &__label {
+    position: relative;
+
+    &#{$selector}_selected-option {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+
+    &#{$selector}_has-value {
+      #{$selector}__placeholder {
+        font-size: 1.5rem;
+
+        @include mixins.media('xs', 'md') {
+          top: -2.2rem;
+        }
+
+        @include mixins.media('md', 'infinity') {
+          top: -3rem;
+        }
+      }
+    }
+
+    &#{$selector}__files {
+      #{$selector}__placeholder {
+        @include mixins.font(typography-variables.$font-h-3);
+
+        top: 0;
+      }
+    }
+
+    &#{$selector}__selected-value {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+  }
+  &__placeholder {
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    transition: 0.2s;
+
+  }
+
+  &__input {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid rgba(255, 255, 255, 0.5);
+    color: colors.$white;
+    transition: 0.2s;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      border-width: 0.2rem;
+      padding-bottom: 0.8rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-width: 0.5rem;
+      padding-bottom: 1.6rem;
+    }
+
+    &[type='date'] {
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+    }
+
+    &[type='file'] {
+      border: 0;
+      font-size: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &::file-selector-button {
+        background-color: transparent;
+        border: 0;
+      }
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+    }
+
+    &:focus {
+      border-color: rgba(255, 255, 255, 1);
+      // TODO: something with it
+      outline: none;
+    }
+  }
+
+  &__select {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid rgba(255, 255, 255, 1);
+    color: colors.$white;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      border-width: 0.2rem;
+      padding-bottom: 0.8rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-width: 0.5rem;
+      padding-bottom: 1.65rem;
+    }
+
+    &:focus {
+      opacity: 0.8 !important;
+      // TODO: something with it
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    > option {
+      color: black;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+
+  &__checkbox {
+    @include mixins.media('xs', 'md') {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      text-align: left;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    #{$selector}__link {
+      color: colors.$white;
+    }
+    margin-right: 20px;
+  }
+
+
+}

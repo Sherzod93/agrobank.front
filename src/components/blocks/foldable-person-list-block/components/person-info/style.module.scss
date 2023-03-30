@@ -1,0 +1,19 @@
+@use 'src/styles/mixins';
+
+.person-info {
+  display: grid;
+  grid-gap: 2rem;
+  width: 100%;
+
+  @include mixins.media('md', 'infinity') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__bio {
+    /*!*/
+  }
+
+  &__contacts {
+    /*!*/
+  }
+}

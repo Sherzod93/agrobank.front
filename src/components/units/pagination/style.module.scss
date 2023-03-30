@@ -1,0 +1,43 @@
+@use 'src/styles/mixins';
+
+.pagination {
+  $selector: &;
+
+  display: grid;
+  grid-auto-columns: 3rem;
+  grid-auto-flow: column;
+  grid-column-gap: 3rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+  &_base-background-color {
+    &_default {
+      color: black;
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      color: white;
+    }
+  }
+
+  &__item {
+    &:not(#{$selector}__item_active) {
+      opacity: 0.5;
+    }
+  }
+
+  &__button {
+    @include mixins.buttonCleanup();
+
+    line-height: 0;
+  }
+
+  &__icon {
+    /*!*/
+  }
+}

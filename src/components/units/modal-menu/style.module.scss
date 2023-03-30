@@ -1,0 +1,37 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.modal-menu {
+  $selector: &;
+
+  &__phone {
+    @include mixins.font(typography-variables.$font-body-1);
+  }
+
+  &__select-menu-wrapper {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 3.2rem;
+    padding-bottom: 2.6rem;
+  }
+
+  &__phone-wrapper {
+    margin-top: 2rem;
+  }
+
+  &__visually-impaired-mode-wrapper {
+    margin-top: 2rem;
+  }
+
+  &__language-selector-wrapper {
+    margin-top: 2rem;
+  }
+
+  &__internet-bank-menu-wrapper {
+    margin-bottom: 1.4rem;
+  }
+
+  &__search-wrapper {
+    margin-bottom: 2rem;
+  }
+}

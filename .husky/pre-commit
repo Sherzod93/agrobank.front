@@ -1,0 +1,4 @@
+#!/bin/sh
+cd front
+
+npx --no-install lint-staged

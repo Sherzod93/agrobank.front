@@ -1,0 +1,83 @@
+@use 'src/styles/mixins';
+
+.mobile-application-links {
+  $selector: &;
+
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: -1rem 0 0 -1rem;
+  padding: 0;
+
+  &_alignment {
+    &_start {
+      justify-content: start;
+    }
+
+    &_center {
+      justify-content: center;
+    }
+
+    &_end {
+      justify-content: end;
+    }
+  }
+
+  &_icon-type {
+    &_default {
+      fill: currentColor;
+    }
+  }
+
+  &_size {
+    &_default {
+      &#{$selector}_icon-type_badge {
+        #{$selector}__image {
+          height: 6rem;
+        }
+      }
+
+      &#{$selector}_icon-type_default {
+        #{$selector}__image {
+          @include mixins.media('xs', 'md') {
+            height: 3.5rem;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            height: 5rem;
+          }
+        }
+      }
+    }
+
+    &_small {
+      &#{$selector}_icon-type_badge {
+        #{$selector}__image {
+          @include mixins.media('xs', 'md') {
+            height: 4rem;
+          }
+
+          @include mixins.media('md', 'infinity') {
+            height: 5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+    margin: 1rem 0 0 1rem;
+  }
+
+  &__link {
+    color: currentColor;
+    display: block;
+    fill: currentColor;
+  }
+
+  &__image {
+    display: block;
+    object-fit: contain;
+    width: auto;
+  }
+}

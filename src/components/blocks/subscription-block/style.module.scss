@@ -1,0 +1,259 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.subscription-block {
+  $selector: &;
+
+  background-color: colors.$half-transparent-white;
+  position: relative;
+
+  @include mixins.media('xs', 'md') {
+    padding: 3rem 5rem;
+  }
+
+  @include mixins.media('md', 'infinity') {
+    padding: 8.4rem 12rem;
+  }
+
+  &__submit-status {
+    align-items: center;
+    background-color: colors.$green;
+    color: colors.$white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    padding: 3rem 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: 0.3s;
+    width: 100%;
+    z-index: 3;
+
+    &_success {
+      opacity: 1;
+
+      animation: success 3s ease-in;
+
+      @keyframes success {
+        0% {
+          opacity: 1;
+        }
+        99% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+
+    #{$selector}__result-icon {
+      fill: colors.$white;
+    }
+
+    &_title {
+      @include mixins.font(typography-variables.$font-h-1);
+
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    &_subtitle {
+      @include mixins.font(typography-variables.$font-body-1);
+
+      margin-top: 2rem;
+    }
+  }
+
+  &__tiles {
+    background-color: colors.$gray;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  &__title {
+  }
+
+  &__subtitle {
+    @include mixins.media('xs', 'md') {
+      margin-top: 2rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-top: 3rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+
+    @include mixins.media('xs', 'md') {
+      flex-direction: column;
+      margin-top: 4rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    #{$selector}__button {
+      @include mixins.media('xs', 'md') {
+        margin-top: 2.4rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-left: 3rem;
+      }
+    }
+  }
+
+  &__label {
+    position: relative;
+
+    @include mixins.media('md', 'infinity') {
+      min-width: 36%;
+    }
+
+    &#{$selector}_selected-option {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+
+    &#{$selector}_has-value {
+      #{$selector}__placeholder {
+        font-size: 1.5rem;
+
+        @include mixins.media('xs', 'md') {
+          top: -2.2rem;
+        }
+
+        @include mixins.media('md', 'infinity') {
+          top: -3rem;
+        }
+      }
+    }
+
+    &#{$selector}_has-error {
+      #{$selector}__icon {
+        opacity: 1;
+      }
+
+      #{$selector}__input,
+      #{$selector}__select {
+        border-color: colors.$crimson;
+      }
+
+      #{$selector}__error {
+        color: colors.$crimson;
+      }
+    }
+
+    &#{$selector}__files {
+      #{$selector}__placeholder {
+        @include mixins.font(typography-variables.$font-h-3);
+
+        top: 0;
+      }
+    }
+
+    &#{$selector}__selected-value {
+      #{$selector}__select {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__placeholder {
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    transition: 0.2s;
+  }
+
+  &__input {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid colors.$half-transparent-white;
+    transition: 0.2s;
+    width: 100%;
+
+    @include mixins.media('xs', 'md') {
+      border-width: 0.2rem;
+      padding-bottom: 0.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      border-width: 0.5rem;
+      padding-bottom: 1rem;
+    }
+
+    &[type='date'] {
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+    }
+
+    &[type='file'] {
+      border: 0;
+      font-size: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+
+      &::file-selector-button {
+        background-color: transparent;
+        border: 0;
+      }
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &:focus {
+      border-color: colors.$white;
+      // TODO: something with it
+      outline: none;
+    }
+  }
+
+  &__error {
+    @include mixins.font(typography-variables.$font-body-4);
+
+    position: absolute;
+
+    @include mixins.media('xs', 'md') {
+      bottom: -1.6rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      bottom: -2.4rem;
+    }
+  }
+
+  &__icon {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(50%);
+    transition: ease-in 0.3s;
+
+    @include mixins.media('xs', 'xl') {
+      zoom: 0.5;
+    }
+  }
+}

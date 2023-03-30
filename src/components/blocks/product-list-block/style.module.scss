@@ -1,0 +1,27 @@
+.product-list-block {
+  list-style: none;
+  padding: 0;
+
+  &_category-filter {
+    /*!*/
+  }
+
+  &_list {
+    /*!*/
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  &_information-wrapper {
+    display: grid;
+  }
+
+  &__information {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+}

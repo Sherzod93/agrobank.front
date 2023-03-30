@@ -1,0 +1,39 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.product-offer {
+  list-style: none;
+
+  &__item {
+    margin-bottom: 3rem;
+  }
+
+  &__image-wrapper {
+    display: grid;
+    margin-bottom: 2rem;
+    padding-bottom: 100%;
+    position: relative;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__card-wrapper {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
+
+  &__link,
+  &__title {
+    @include mixins.font(typography-variables.$font-h-3);
+
+    font-weight: bold;
+  }
+}

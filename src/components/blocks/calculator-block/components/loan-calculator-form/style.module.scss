@@ -1,0 +1,11 @@
+@use '../../styles/mixins';
+
+.loan-calculator-form {
+  $selector: &;
+
+  @include mixins.calculator-form($selector);
+  //&__calculation-parameter-input-view{
+  //  color: white;
+  //}
+}
+

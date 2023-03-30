@@ -1,0 +1,94 @@
+@use 'src/styles/mixins';
+
+.carousel-block {
+  position: relative;
+
+  &__swiper {
+    & :global .swiper-wrapper {
+      list-style: none;
+      padding: 0;
+    }
+
+    &_center {
+      > ul {
+        justify-content: center;
+      }
+    }
+  }
+
+  &__control {
+    background-color: #fff;
+    border-radius: 50%;
+    border-style: none;
+    font-weight: bold;
+    height: 6.8rem;
+    position: absolute;
+    top: 35%;
+    width: 6.8rem;
+    z-index: 1;
+
+    @include mixins.media('xs', 'md') {
+      display: none;
+    }
+
+    &:disabled {
+      background-color: #e5e5e5;
+      color: #000;
+    }
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+
+    &_hidden {
+      display: none;
+    }
+
+    &_prev {
+      left: 1rem;
+    }
+
+    &_next {
+      right: 1rem;
+    }
+
+    &_icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__item-wrapper {
+    flex-grow: 0;
+    width: auto;
+
+    &:not(:last-child) {
+      @include mixins.media('xs', 'md') {
+        margin-right: 2.5rem;
+      }
+
+      @include mixins.media('md', 'infinity') {
+        margin-right: 5rem;
+      }
+    }
+  }
+
+  &__item {
+    /*!*/
+
+    @include mixins.media('xs', 'md') {
+      width: 17.5rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      width: 34.6rem;
+    }
+  }
+
+  &__articles {
+    display: block;
+    margin: 3rem auto;
+  }
+}

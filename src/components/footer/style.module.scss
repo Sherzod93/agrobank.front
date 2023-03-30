@@ -1,0 +1,134 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.footer {
+  $selector: &;
+
+  column-gap: 2rem;
+  display: grid;
+
+  @include mixins.media('xs', 'md') {
+    row-gap: 2.6rem;
+
+    &__footer-menu-wrapper {
+      order: 2;
+    }
+
+    &__footer-phone-wrapper {
+      order: 1;
+    }
+
+    &__legal-information-wrapper {
+      order: 3;
+    }
+
+    &__social-mobile-links-container {
+      order: 4;
+
+      #{$selector}__social-networks-wrapper {
+        order: 2;
+      }
+
+      #{$selector}__mobile-apps-wrapper {
+        order: 1;
+      }
+    }
+
+    &__mobile-apps-wrapper {
+      margin-left: 4rem;
+    }
+
+    &__als-copyright-wrapper {
+      order: 5;
+    }
+
+    &__mobile-apps-wrapper {
+      margin-bottom: 1rem;
+      margin-left: 0;
+    }
+    &__display-flex {
+      display: block;
+    }
+  }
+
+  @include mixins.media('md', 'infinity') {
+    &__display-flex {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+    }
+    grid-template-columns: 1fr 1fr;
+
+    &__footer-menu-wrapper {
+      margin: 3rem 3rem 2rem 0;
+      order: 1;
+    }
+
+    &__footer-phone-wrapper {
+      margin: 1.5rem 0 0 3rem;
+      order: 2;
+    }
+
+    &__legal-information-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      order: 3;
+    }
+
+    &__social-mobile-links-container {
+      order: 4;
+
+      #{$selector}__social-networks-wrapper {
+        order: 1;
+      }
+
+      #{$selector}__mobile-apps-wrapper {
+        order: 2;
+      }
+    }
+
+    &__mobile-apps-wrapper {
+      margin-left: 4rem;
+    }
+
+    &__als-copyright-wrapper {
+      margin: 2rem 0 0;
+      order: 5;
+    }
+  }
+
+  &__social-mobile-links-wrapper {
+    margin-top: auto;
+    order: 4;
+  }
+
+  &__social-mobile-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    justify-content: flex-end;
+    margin: -2rem 0 0 -2rem;
+
+    @include mixins.media('xs', 'md') {
+      flex-direction: column;
+    }
+  }
+
+  &__social-networks-wrapper,
+  &__mobile-apps-wrapper {
+    margin: 2rem 0 0 2rem;
+  }
+
+  &__footer-menu-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem 0 0 -2rem;
+  }
+
+  &__footer-menu,
+  &__visually-impaired-mode-toggle {
+    margin: 1rem 0 0 2rem;
+  }
+}

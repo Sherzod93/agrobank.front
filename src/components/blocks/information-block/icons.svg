@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="information-icon-diamond-border" viewBox="0 0 178 178">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M89 0.998047L178 89.9981L89 178.998L0 89.9981L89 0.998047ZM89 9.43731L169.561 89.9981L89 170.559L8.43927 89.9981L89 9.43731Z"/>
+    </symbol>
+    <symbol id="information-icon-cursor" viewBox="0 0 178 178">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M85.5609 126.364L61 62L125.364 86.5609L109.525 96.4127L121.568 108.456L107.455 122.569L95.4121 110.526L85.5609 126.364ZM94.3097 100.938L107.455 114.084L113.083 108.456L99.9375 95.3102L111.925 87.8544L71.3847 72.3847L86.8544 112.925L94.3097 100.938Z"/>
+    </symbol>
+    <symbol id="information-icon-done" viewBox="0 0 178 178">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M123.243 78.0598L83.0609 117.125L54.7617 91.1843L58.8161 86.7614L82.9398 108.875L119.06 73.7578L123.243 78.0598Z"/>
+    </symbol>
+    <symbol id="information-icon-torn-sheet" viewBox="0 0 178 178">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M99.1275 48H68V65.1573H68.0034L118.376 115V68.2689L99.1275 48ZM93.5768 74.1436V53.3714H73.3685V62.4517L113.191 102.613L113.009 74.1436H93.5768ZM99.006 68.71V55.934L111.235 68.71H99.006Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M59.0018 68V122H59H112L59.0018 68ZM64.3807 116.634V81.9894L98.9789 116.634H64.3807Z"/>
+    </symbol>
+</svg>

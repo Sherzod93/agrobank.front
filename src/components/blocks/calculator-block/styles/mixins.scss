@@ -1,0 +1,172 @@
+@use 'sass:list';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+@use 'calculator-variables';
+
+@mixin calculator-form($selector) {
+  display: grid;
+  justify-content: space-between;
+  gap: 2.4rem;
+
+  @include mixins.media('xs', 'md') {
+    grid-template-columns: 1fr;
+  }
+
+  @include mixins.media('md', 'lg') {
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+  }
+
+  @include mixins.media('lg', 'xl') {
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+  }
+
+  @include mixins.media('xl', 'infinity') {
+    grid-template-columns: repeat(4, minmax(min-content, max-content));
+  }
+
+  &__calculation-parameter,
+  &__calculation-result {
+    display: grid;
+  }
+
+  &__calculation-results {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1/-1;
+
+    @include mixins.media('xs', 'md') {
+      margin: -1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin: -2rem;
+    }
+  }
+
+  &__calculation-result {
+    @include mixins.media('xs', 'md') {
+      padding: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      padding: 2rem;
+    }
+  }
+
+  &__calculation-parameter {
+    &_variable {
+      grid-column: 1 / -1;
+
+      #{$selector}__calculation-parameter-label,
+      #{$selector}__calculation-parameter {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &_fixed {
+    }
+
+    &-max-value {
+      text-align: right;
+    }
+  }
+
+  &__calculation-parameter-label,
+  &__calculation-result-label {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    line-height: 1;
+    margin-bottom: 1.2rem;
+    opacity: 0.5;
+  }
+
+  &__calculation-parameter-value,
+  &__calculation-result-value {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__calculation-parameter-input-view {
+    background-color: transparent;
+    border: none;
+    caret-color: #00cc69;
+    padding: 0;
+    position: absolute;
+
+    &:focus + #{$selector}__calculation-parameter-value_current {
+      color: #ababab;
+    }
+  }
+
+  &__calculation-parameter-value-range {
+    @include mixins.media('xs', 'md') {
+      $horizontal-padding: list.nth(calculator-variables.$block-paddings_mobile, 2);
+
+      margin: 0.6rem #{-$horizontal-padding} 0.4rem;
+    }
+
+    @include mixins.media('md', 'lg') {
+      $horizontal-padding: list.nth(calculator-variables.$block-paddings_desktop_md, 2);
+
+      margin: 1.8rem #{-$horizontal-padding} 0;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      $horizontal-padding: list.nth(calculator-variables.$block-paddings_desktop_lg, 2);
+
+      margin: 1.8rem #{-$horizontal-padding} 0;
+    }
+  }
+
+  &__calculation-parameter_fixed &__calculation-parameter-value,
+  &__calculation-result-value {
+    @include mixins.font(typography-variables.$font-h-3);
+  }
+
+  &__calculation-parameter-values {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__calculation-parameter-value {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__calculation-parameter-value_max,
+  &__calculation-parameter-value_initial-payment {
+    font-size: inherit;
+    font-weight: inherit;
+    opacity: 0.5;
+  }
+
+  &__calculation-parameter-value_max {
+    &#{$selector}__calculation-parameter-value_above-range {
+      @include mixins.media('xs', 'md') {
+        display: none;
+      }
+    }
+
+    &#{$selector}__calculation-parameter-value_under-range {
+      @include mixins.media('md', 'infinity') {
+        display: none;
+      }
+    }
+  }
+
+  &__calculation-parameter-value_initial-payment {
+    @include mixins.media('md', 'infinity') {
+      display: none;
+    }
+  }
+}

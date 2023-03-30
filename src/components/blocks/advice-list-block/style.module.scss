@@ -1,0 +1,26 @@
+.advice-list-block {
+  list-style: none;
+  padding: 0;
+
+  &_filters-wrapper {
+    /*!*/
+  }
+
+  &_hidden {
+    display: none;
+  }
+
+  &_load-more-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_information-wrapper {
+    display: grid;
+  }
+
+  &__information {
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+  }
+}

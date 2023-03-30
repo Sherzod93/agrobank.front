@@ -1,0 +1,66 @@
+@use 'sass:math';
+@use '../../../styles/mixins';
+
+.burger {
+  $selector: &;
+  $burger-height: 2rem;
+  $burger-bar-height: math.div(0.3, 2) * $burger-height;
+  $burger-width: 2.6rem;
+
+  position: relative;
+  width: $burger-width;
+
+  &__container {
+    @include mixins.buttonCleanup();
+
+    height: $burger-height;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: $burger-width;
+  }
+
+  &__bar {
+    background: currentColor;
+    height: $burger-bar-height;
+    position: absolute;
+    transition-property: transform, opacity;
+    transition: 0.3s ease;
+    width: $burger-width;
+
+    &:nth-child(1) {
+      top: 0;
+      transform-origin: top center;
+    }
+
+    &:nth-child(2) {
+      opacity: 1;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+      transform-origin: bottom center;
+    }
+  }
+
+  &_expanded {
+    #{$selector}__bar {
+      &:nth-child(1) {
+        top: 50%;
+        transform: rotate(45deg) translateY(-50%);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 50%;
+        transform: rotate(-45deg) translateY(50%);
+      }
+    }
+  }
+}

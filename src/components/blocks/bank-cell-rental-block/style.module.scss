@@ -1,0 +1,121 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.bank-cell-rental-block {
+  $selector: &;
+  $block-padding_large-screen: 8rem;
+  $block-padding_small-screen: 2rem;
+
+  text-align: center;
+
+  &_base-background-color {
+    &_default {
+      background-color: transparentize(black, 0.95);
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      background-color: transparentize(white, 0.95);
+
+      #{$selector}__vault-image {
+        filter: invert(1);
+      }
+    }
+  }
+
+  @include mixins.media('xs', 'lg') {
+    padding: $block-padding_small-screen;
+  }
+
+  @include mixins.media('lg', 'infinity') {
+    padding: $block-padding_large-screen;
+  }
+
+  &__title {
+    /*!*/
+  }
+
+  &__tabs {
+    @include mixins.media('xs', 'lg') {
+      margin: 4rem #{-$block-padding_small-screen} 0 #{-$block-padding_small-screen};
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      margin: 4rem #{-$block-padding_large-screen} 0 #{-$block-padding_large-screen};
+    }
+  }
+
+  &__bank-cell {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+
+    @include mixins.media('xs', 'lg') {
+      flex-direction: column;
+    }
+  }
+
+  &__vault-image-wrap {
+    display: flex;
+    margin-top: 3rem;
+    position: relative;
+
+    @include mixins.media('xs', 'lg') {
+      width: 70%;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      height: 41.3rem;
+      width: 43.7rem;
+    }
+  }
+
+  &__vault-image {
+    margin-top: 3rem;
+    transition: 0.3s;
+    width: 100%;
+  }
+
+  &__radio-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__radio-button {
+    text-align: left;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+
+  &__size-title {
+    margin-right: 0.8rem;
+  }
+
+  &__size-parameters {
+    @include mixins.font(typography-variables.$font-body-3);
+
+    line-height: 100%;
+    opacity: 0.6;
+  }
+
+  &__price {
+    margin-top: 3rem;
+
+    @include mixins.media('xs', 'lg') {
+      margin-bottom: 2rem;
+    }
+
+    @include mixins.media('lg', 'infinity') {
+      margin-bottom: 6rem;
+    }
+  }
+}

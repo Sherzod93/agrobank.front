@@ -1,0 +1,265 @@
+{
+  "block-advice-item": {
+    "page-section-title": "Вакансии в этом направлении"
+  },
+  "block-advice-list": {
+    "empty-result-description_with-filters": "Попробуйте изменить параметры фильтрации",
+    "empty-result-description_without-filters": "Мы пока не опубликовали ни одного света, но скоро они появятся",
+    "empty-result-title_with-filters": "Советов не найдено",
+    "empty-result-title_without-filters": "Пока светов нет",
+    "load-more": "Загрузить еще"
+  },
+  "block-bank-cell-rental": {
+    "entity-type_individual": "Физлицо",
+    "entity-type_legal": "Юрлицо",
+    "rental-price-title": "Стоимость аренды"
+  },
+  "block-calculator": {
+    "amount": "Сумма",
+    "apply-product": "Оставить заявку",
+    "calculation-description_deposit": "{{title}} — График начислений по вкладу",
+    "calculation-description_loan": "{{title}} — График платежей по кредиту",
+    "calculation-disclaimer_deposit": "Расчет является предварительным. Точные условия по вкладу будут предоставлены после обработки вашей заявки.",
+    "calculation-disclaimer_loan": "Расчет является предварительным. Точные условия по кредиту будут предоставлены после обработки вашей заявки.",
+    "calculation-filename_deposit": "calculation_deposit.pdf",
+    "calculation-filename_loan": "calculation_loan.pdf",
+    "download-calculation-result": "Скачать подробный расчет",
+    "initialPayment": "Первоначальный взнос",
+    "interestRate": "Ставка",
+    "monthCount": "Срок",
+    "month_g_few": "месяцев",
+    "month_g_many": "месяцев",
+    "month_g_one": "месяца",
+    "month_n_few": "месяца",
+    "month_n_many": "месяцев",
+    "month_n_one": "месяц",
+    "monthlyAmount": "Остаток",
+    "monthlyBody": "Основной долг",
+    "monthlyIncome": "Доход в&nbsp;месяц",
+    "monthlyInterest": "Проценты",
+    "monthlyPayment": "Ежемесячный платеж",
+    "number-sign": "№",
+    "overpayment": "Переплата",
+    "to": "до",
+    "totalIncome": "Сумма дохода",
+    "UZS_g_few": "сумов",
+    "UZS_g_many": "сумов",
+    "UZS_g_one": "сума",
+    "UZS_n_few": "сума",
+    "UZS_n_many": "сумов",
+    "UZS_n_one": "сум",
+    "year_g_few": "лет",
+    "year_g_many": "лет",
+    "year_g_one": "года",
+    "year_n_few": "года",
+    "year_n_many": "лет",
+    "year_n_one": "год"
+  },
+  "block-currency-rates": {
+    "central-bank": "ЦБ",
+    "sell": "Продажа",
+    "buy": "Покупка"
+  },
+  "block-news-list": {
+    "empty-result-description_with-filters": "Попробуйте изменить параметры фильтрации",
+    "empty-result-description_without-filters": "Мы пока не опубликовали ни одной новости, но скоро они появятся",
+    "empty-result-title_with-filters": "Новостей не найдено",
+    "empty-result-title_without-filters": "Пока новостей нет",
+    "load-more": "Загрузить еще"
+  },
+  "block-next-news-item": {
+    "next": "Далее"
+  },
+  "block-other-vacancies": {
+    "page-section-title": "Вакансии в этом направлении"
+  },
+  "block-points-of-service": {
+    "empty-result-description": "Пока на карту не добавлено ни одного объекта",
+    "empty-result-title": "Объектов не найдено",
+    "map-control-title_geolocation": "Мое местоположение",
+    "map-control-title_zoom-in": "Увеличить",
+    "map-control-title_zoom-out": "Уменьшить",
+    "mode_list": "Список",
+    "mode_map": "Карта",
+    "point-type_atm": "Банкоматы",
+    "point-type_office": "Офисы",
+    "search-field-placeholder": "Адрес, филиал"
+  },
+  "block-product-applying": {
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "middle-name": "Отчество",
+    "phone": "Телефон",
+    "email": "Электронная почта",
+    "delivery": "Способ получения",
+    "home-region": "Регион",
+    "home-city": "Город",
+    "home-address": "Домашний адрес",
+    "postcode": "Почтовый индекс",
+    "region-bank-branch": "Регион обслуживания",
+    "bank-branch": "Филиал банка",
+    "passport": "Паспорт",
+    "birthdate": "Дата рождения",
+    "inn": "ИНН",
+    "files": "Паспорт: главная и страница с пропиской.<br/>Загрузите или перетащите сюда фотографии",
+    "contains-an-invalid-char": "Содержит недопустимый символ",
+    "delivery-option-false": "Заберу из филиала",
+    "delivery-option-true": "Доставить по указанному адресу",
+    "is-required": "обязательное поле",
+    "is-letters-only": "Допускаются только буквы",
+    "is-digits-only": "Допускаются только цифры",
+    "is-digits-only-and-plus": "Допускаются только цифры и +",
+    "limit-of-files-uploaded": "Вы прикрепили максимальное количество файлов",
+    "success-form-title": "Заявка на карту успешно отправлена",
+    "success-form-subtitle": "В ближайшее время с вами свяжется сотрудник банка и расскажет об условиях подробнее",
+    "unsuccessfully-form": "Заявка на карту не отправлена",
+    "title-first-step": "Контактная информация",
+    "title-second-step": "Способ получения, домашний адрес и филиал",
+    "title-third-step": "Паспортные данные",
+    "uncorrected-email": "Некорректный email"
+  },
+  "block-product-list": {
+    "empty-result-description_with-filters": "Попробуйте изменить параметры фильтрации",
+    "empty-result-title_with-filters": "Переводов не найдено"
+  },
+  "block-share": {
+    "link-copy": "Ссылка скопирована",
+    "link-title_facebook": "Поделиться в Facebook",
+    "link-title_instagram": "Поделиться в Instagram",
+    "link-title_share": "Скопировать ссылку",
+    "link-title_telegram": "Поделиться в Telegram",
+    "link-title_twitter": "Поделиться в Twitter",
+    "link-title_vk": "Поделиться в VK",
+    "title_advice": "Поделиться советом",
+    "title_article": "Поделиться статьей",
+    "title_default": "Поделиться",
+    "title_news": "Поделиться новостью"
+  },
+  "block-subscription": {
+    "input_email": "Электронная почта",
+    "button_subscribe": "Подписаться"
+  },
+  "block-tiles-list": {
+    "all": "Все",
+    "in": "в",
+    "item_vacancies_one": "вакансия",
+    "item_vacancies_few": "вакансии",
+    "item_vacancies_many": "вакансий",
+    "section_vacancies_p_one": "направлении",
+    "section_vacancies_p_few": "направлениях",
+    "section_vacancies_p_many": "направлениях"
+  },
+  "block-vacancy-list": {
+    "empty-result-description_with-filters": "Попробуйте изменить параметры фильтрации",
+    "empty-result-description_without-filters": "Мы пока не опубликовали ни одной вакансии, но скоро они появятся",
+    "empty-result-title_with-filters": "Вакансий не найдено",
+    "empty-result-title_without-filters": "Пока вакансий нет",
+    "load-more": "Загрузить еще"
+  },
+  "buttons": {
+    "next": "Продолжить",
+    "submit": "Отправить заявку"
+  },
+  "contacts": {
+    "additional-number": "Внутренний номер",
+    "address": "Адрес",
+    "mfo": "МФО",
+    "phone-hint": "1216",
+    "phone-number": "1216",
+    "phone-description": "Бесплатно по&nbsp;Узбекистану",
+    "postcode": "Почтовый индекс",
+    "working-time": "Режим работы"
+  },
+  "dates": {
+    "today": "Сегодня",
+    "yesterday": "Вчера"
+  },
+  "error-page": {
+    "title_0": "Неизвестная ошибка",
+    "seo-title_0": "Неизвестная ошибка",
+    "title_404": "Страница не найдена",
+    "seo-title_404": "Ошибка 404: страница не найдена",
+    "title_500": "Ошибка сервера",
+    "seo-title_500": "Ошибка 500: ошибка сервера",
+    "text_404_1": "Текст ошибки 404 вариант 1",
+    "text_404_2": "Текст ошибки 404 вариант 2 <a href=\"/\">Главная</a>",
+    "text_404_3": "Текст ошибки 404 вариант 3 <a href=\"/ru/person/cards\">Карты</a>"
+  },
+  "file-size-units": {
+    "byte-short-title": "Б",
+    "megabyte-short-title": "МБ",
+    "kilobyte-short-title": "КБ",
+    "gigabyte-short-title": "ГБ",
+    "terabyte-short-title": "ТБ"
+  },
+  "filters": {
+    "advice-list-block_sectionId_all": "Все категории",
+    "category_all": "Все",
+    "category_cards_all": "Все",
+    "category_deposits_all": "Все",
+    "category_loans_all": "Все",
+    "news-list-block_sectionId_all": "Все категории",
+    "news-list-block_year_all": "За всё время",
+    "product-list-block_country-000_a": "все страны",
+    "product-list-block_country-000_g": "всех стран",
+    "product-list-block_country-001_a": "СНГ",
+    "product-list-block_country-001_g": "СНГ",
+    "product-list-block_country-RUS_a": "Россию",
+    "product-list-block_country-RUS_g": "России",
+    "product-list-block_country-USA_a": "США",
+    "product-list-block_country-USA_g": "США",
+    "product-list-block_country-UZB_a": "Узбекистан",
+    "product-list-block_country-UZB_g": "Узбекистана",
+    "product-list-block_from-country": "Из",
+    "product-list-block_to-country": "в",
+    "vacancy-list-block_regionId_all": "Все регионы",
+    "vacancy-list-vacancy-list-block_sectionId_all": "Все категории"
+  },
+  "footer": {
+    "als": "Студии Артемия Лебедева",
+    "als-link": "https://www.artlebedev.ru/",
+    "anons-link": "https://www.artlebedev.ru/agrobank/",
+    "information-about-the-site": "Информация о&nbsp;сайте",
+    "designed-in": "Задизайнено в&nbsp;",
+    "bank-copyright": "2005-2022 © Все права защищены. Все услуги лицензированы",
+    "legal-information": "Акционерный коммерческий банк &laquo;Агробанк&raquo; зарегистрирован 29&nbsp;августа 2014 года<br/>Центральным банком Республики Узбекистан под номером&nbsp;78"
+  },
+  "form": {
+    "invalid-email": "Некорректный email",
+    "required-field": "Обязательное поле",
+    "status-success-title": "Еще один клик",
+    "status-success-subtitle": "Мы выслали вам письмо для подтверждения подписки."
+  },
+  "global": {
+    "regular-version": "Обычная версия",
+    "visually-impaired-mode": "Версия для слабовидящих"
+  },
+  "menu": {
+    "more": "Еще"
+  },
+  "months-uz": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": ""
+  },
+  "product-button": {
+    "bank-cell": "Арендовать ячейку",
+    "card": "Оформить карту",
+    "deposit": "Открыть вклад",
+    "loan": "Взять кредит",
+    "remittance": "Подробнее"
+  },
+  "search": {
+    "search": "Найти",
+    "placeholder": "Поиск по сайту"
+  }
+}

@@ -1,0 +1,87 @@
+@use 'src/styles/colors';
+@use 'src/styles/variables';
+
+a:not([data-router]),
+a[file-download-attr],
+.link {
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.link {
+  $selector: &;
+
+  &_base-background-color {
+    &_default {
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme;
+    }
+
+    &_deepBlue {
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_light-theme;
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_light-theme;
+    }
+  }
+
+  &:hover {
+    animation: styled-link-hover 0.2s ease-in-out forwards;
+    box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme_hover;
+
+    &#{$selector}_base-background-color {
+      &_green {
+        box-shadow: inset 0 variables.$underline-width colors.$link-color_light-theme_hover;
+      }
+    }
+  }
+}
+
+a:not([data-router]),
+a[file-download-attr] {
+  [class*='_base-background-color_default'] & {
+    box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme;
+
+    &:hover {
+      animation: styled-link-hover 0.2s ease-in-out forwards;
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme_hover;
+    }
+  }
+
+  [class*='_base-background-color_blue'] &,
+  [class*='_base-background-color_darkBlue'] &,
+  [class*='_base-background-color_deepBlue'] &,
+  [class*='_base-background-color_green'] &,
+  [class*='_base-background-color_orange'] &,
+  [class*='_base-background-color_semiRed'] & {
+    box-shadow: inset 0 variables.$underline-width colors.$link-color_light-theme;
+
+    &:hover {
+      animation: styled-link-hover 0.2s ease-in-out forwards;
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme_hover;
+    }
+  }
+
+  [class*='_base-background-color_green'] & {
+    &:hover {
+      animation: styled-link-hover 0.2s ease-in-out forwards;
+      box-shadow: inset 0 variables.$underline-width colors.$link-color_light-theme_hover;
+    }
+  }
+}
+
+@keyframes styled-link-hover {
+  from {
+    box-shadow: inset 0 variables.$underline-width colors.$link-color_dark-theme_hover;
+  }
+
+  to {
+    box-shadow: inset 0 variables.$underline-full-width colors.$link-color_dark-theme_hover;
+  }
+}

@@ -1,0 +1,28 @@
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.site-map {
+  $selector: &;
+
+  &__d-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+    row-gap: 50px;
+  }
+  /*&__sub-menu{
+    margin-left: 3rem;
+  }
+
+  &__icon-green::before {
+    content: "";
+    background: #00CC69;
+    transform: rotate(45deg);
+    display: inline-block;
+    width: 15.56px;
+    height: 15.56px;
+    position: relative;
+    top: 0.1rem;
+    margin-right: 2rem;
+  }*/
+}

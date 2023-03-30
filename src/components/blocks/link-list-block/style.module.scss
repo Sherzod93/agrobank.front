@@ -1,0 +1,135 @@
+@use 'sass:math';
+@use 'src/styles/colors';
+@use 'src/styles/functions';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+@mixin rhombuses($side) {
+  $hypotenuse: math.sqrt(2 * math.pow(functions.strip-units($side), 2));
+  $xTranslate: math.div($hypotenuse, 2) * 1rem;
+  $yTranslate: $hypotenuse * 1rem;
+
+  height: $side;
+  width: $side;
+
+  &:nth-child(1) {
+    left: 0;
+    top: 0;
+    transform: translateX($xTranslate) rotate(45deg);
+    transform-origin: left top;
+  }
+
+  &:nth-child(2) {
+    left: 100%;
+    top: 0;
+    transform: translateX(-$xTranslate) rotate(45deg);
+    transform-origin: left top;
+  }
+
+  &:nth-child(3) {
+    left: 0;
+    top: 100%;
+    transform: translate($xTranslate, -$yTranslate) rotate(45deg);
+    transform-origin: left top;
+  }
+
+  &:nth-child(4) {
+    left: 100%;
+    top: 100%;
+    transform: translate(-$xTranslate, -$yTranslate) rotate(45deg);
+    transform-origin: left top;
+  }
+}
+
+.link-list-block {
+  $selector: &;
+
+  position: relative;
+
+  &__smaller {
+    #{$selector}__rhombuses {
+      height: 100%;
+      position: absolute;
+      top: initial;
+    }
+
+    #{$selector}__list {
+      margin-top: 0;
+    }
+  }
+
+  &__block-title {
+    text-align: center;
+  }
+
+  &__rhombuses {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
+
+  &__rhombus {
+    background-color: colors.$green;
+    position: absolute;
+    z-index: 10;
+
+    @include mixins.media('xs', 'md') {
+      @include rhombuses(2.5rem);
+    }
+
+    @include mixins.media('md', 'infinity') {
+      @include rhombuses(5rem);
+    }
+  }
+
+  &__list {
+    left: 0;
+    list-style: none;
+    margin-top: -100vh;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    top: 0;
+  }
+
+  &__item {
+    @include mixins.media('xs', 'md') {
+      &:not(:first-child) {
+        margin-top: 3rem;
+      }
+    }
+
+    @include mixins.media('md', 'infinity') {
+      &:not(:first-child) {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  &__title {
+    @include mixins.font(typography-variables.$font-h-1);
+
+    @include mixins.media('xs', 'md') {
+      margin-bottom: 1rem;
+    }
+
+    @include mixins.media('md', 'infinity') {
+      margin-bottom: 3rem;
+    }
+
+    color: colors.$green;
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  &__link {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+
+    &:not(:hover) {
+      box-shadow: none;
+    }
+  }
+}
