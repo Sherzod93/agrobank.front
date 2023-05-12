@@ -48,6 +48,7 @@ export * from './ticker-block/ticker-block';
 export * from './tiles-list-block/tiles-list-block';
 export * from './vacancy-item-block/vacancy-item-block';
 export * from './vacancy-list-block/vacancy-list-block';
+export * from './video-block/video-block';
 export * from './polls-list-block/polls-list-block';
 export * from './vote-block/vote-block';
 export * from './vote-result-block/vote-result-block';

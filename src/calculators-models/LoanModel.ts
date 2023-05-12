@@ -3,7 +3,6 @@ import {
   actualizeInterestRateRegisters,
   addMonths,
   bankersRound,
-  calcInterest,
   getInterestRatePerDay,
   integerifyAmount,
   isValidDateObject,
@@ -383,7 +382,6 @@ export class LoanModel {
       const isThereAnInterestRateActualizationOperation = operations.some(
         operationPredicates.interestRateActualization,
       );
-      const { currentYearInterestRatePerDay, previousYearInterestRatePerDay } = registers;
 
       if (isThereAnInterestRateActualizationOperation) {
         actualizeInterestRateRegisters({
@@ -397,15 +395,7 @@ export class LoanModel {
         return;
       }
 
-      const interest = bankersRound(
-        calcInterest(
-          absoluteAmount,
-          registers.lastDate,
-          operationDate,
-          previousYearInterestRatePerDay,
-          currentYearInterestRatePerDay,
-        ),
-      );
+      const interest = bankersRound(((absoluteAmount * interestRate) / periodCount) * (periodCount / 12));
 
       let body = 0;
 
@@ -438,11 +428,11 @@ export class LoanModel {
 
     this._records.forEach(({ amount, body, date, interest, payment }) => {
       records.push({
-        amount: amount / 100,
-        body: body / 100,
+        amount: Math.round(amount / 100),
+        body: Math.round(body / 100),
         date,
-        interest: interest / 100,
-        payment: payment / 100,
+        interest: Math.round(interest / 100),
+        payment: Math.round(payment / 100),
       });
       totals.body += body;
       totals.interest += interest;

@@ -47,7 +47,7 @@ const Icon: FC<IconProps & WithClassNameComponentProps> = ({ className, code }) 
   const [width, height] = iconCodeToSize[code];
 
   return (
-    <svg
+    <svg id="specialButton"
       className={cs(iconStyles[iconClassname], className)}
       height={height}
       viewBox={`0 0 ${width} ${height}`}

@@ -12,7 +12,6 @@ export const BaseBackgroundColorContext = React.createContext<{
 export const useBaseBackgroundColor = () => {
   return useContext(BaseBackgroundColorContext);
 };
-
 export const useBaseBackgroundColorContextValue = (baseBackgroundColor: BaseBackgroundColor) => {
   const [localBaseBackgroundColor, setLocalBaseBackgroundColor] = useState(baseBackgroundColor);
 

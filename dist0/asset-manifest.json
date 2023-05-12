@@ -1,17 +1,17 @@
 {
   "files": {
-    "static/js/0.00080170.chunk.js": "/f/dist/static/js/0.00080170.chunk.js",
-    "main.css": "/f/dist/static/css/main.e4296ab1.chunk.css",
-    "main.js": "/f/dist/static/js/main.c1717af5.chunk.js",
-    "runtime-main.js": "/f/dist/static/js/runtime-main.35e293ce.js",
+    "static/js/0.14a1f9a9.chunk.js": "/f/dist/static/js/0.14a1f9a9.chunk.js",
+    "main.css": "/f/dist/static/css/main.3459b46f.chunk.css",
+    "main.js": "/f/dist/static/js/main.40c579f5.chunk.js",
+    "runtime-main.js": "/f/dist/static/js/runtime-main.2cc89853.js",
     "static/css/3.8b84dd0c.chunk.css": "/f/dist/static/css/3.8b84dd0c.chunk.css",
-    "static/js/3.9bc9153c.chunk.js": "/f/dist/static/js/3.9bc9153c.chunk.js",
-    "static/js/4.4e13a0b0.chunk.js": "/f/dist/static/js/4.4e13a0b0.chunk.js",
-    "static/js/5.b1fd1e45.chunk.js": "/f/dist/static/js/5.b1fd1e45.chunk.js",
-    "static/js/6.3615bce5.chunk.js": "/f/dist/static/js/6.3615bce5.chunk.js",
+    "static/js/3.fa13a0c9.chunk.js": "/f/dist/static/js/3.fa13a0c9.chunk.js",
+    "static/js/4.0ba6390a.chunk.js": "/f/dist/static/js/4.0ba6390a.chunk.js",
+    "static/js/5.a1f16468.chunk.js": "/f/dist/static/js/5.a1f16468.chunk.js",
+    "static/js/6.74d8ad51.chunk.js": "/f/dist/static/js/6.74d8ad51.chunk.js",
     "index.html": "/f/dist/index.html",
-    "static/js/0.00080170.chunk.js.LICENSE.txt": "/f/dist/static/js/0.00080170.chunk.js.LICENSE.txt",
-    "static/js/3.9bc9153c.chunk.js.LICENSE.txt": "/f/dist/static/js/3.9bc9153c.chunk.js.LICENSE.txt",
+    "static/js/0.14a1f9a9.chunk.js.LICENSE.txt": "/f/dist/static/js/0.14a1f9a9.chunk.js.LICENSE.txt",
+    "static/js/3.fa13a0c9.chunk.js.LICENSE.txt": "/f/dist/static/js/3.fa13a0c9.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/f/dist/static/media/ALSAgrofont-Regular.2d3ca3ba.woff2",
     "static/media/style.module.scss": "/f/dist/static/media/static-semi-red.dae83d77.png",
     "static/media/getFetch.cjs": "/f/dist/static/media/getFetch.5fde86e3.cjs",
@@ -28,10 +28,10 @@
     "static/media/vault-xs.62efd7a1.svg": "/f/dist/static/media/vault-xs.62efd7a1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.35e293ce.js",
+    "static/js/runtime-main.2cc89853.js",
     "static/css/3.8b84dd0c.chunk.css",
-    "static/js/3.9bc9153c.chunk.js",
-    "static/css/main.e4296ab1.chunk.css",
-    "static/js/main.c1717af5.chunk.js"
+    "static/js/3.fa13a0c9.chunk.js",
+    "static/css/main.3459b46f.chunk.css",
+    "static/js/main.40c579f5.chunk.js"
   ]
 }

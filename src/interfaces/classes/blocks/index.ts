@@ -51,6 +51,7 @@ import { TextBlockData } from './text-block-data';
 import { TickerBlockData } from './ticker-block-data';
 import { TilesListBlockData } from './tiles-list-block-data';
 import { VacancyListBlockData } from './vacancy-list-block-data';
+import { VideoBlockData } from './video-block-data';
 import { ControlApplyingBlockData } from './control-applying-block-data';
 import { CurrencyCalculatorBlockData } from './currency-calculator-block-data';
 import { SiteMapData } from './site-map-block-data';
@@ -115,6 +116,7 @@ export const pageSectionBlockTypeToDataClassMap = {
   [BlockType.tilesList]: TilesListBlockData,
   [BlockType.vacancyItem]: null,
   [BlockType.vacancyList]: VacancyListBlockData,
+  [BlockType.video]: VideoBlockData,
   [BlockType.controlApplying]: ControlApplyingBlockData,
   [BlockType.currencyCalculator]: CurrencyCalculatorBlockData,
   [BlockType.siteMap]: SiteMapData,
@@ -190,6 +192,7 @@ export { TickerBlockData } from './ticker-block-data';
 export { TilesListBlockData } from './tiles-list-block-data';
 export { VacancyItemBlockData } from './vacancy-item-block-data';
 export { VacancyListBlockData } from './vacancy-list-block-data';
+export { VideoBlockData } from './video-block-data';
 export { ControlApplyingBlockData } from  './control-applying-block-data';
 export { SiteMapData } from './site-map-block-data';
 export { ReceptionFormBlockData } from './reception-form-block-data';

@@ -1,0 +1,53 @@
+@use 'src/styles/colors';
+@use 'src/styles/mixins';
+@use 'src/styles/typography-variables';
+
+.video-block {
+  $selector: &;
+
+  display: grid;
+  justify-items: center;
+  position: relative;
+
+  &_base-background-color {
+    &_default {
+      #{$selector}__icon {
+        fill: colors.$green;
+      }
+    }
+
+    &_blue,
+    &_darkBlue,
+    &_deepBlue,
+    &_green,
+    &_orange,
+    &_semiRed {
+      #{$selector}__icon {
+        fill: white;
+      }
+    }
+  }
+
+
+
+  &__title,
+  &__description {
+    text-align: center;
+  }
+  &__description {
+    height: 500px;
+    width: 100%;
+  }
+  &__title {
+    @include mixins.font(typography-variables.$font-h-2);
+
+    font-weight: bold;
+    margin-top: 1.5rem;
+  }
+
+  &__description {
+    @include mixins.font(typography-variables.$font-body-2);
+
+    margin-top: 1rem;
+  }
+}

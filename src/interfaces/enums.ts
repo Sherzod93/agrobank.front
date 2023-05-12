@@ -8,7 +8,11 @@ export enum BaseBackgroundColor {
   semiRed = 'semiRed',
   default = 'default',
 }
-
+export enum BackgroundColors {
+  blue = 'blue',
+  brown = 'brown',
+  white = 'white'
+}
 export enum ComponentRenderType {
   default = 'default',
   listItem = 'list-item',
@@ -99,6 +103,7 @@ export enum BlockType {
   tilesList = 'tiles-list',
   vacancyItem = 'vacancy-item',
   vacancyList = 'vacancy-list',
+  video = 'video',
   controlApplying = 'control-applying',
   currencyCalculator = 'currency-calculator',
   siteMap = 'site-map',
