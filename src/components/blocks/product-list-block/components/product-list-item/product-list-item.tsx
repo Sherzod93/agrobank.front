@@ -44,6 +44,7 @@ const ProductListItem: FC<CardListItemProps & WithClassNameComponentProps> = ({ 
       case ProductType.deposit:
       case ProductType.loan:
       case ProductType.remittance:
+      case ProductType.tariffs:
         return (
           <Image
             className={productListItemStyles[`${productListItemClassname}__image`]}

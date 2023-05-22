@@ -200,6 +200,11 @@
 
         @content ($color);
       }
+      &_tariffs {
+        $color: colors.$blue;
+
+        @content ($color);
+      }
     }
   }
 }

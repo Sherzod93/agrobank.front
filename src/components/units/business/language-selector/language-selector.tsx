@@ -231,7 +231,7 @@ const LanguageSelector: FC<WithClassNameComponentProps> = ({ className }) => {
             dangerouslySetInnerHTML={{ __html: currentLanguageOption!.title }}
             tabIndex={isFolded ? 0 : -1}
           />
-          <ul
+          <ul role={'language_selector_text'}
             className={cs(
               languageSelectorStyles[`${languageSelectorClassname}__list`],
               languageSelectorStyles[`${languageSelectorClassname}__list_foldable`],

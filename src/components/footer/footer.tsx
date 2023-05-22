@@ -10,7 +10,7 @@ import {
   MobileApplicationLinks,
   Size,
 } from '../units/business/mobile-application-links/mobile-application-links';
-import { VisuallyImpairedMode } from '../units/business/visually-impaired-mode/visually-impaired-mode';
+//import { VisuallyImpairedMode } from '../units/business/visually-impaired-mode/visually-impaired-mode';
 import { FooterRightText } from '../units/footer-right-text/footer-right-text';
 import { SiteUpdatedDate } from '../units/site-updated-date/site-updated-date';
 import { Phone } from '../units/phone/phone';
@@ -49,10 +49,7 @@ const Footer: FC<WithClassNameComponentProps> = ({ className }) => {
       <div className={footerStyles[`${footerClassname}__footer-menu-wrapper`]}>
         <div className={footerStyles[`${footerClassname}__footer-menu-container`]}>
           <FooterMenu className={footerStyles[`${footerClassname}__footer-menu`]} />
-          <VisuallyImpairedMode
-            className={footerStyles[`${footerClassname}__visually-impaired-mode-toggle`]}
-            withTitle={true}
-          />
+
         </div>
       </div>
 

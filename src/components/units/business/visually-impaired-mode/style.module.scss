@@ -7,7 +7,7 @@
   z-index: 999;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   height: 362px;
   width: 264px;
   border-radius: 0px;
@@ -20,7 +20,43 @@
   font-size: 16px;
   line-height: 130%;
   right: 10px;
+  label{
+    color: black;
+    font-family: "ALSAgrofont", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+  input[type="radio"],input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 23px;
+    border-radius:0;
+    outline: 3.59375px solid #000000;
+    outline-offset: max(2px, 1px);
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  input[type="radio"]:checked,input[type="checkbox"]:checked{
+    border-radius:0;
+    background-color: limegreen;
+    outline: 3.59375px solid limegreen;
+
+  }
+
+  input[type="radio"]:focus {
+    outline: 3.59375px solid limegreen;
+    outline-offset: max(2px, 1px);
+    background-color: limegreen;
+  }
 }
+
 .list_views_restart_feture{
   cursor: pointer;
   text-decoration: underline;
@@ -114,44 +150,8 @@
     }
   }
 }
-p{
-  color: black;
-}
-label{
-  color: black;
-  font-family: "ALSAgrofont", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 130%;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-input[type="radio"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 23px;
-  height: 23px;
-  border-radius:0;
-  outline: 3.59375px solid #000000;
-  outline-offset: max(2px, 1px);
-  margin-right: 20px;
-  cursor: pointer;
-}
-input[type="radio"]:checked{
-  border-radius:0;
-  background-color: limegreen;
-  outline: 3.59375px solid limegreen;
 
-}
 
-input[type="radio"]:focus {
-  outline: 3.59375px solid limegreen;
-  outline-offset: max(2px, 1px);
-  background-color: limegreen;
-}
 .containerization{
   display:none;
 }
