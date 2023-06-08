@@ -1,7 +1,7 @@
 import cs from 'classnames';
 
 import { AbstractBlockProps, ProductType } from '../../../interfaces';
-import React, { FC, useMemo, useState,useRef,ChangeEvent, useEffect } from 'react';
+import React, { FC, useMemo, useState, useRef, ChangeEvent, useEffect, useCallback } from 'react';
 import { getProductTypeBaseBackgroundColor } from '../../../helpers';
 import { BaseBackgroundColorContext } from '../../../contexts';
 import receptionFormStyles from './style.module.scss';
@@ -9,6 +9,7 @@ import InputMask from 'react-input-mask';
 import { Checkbox } from '../../units/controls/checkbox/checkbox';
 import { useTranslation } from 'react-i18next';
 import {  useAppSelector, useAppDispatch } from '../../../services/store';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import {
     fetchApplication,
     fetchPlaces,
@@ -78,6 +79,7 @@ const ReceptionFormBlock: FC<ReceptionFormBlockProps> = ({ className }) => {
         file: File,
         agreeTerms:'',
         agreeDataCorrect:'',
+        token:'',
     } );
 
     const [customError, setCustomError] = useState<any>( {
@@ -186,7 +188,11 @@ const ReceptionFormBlock: FC<ReceptionFormBlockProps> = ({ className }) => {
         formError['userType'] = data.userType['individual'] || data.userType['legalEntity']? false : true;
         formError['agreeTerms'] = data.agreeTerms == '' ? true : false;
         formError['agreeDataCorrect'] = data.agreeDataCorrect == '' ? true : false;
+        const googleToken = document.getElementById('google-token') as HTMLInputElement;
 
+        if(googleToken){
+            data.token = googleToken.value;
+        }
 
 
         const formData: FormData = new FormData();
@@ -249,11 +255,18 @@ const ReceptionFormBlock: FC<ReceptionFormBlockProps> = ({ className }) => {
           ><img className={cs(receptionFormStyles[`${receptionFormClassname}__success-image`])}   src={ succesImage } />
             <span className={cs(receptionFormStyles[`${receptionFormClassname}__success-title`])} dangerouslySetInnerHTML={{ __html: t('block-product-applying.sent-success') }} />
             <span className={cs(receptionFormStyles[`${receptionFormClassname}__success-text`])} dangerouslySetInnerHTML={{ __html: t('block-product-applying.sent-success-text') }} />
-          </div>
-          ;
+          </div>;
 
+            const [token, setToken] = useState();
+            const onVerify = useCallback((token) => { setToken(token);},[]);
+           const siteKey:string = '6LfByHwmAAAAAIuclMAelyjS-cO1D6lCJ7NgoHdR';
            const FormWindow =  <FormProvider {...methods}>
                 {/*<form onSubmit={onSubmit}>*/}
+               <GoogleReCaptchaProvider reCaptchaKey={siteKey} >
+                   <GoogleReCaptcha
+                       onVerify={onVerify}
+                   />
+                   <input name={'token'} id={'google-token'} type="hidden" value={token} />
                 <div className={cs(receptionFormStyles[`${receptionFormClassname}__container`],className)}>
                     <div
                         className={cs(
@@ -675,6 +688,7 @@ const ReceptionFormBlock: FC<ReceptionFormBlockProps> = ({ className }) => {
                     </div>
                 </div>
                 {/*</form>*/}
+               </GoogleReCaptchaProvider>
             </FormProvider>;
 
     return (

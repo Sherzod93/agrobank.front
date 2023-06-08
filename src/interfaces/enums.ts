@@ -37,6 +37,7 @@ export enum FormItems {
   input = 'input',
   select = 'select',
   textarea = 'textarea'
+
 }
 
 export enum ImageBlockImageSize {

@@ -17,7 +17,7 @@ interface SocialNetworksProps {
 
 const SocialNetworks: FC<SocialNetworksProps & WithClassNameComponentProps> = ({ socialNetworkLinks, className }) => {
   const {
-    i18n: { t },
+    i18n: { language,t },
   } = useTranslation();
   const hintRef = useRef<HTMLDivElement>(null);
   const { baseBackgroundColor } = useBaseBackgroundColor();
@@ -77,7 +77,7 @@ const SocialNetworks: FC<SocialNetworksProps & WithClassNameComponentProps> = ({
                 aria-label={title}
                 className={socialNetworksStyles[`${socialNetworksClassname}__link`]}
                 isExternal={true}
-                to={url}
+                to={url==='https://dev.agrobank.uz/rss/'?url+language+'/':url}
               >
                 {logo}
               </Link>

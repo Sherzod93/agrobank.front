@@ -23,7 +23,7 @@ export const fields: FormFieldData[][] = [
       name: 'email',
       type: FormItems.input,
     },
-  ],
+    ],
   [
     {
       name: 'delivery',

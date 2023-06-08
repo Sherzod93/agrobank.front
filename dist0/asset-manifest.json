@@ -1,21 +1,21 @@
 {
   "files": {
-    "static/js/0.14a1f9a9.chunk.js": "/f/dist/static/js/0.14a1f9a9.chunk.js",
+    "static/js/0.b1a315f9.chunk.js": "/f/dist/static/js/0.b1a315f9.chunk.js",
     "main.css": "/f/dist/static/css/main.741720f2.chunk.css",
-    "main.js": "/f/dist/static/js/main.fc5ca510.chunk.js",
-    "runtime-main.js": "/f/dist/static/js/runtime-main.2cc89853.js",
+    "main.js": "/f/dist/static/js/main.ecc550c1.chunk.js",
+    "runtime-main.js": "/f/dist/static/js/runtime-main.8f7f30a3.js",
     "static/css/3.8b84dd0c.chunk.css": "/f/dist/static/css/3.8b84dd0c.chunk.css",
-    "static/js/3.66725859.chunk.js": "/f/dist/static/js/3.66725859.chunk.js",
-    "static/js/4.0ba6390a.chunk.js": "/f/dist/static/js/4.0ba6390a.chunk.js",
-    "static/js/5.a1f16468.chunk.js": "/f/dist/static/js/5.a1f16468.chunk.js",
-    "static/js/6.74d8ad51.chunk.js": "/f/dist/static/js/6.74d8ad51.chunk.js",
+    "static/js/3.6187747c.chunk.js": "/f/dist/static/js/3.6187747c.chunk.js",
+    "static/js/4.38f25e88.chunk.js": "/f/dist/static/js/4.38f25e88.chunk.js",
+    "static/js/5.a460c99a.chunk.js": "/f/dist/static/js/5.a460c99a.chunk.js",
+    "static/js/6.f9f8b58d.chunk.js": "/f/dist/static/js/6.f9f8b58d.chunk.js",
     "index.html": "/f/dist/index.html",
-    "static/js/0.14a1f9a9.chunk.js.LICENSE.txt": "/f/dist/static/js/0.14a1f9a9.chunk.js.LICENSE.txt",
-    "static/js/3.66725859.chunk.js.LICENSE.txt": "/f/dist/static/js/3.66725859.chunk.js.LICENSE.txt",
+    "static/js/0.b1a315f9.chunk.js.LICENSE.txt": "/f/dist/static/js/0.b1a315f9.chunk.js.LICENSE.txt",
+    "static/js/3.6187747c.chunk.js.LICENSE.txt": "/f/dist/static/js/3.6187747c.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/f/dist/static/media/ALSAgrofont-Regular.2d3ca3ba.woff2",
     "static/media/style.module.scss": "/f/dist/static/media/static-semi-red.dae83d77.png",
     "static/media/getFetch.cjs": "/f/dist/static/media/getFetch.5fde86e3.cjs",
-    "static/media/icons.8e8a1aee.svg": "/f/dist/static/media/icons.8e8a1aee.svg",
+    "static/media/icons.6c8293a2.svg": "/f/dist/static/media/icons.6c8293a2.svg",
     "static/media/icons.8ff6cf1c.svg": "/f/dist/static/media/icons.8ff6cf1c.svg",
     "static/media/icons.a8d70c14.svg": "/f/dist/static/media/icons.a8d70c14.svg",
     "static/media/icons.d908a4c9.svg": "/f/dist/static/media/icons.d908a4c9.svg",
@@ -28,10 +28,10 @@
     "static/media/vault-xs.62efd7a1.svg": "/f/dist/static/media/vault-xs.62efd7a1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2cc89853.js",
+    "static/js/runtime-main.8f7f30a3.js",
     "static/css/3.8b84dd0c.chunk.css",
-    "static/js/3.66725859.chunk.js",
+    "static/js/3.6187747c.chunk.js",
     "static/css/main.741720f2.chunk.css",
-    "static/js/main.fc5ca510.chunk.js"
+    "static/js/main.ecc550c1.chunk.js"
   ]
 }

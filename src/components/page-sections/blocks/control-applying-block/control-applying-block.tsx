@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseBackgroundColorContext } from '../../../../contexts';
 import { getProductTypeBaseBackgroundColor, provideForwardRef } from '../../../../helpers';
 import { validators } from '../../../../helpers/validators';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import {
   AbstractBlockProps,
   BlockWithProductComponentProps,
@@ -58,6 +59,7 @@ interface FormFieldsStepOne {
   phone: string;
   email: string;
   message: string;
+  token:string;
 }
 
 
@@ -71,6 +73,7 @@ export interface FormDataFields {
   phone: string;
   email: string;
   message: string;
+  token:string;
 }
 
 
@@ -259,12 +262,19 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
   const onChangeCheckboxStateHandlerSecond = useCallback((checked) => setValue('isAcceptedSecond', checked), [setValue]);
   const formValues = watch();
   const { isAcceptedFirst = false, isAcceptedSecond = false } = formValues;
+  const [token, setToken] = useState();
+
+  const onVerify = useCallback((token) => { setToken(token);},[]);
+  const siteKey:string = '6LfByHwmAAAAAIuclMAelyjS-cO1D6lCJ7NgoHdR';
 
   return (
+      <GoogleReCaptchaProvider reCaptchaKey={siteKey}
+      >
     <form
       className={controlApplyingBlockStyles[`${controlApplyingBlockClassname}__form`]}
       onSubmit={handleSubmit(onSubmit)}
     >
+      <input name={'token'} id={'google-token'} type="hidden" value={token} />
       <div
         className={cs(
           controlApplyingBlockStyles[`${controlApplyingBlockClassname}__fields`],
@@ -273,7 +283,9 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
       >
         <Fields errors={errors} fields={fields} register={register} step={step} watch={watch} />
       </div>
-
+      <GoogleReCaptcha
+          onVerify={onVerify}
+      />
       {step === 1 ? (
         <>
           <Checkbox
@@ -305,6 +317,7 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
         <span dangerouslySetInnerHTML={{ __html: buttonTitle }} />
       </Button>
     </form>
+      </GoogleReCaptchaProvider>
   );
 };
 
@@ -405,10 +418,15 @@ const ControlApplyingBlock: FC<ControlApplyingBlockProps> = ({
 
       delete data.isAcceptedFirst;
       delete data.isAcceptedSecond;
-
+      const googleToken = document.getElementById('google-token') as HTMLInputElement;
+      if(googleToken){
+        data.token = googleToken.value;
+      }
       formData.append('data', JSON.stringify(data));
       formData.append('lang', language);
       formData.append('method', 'createControlApplication');
+
+
 
       if (createApplicationRequestPhase === CreateApplicationFetchState.initial) {
         dispatch(fetchApplication(formData));

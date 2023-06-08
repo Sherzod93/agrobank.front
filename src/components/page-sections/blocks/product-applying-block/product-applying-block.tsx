@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseBackgroundColorContext } from '../../../../contexts';
 import { getProductTypeBaseBackgroundColor, provideForwardRef } from '../../../../helpers';
 import { validators } from '../../../../helpers/validators';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import {
   AbstractBlockProps,
   BaseBackgroundColor,
@@ -38,6 +39,7 @@ import productApplyingBlockStyles from './style.module.scss';
 const productApplyingBlockClassname = 'product-applying-block';
 
 const { emailRegexValidator, digitsRegexValidator } = validators;
+
 
 interface Option {
   readonly id: number;
@@ -82,6 +84,7 @@ interface FormFieldsStepThree {
   birthdate: string;
   inn: string;
   files: File[];
+  token:string;
 }
 
 export interface FormDataFields {
@@ -104,6 +107,7 @@ export interface FormDataFields {
   passport: string;
   birthdate: string;
   inn: string;
+  token:string;
   files?: File[]; // TODO: убрать поле, оно определено в FormFieldsStepThree
   file0?: File;
   file1?: File;
@@ -300,7 +304,7 @@ const Input = React.forwardRef<
           autoComplete="off"
           className={productApplyingBlockStyles[`${productApplyingBlockClassname}__input`]}
           maxLength={props.name === 'inn' ? 14 : props.name === 'passport' ? 9 : props.name === 'postcode' ? 6 : 255}
-          type={props.name === 'birthdate' ? 'date' : 'text'}
+          type={props.name === 'birthdate' ? 'date' :'text'}
         />
       )}
       <div
@@ -538,12 +542,18 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
       ? content.replace('<a ', '<a data-router file-download-attr target="_blank" rel="noopener noreferrer" ')
       : content;
   };
+  const [token, setToken] = useState();
 
+  const onVerify = useCallback((token) => { setToken(token);},[]);
+  const siteKey:string = '6LfByHwmAAAAAIuclMAelyjS-cO1D6lCJ7NgoHdR';
   return (
+      <GoogleReCaptchaProvider reCaptchaKey={siteKey}
+      >
     <form
       className={productApplyingBlockStyles[`${productApplyingBlockClassname}__form`]}
       onSubmit={handleSubmit(onSubmit)}
     >
+      <input name={'token'} id={'google-token'} type="hidden" value={token} />
       <div
         className={cs(
           productApplyingBlockStyles[`${productApplyingBlockClassname}__fields`],
@@ -552,6 +562,9 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
       >
         <Fields errors={errors} fields={fields} register={register} step={step} watch={watch} />
       </div>
+      <GoogleReCaptcha
+          onVerify={onVerify}
+      />
 
       {step === 1 ? (
         <>
@@ -574,7 +587,9 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
       >
         <span dangerouslySetInnerHTML={{ __html: buttonTitle }} />
       </Button>
+
     </form>
+      </GoogleReCaptchaProvider>
   );
 };
 
@@ -746,6 +761,7 @@ const ProductApplyingBlock: FC<ProductApplyingBlockProps> = ({
     if (step === 3) {
       const formData: FormData = new FormData();
 
+
       if (data.files?.length) {
         for (let i = 0; i <= data.files.length; i++) {
           formData.append(`file${i}`, data.files[i]);
@@ -757,6 +773,10 @@ const ProductApplyingBlock: FC<ProductApplyingBlockProps> = ({
       delete data.isAccepted;
       data.productId = product.id;
       data.delivery = data.delivery === '1';
+      const googleToken = document.getElementById('google-token') as HTMLInputElement;
+      if(googleToken){
+        data.token = googleToken.value;
+      }
 
       if (region) {
         data.homeRegion = region.name;
