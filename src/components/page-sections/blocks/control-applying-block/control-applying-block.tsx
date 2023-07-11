@@ -268,7 +268,7 @@ const Step: FC<{ buttonTitle: string; fields: FormFieldData[]; step: number; onS
   const siteKey:string = '6LfByHwmAAAAAIuclMAelyjS-cO1D6lCJ7NgoHdR';
 
   return (
-      <GoogleReCaptchaProvider reCaptchaKey={siteKey}
+      <GoogleReCaptchaProvider reCaptchaKey={siteKey} language={'en'}
       >
     <form
       className={controlApplyingBlockStyles[`${controlApplyingBlockClassname}__form`]}

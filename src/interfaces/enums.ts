@@ -114,6 +114,7 @@ export enum BlockType {
   voteResult = 'vote-result',
   chartColumn = 'chart-column',
   chartPie = 'chart-pie',
+  pageStatistic = 'page-statistic'
 }
 
 export enum ItemsAlignmentType {

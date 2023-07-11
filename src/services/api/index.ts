@@ -199,6 +199,7 @@ export const fetchPageContent = async (url: string): Promise<PageContentData> =>
     sections: response.data.sections,
     seo: response.data.seo,
     lastUpdatedDate: response.data.lastUpdatedDate,
+    statistic:response.data.statistic,
   };
 
   if (response.data.contextProduct) {
@@ -417,3 +418,4 @@ export const setAppLanguage = async ({
     url: response.data.url,
   };
 };
+

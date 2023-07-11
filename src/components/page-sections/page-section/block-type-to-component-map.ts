@@ -58,6 +58,7 @@ import { ControlApplyingBlock } from '../blocks/control-applying-block/control-a
 import { CurrencyCalculatorBlock } from '../../blocks/currency-calculator-block/currency-calculator-block';
 import { SiteMapBlock } from '../../blocks/site-map-block/site-map-block';
 import { ReceptionFormBlock } from '../../blocks/reception-form/reception-form';
+import { PageStatisticBlock } from '../../blocks/page-statistic-block/page-statistic-block';
 
 const pageSectionBlockTypeToComponentMap = {
   [BlockType.adviceItem]: AdviceItemBlock,
@@ -121,6 +122,7 @@ const pageSectionBlockTypeToComponentMap = {
   [BlockType.voteResult]: VoteResultBlock,
   [BlockType.chartColumn]: ChartColumnBlock,
   [BlockType.chartPie]: ChartPieBlock,
+  [BlockType.pageStatistic]: PageStatisticBlock,
 };
 
 export { pageSectionBlockTypeToComponentMap };

@@ -77,7 +77,7 @@ const SocialNetworks: FC<SocialNetworksProps & WithClassNameComponentProps> = ({
                 aria-label={title}
                 className={socialNetworksStyles[`${socialNetworksClassname}__link`]}
                 isExternal={true}
-                to={url==='https://dev.agrobank.uz/rss/'?url+language+'/':url}
+                to={url==='https://agrobank.uz/rss/'?url+language+'/':url}
               >
                 {logo}
               </Link>

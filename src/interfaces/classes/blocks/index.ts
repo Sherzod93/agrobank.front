@@ -61,6 +61,7 @@ import { VoteBlockData } from './vote-block-data';
 import { VoteResultBlockData } from './vote-result-data';
 import { ChartColumnBlockData } from './chart-column-block-data';
 import { ChartPieBlockData } from './chart-pie-block-data';
+import { PageStatisticBlockData } from './page-statistic-block-data';
 
 // if block is presented only on frontend side,
 // null must be used as value in following map
@@ -126,6 +127,7 @@ export const pageSectionBlockTypeToDataClassMap = {
   [BlockType.voteResult]: VoteResultBlockData,
   [BlockType.chartColumn]: ChartColumnBlockData,
   [BlockType.chartPie]: ChartPieBlockData,
+  [BlockType.pageStatistic]: PageStatisticBlockData,
 };
 
 export enum UtilityBlockType {

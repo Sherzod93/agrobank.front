@@ -23,4 +23,5 @@ export interface PageContentData {
     title?: string;
   };
   lastUpdatedDate: string;
+  statistic:any;
 }
